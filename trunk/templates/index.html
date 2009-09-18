@@ -1,0 +1,66 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block inside_head %}
+
+    <style type="text/css">
+        #index_sample {
+            background-color:#FFCCFF;
+            height: auto;
+        }
+        
+        #index_hotSubjects, #index_newSubjects, #index_topSubjects {
+            background-color:#FFFFCC;
+            margin:5px;
+            padding:5px;
+            border: thin black outset;
+            float: left;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div id="index_sample">
+        <div id="index_topSubjects">
+            {% trans 'Top Subjects' %}
+            {% if top_subjects %}
+                <ul>
+                {% for subject in top_subjects %}
+                    <li><a href="{% url ratonator.front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>{% trans 'No Top Subjects' %}</p>
+            {% endif %}
+        </div>
+        
+        <div id="index_hotSubjects">
+            {% trans 'Hot Subjects' %}
+            {% if hot_subjects %}
+                <ul>
+                {% for subject in hot_subjects %}
+                    <li><a href="{% url ratonator.front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>{% trans 'No Hot Subjects' %}</p>
+            {% endif %}
+        </div>
+        
+        <div id="index_newSubjects">
+            {% trans 'New Subjects' %}
+            {% if new_subjects %}
+                <ul>
+                {% for subject in new_subjects %}
+                    <li><a href="{% url ratonator.front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>{% trans 'No New Subjects' %}</p>
+            {% endif %}
+        </div>
+        
+    </div>
+
+{% endblock %}

@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-18 01:32-0300\n"
+"PO-Revision-Date: 2009-09-17 16:03\n"
+"Last-Translator: <flavio@moonlighting.com.br>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.4.5.svn\n"
+
+#: front/models.py:13
+msgid "Impossibly good"
+msgstr "Невозможно быть лучшим"
+
+#: front/models.py:14
+msgid "Best ever"
+msgstr "Лучшие никогда"
+
+#: front/models.py:15
+msgid "Excellent"
+msgstr "Отличная"
+
+#: front/models.py:16
+msgid "Very good"
+msgstr "Очень хорошо"
+
+#: front/models.py:17
+msgid "Good"
+msgstr "Хороший"
+
+#: front/models.py:18
+msgid "Regular"
+msgstr "Регулярный"
+
+#: front/models.py:19
+msgid "Weak"
+msgstr "Слабый"
+
+#: front/models.py:20
+msgid "Bad"
+msgstr "Плохой"
+
+#: front/models.py:21
+msgid "Very Bad"
+msgstr "Очень плохо"
+
+#: front/models.py:22
+msgid "Worse ever"
+msgstr "Хуже когда-либо"
+
+#: front/models.py:23
+msgid "Impossibly bad"
+msgstr "невозможной плохо"
+
+#: front/views.py:54
+#, python-format
+msgid "\"%s\" already exists"
+msgstr "\"%s\" уже существует"
+
+#: front/views.py:175
+msgid "Logon failure"
+msgstr "Ошибка входа в систему"
+
+#: front/views.py:179
+msgid "Inactive account"
+msgstr "Неактивный счет"
+
+#: front/views.py:202 front/views.py:222
+msgid "Name"
+msgstr "Имя"
+
+#: front/views.py:203 front/views.py:211
+msgid "Definition"
+msgstr "Определение"
+
+#: front/views.py:216 templates/addRate.html:6
+msgid "Rate"
+msgstr "Ставка"
+
+#: front/views.py:217
+msgid "Comments"
+msgstr "Комментариев"
+
+#: front/views.py:227
+msgid "Language"
+msgstr "Язык"
+
+#: front/views.py:232
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: front/views.py:233
+msgid "User name"
+msgstr "Имя пользователя"
+
+#: front/views.py:234 front/views.py:241
+msgid "Password"
+msgstr "Пароль"
+
+#: front/views.py:239
+msgid "email"
+msgstr "Электронная почта"
+
+#: front/views.py:240
+msgid "Public username"
+msgstr "Общественный Имя пользователя"
+
+#: front/views.py:242
+msgid "Confirm"
+msgstr "Подтвердите"
+
+#: front/views.py:247 templates/search.html:6 templates/rosetta/pofile.html:33
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/addCategory.html:6
+msgid "Add a new category for"
+msgstr "Добавить новую категорию"
+
+#: templates/addCategory.html:10 templates/addDefinition.html:10
+msgid "Add"
+msgstr "Добавить"
+
+#: templates/addDefinition.html:6
+msgid "Add a new definition for"
+msgstr "Добавить новое определение"
+
+#: templates/addRate.html:10 templates/addSubject.html:8
+msgid "Create"
+msgstr "Создать"
+
+#: templates/index.html:26
+msgid "Top Subjects"
+msgstr "Топ Темы"
+
+#: templates/index.html:30 templates/index.html.py:43 templates/index.html:56
+msgid "votes"
+msgstr "Голосов:"
+
+#: templates/index.html:34
+msgid "No Top Subjects"
+msgstr "Нет Вверх Тематика"
+
+#: templates/index.html:39
+msgid "Hot Subjects"
+msgstr "Горячая Тема"
+
+#: templates/index.html:47
+msgid "No Hot Subjects"
+msgstr "Без горячей Тематика"
+
+#: templates/index.html:52
+msgid "New Subjects"
+msgstr "Новые тематики"
+
+#: templates/index.html:60
+msgid "No New Subjects"
+msgstr "Нет новых Тематика"
+
+#: templates/language.html:6
+msgid "Change"
+msgstr "Изменение"
+
+#: templates/logon.html:5
+msgid "Logout"
+msgstr "Выйти"
+
+#: templates/logon.html:9
+msgid "Logon"
+msgstr "Вход"
+
+#: templates/logon.html:11 templates/register.html:8
+msgid "Register"
+msgstr "Регистрация"
+
+#: templates/master.html:6
+msgid "ratonator - a rate for everything!"
+msgstr "ratonator - ставки за все!"
+
+#: templates/master.html:59
+msgid ""
+"This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING "
+"PROPERLY"
+msgstr ""
+"Эта услуга находится в стадии альфа-рано, еще не завершена, и не работает "
+"должным образом"
+
+#: templates/master.html:74
+msgid "New subject"
+msgstr "Новые темы"
+
+#: templates/subject.html:74
+msgid "Categories:"
+msgstr "Категории:"
+
+#: templates/subject.html:76 templates/subject.html.py:97
+#: templates/subject.html:112
+msgid "New"
+msgstr "Новый"
+
+#: templates/subject.html:88
+msgid "Nothing above!"
+msgstr "Ничто не выше!"
+
+#: templates/subject.html:95
+msgid "Definitions:"
+msgstr "Определения:"
+
+#: templates/subject.html:106
+msgid "No definitions!"
+msgstr "Нет определения!"
+
+#: templates/subject.html:110
+msgid "Rates:"
+msgstr "Цены:"
+
+#: templates/subject.html:129
+msgid "No rates!"
+msgstr "Нет ставок!"
+
+#: templates/subject.html:135
+msgid "Subjects"
+msgstr "Тематика"
+
+#: templates/subject.html:145
+msgid "Nothing Below!"
+msgstr "Ничто не ниже!"
+
+#: templates/rosetta/languages.html:3 templates/rosetta/pofile.html:13
+msgid "Home"
+msgstr ""
+
+#: templates/rosetta/languages.html:3 templates/rosetta/languages.html.py:4
+#, fuzzy
+msgid "Language selection"
+msgstr "Язык"
+
+#: templates/rosetta/languages.html:14
+msgid "File"
+msgstr ""
+
+#: templates/rosetta/languages.html:15
+msgid "Messages"
+msgstr ""
+
+#: templates/rosetta/languages.html:16
+msgid "Translated"
+msgstr ""
+
+#: templates/rosetta/languages.html:17
+msgid "Obsolete"
+msgstr ""
+
+#: templates/rosetta/languages.html:18
+msgid "Progress"
+msgstr ""
+
+#: templates/rosetta/languages.html:37
+#, fuzzy
+msgid "Nothing to translate!"
+msgstr "Ничто не выше!"
+
+#: templates/rosetta/languages.html:38
+msgid ""
+"You haven't specified any languages in your settings file, or haven't yet "
+"generated a batch of translation catalogs."
+msgstr ""
+
+#: templates/rosetta/languages.html:39
+#, python-format
+msgid ""
+"Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</"
+"a> for a guide on how to set up internationalization for your project."
+msgstr ""
+
+#: templates/rosetta/pofile.html:7
+msgid "Pick another file"
+msgstr ""
+
+#: templates/rosetta/pofile.html:8
+msgid "Download this catalog"
+msgstr ""
+
+#: templates/rosetta/pofile.html:16
+msgid "Progress: %(percent_translated)s%"
+msgstr ""
+
+#: templates/rosetta/pofile.html:17
+msgid "File is read-only: download the file when done editing!"
+msgstr ""
+
+#: templates/rosetta/pofile.html:19 templates/rosetta/pofile.html.py:44
+msgid "English"
+msgstr ""
+
+#: templates/rosetta/pofile.html:21
+#, python-format
+msgid "Translate into %(rosetta_i18n_lang_name)s"
+msgstr ""
+
+#: templates/rosetta/pofile.html:24
+msgid "Display:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:25
+msgid "Untranslated only"
+msgstr ""
+
+#: templates/rosetta/pofile.html:26
+msgid "Translated only"
+msgstr ""
+
+#: templates/rosetta/pofile.html:27
+msgid "Both"
+msgstr ""
+
+#: templates/rosetta/pofile.html:35
+#, fuzzy
+msgid "Go"
+msgstr "Хороший"
+
+#: templates/rosetta/pofile.html:46
+msgid "Occurrences(s)"
+msgstr ""
+
+#: templates/rosetta/pofile.html:67
+msgid "suggest"
+msgstr ""
+
+#: templates/rosetta/pofile.html:75
+#, python-format
+msgid "%(more_count)s more"
+msgid_plural "%(more_count)s more"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/rosetta/pofile.html:87
+msgid "Save and translate next block"
+msgstr ""
+
+#: templates/rosetta/pofile.html:91
+msgid "Skip to page:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:104
+msgid "Displaying:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:106
+#, python-format
+msgid "%(hits)s/%(message_number)s message"
+msgid_plural "%(hits)s/%(message_number)s messages"
+msgstr[0] ""
+msgstr[1] ""

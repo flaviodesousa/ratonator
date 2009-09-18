@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<div id="logon">
+    {% if user.is_authenticated %}
+        <div id="logon_usuario_logado">{{ user.username }} <a href="{% url ratonator.front.views.logoff %}">{% trans 'Logout' %}</a></div>
+    {% else %}
+        <form action="{% url ratonator.front.views.logon %}" method="post">
+            {{ logon_form.as_p }}
+            <input type="submit" name="logonSubmit" value="{% trans 'Logon' %}" />
+        </form>
+        <a href="{% url ratonator.front.views.register %}">{% trans 'Register' %}</a>
+    {% endif %}
+</div>

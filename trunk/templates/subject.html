@@ -1,0 +1,151 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block inside_head %}
+
+    <style type="text/css">
+        #subject_subject {
+            background-color: green;
+            float: left;
+        }
+
+        #subject_subject a:visited {
+            color: #707070;
+        }
+
+        #subject_categories, #subject_subjectDetails, #subject_subjects {
+            float: left;
+            margin: 5px;
+            padding: 5px;
+            border: 2px solid #AAAAAA;
+            background-color: yellow;
+        }
+
+        #subject_categories, #subject_subjects {
+            width: 20%;
+        }
+
+        #subject_subjectDetails {
+            width: 50% 
+        }
+
+        .rateable {
+            padding: 5px;
+            margin: 5px;
+            border: thin solid #FF9900;
+            background-color: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: small;
+            line-height: 40px;
+        }
+
+        .rateable a:visited {
+            color:gray; 
+        }
+
+        .rateable a:hover {
+            color:white;
+        }
+
+        .rateable a:link {
+            color:aqua;
+        }
+
+        .average {
+            padding: 10px;
+            border: thin white solid;
+            color: white;
+            background-color:gray;
+        }
+
+        .average:hover {
+            background-color: orange;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="subject_subject">
+    
+        <div id="subject_categories">
+            <p>{% trans 'Categories:' %}
+            {% if user.is_authenticated %}
+                <a href="{% url ratonator.front.views.addCategory subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
+            {% endif %}
+            {% if subjects_above %}
+                <ul>
+                    {% for subject_above in subjects_above %}
+                        {% with subject_above.category as cat %}
+                            <!-- TODO: Extend template to generate those subject markers -->
+                            <li><span class="rateable"><a href="{% url ratonator.front.views.subject cat.language cat.nameSlugged %}">{{ cat.name }}</a> <span class="average">{{ subject_above.average_rate|default:"-" }}</span>/<span class="votes">{{ subject_above.rate_count }}</span></span> ({{ subject_above.createdBy.user.username }})</li>
+                        {% endwith %}
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>{% trans 'Nothing above!' %}<p>
+            {% endif %}
+        </div>
+        
+        <div id="subject_subjectDetails">
+            <p><span class="rateable">{{ subject.name }} <span class="average">{{ subject.average_rate|default:"-" }}</span> <span class="votes">{{ subject.rate_count }}</span></span> ({{ subject.createdBy.user.username }})</p>
+            <div id="subject_definitions">
+                <p>{% trans 'Definitions:' %}
+                {% if user.is_authenticated %}
+                    <a href="{% url ratonator.front.views.addDefinition subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
+                {% endif %}
+                {% if definitions %}
+                    <ul>
+                        {% for definition in definitions %}
+                            <li><span class="rateable">{{ definition.theDefinition }} <span class="average">{{ definition.average_rate|default:"-" }}</span> <span class="votes">{{ definition.rate_count }}</span></span> (<span class="rateable">{{ definition.createdBy.user.username }}</span>)</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>{% trans 'No definitions!' %}</p>
+                {% endif %}
+            </div>
+            <div id="subject_rates">
+                <p>{% trans 'Rates:' %}
+                {% if user.is_authenticated %}
+                    <a href="{% url ratonator.front.views.addRate subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
+                {% endif %}
+                {% if rates %}
+                    <ul>
+                        {% for rate in rates %}
+                            <li>
+                                <span class="rateable">
+                                    <span class="rate">{{ rate.theRate }}</span>
+                                    <span class="rateComments">{{ rate.comments }}</span>
+                                    <span class="average">{{ rate.average_rate|default:"-" }}</span>
+                                    <span class="votes">{{ rate.rate_count }}</span>
+                                </span>
+                                {{ rate.createdBy.user.username }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>{% trans 'No rates!' %}</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div id="subject_subjects">
+            <p>{% trans 'Subjects' %}</p>
+            {% if subjects_below %}
+                <ul>
+                    {% for subject_below in subjects_below %}
+                        {% with subject_below.subject as su %}
+                            <li><span class="rateable"><a href="{% url ratonator.front.views.subject su.language su.nameSlugged %}">{{ su.name }}</a> <span class="average">{{ subject_below.average_rate|default:"-" }}</span> <span class="votes">{{ subject_below.rate_count }}</span></span> ({{ subject_below.createdBy.user.username }})</li>
+                        {% endwith %}
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>{% trans 'Nothing Below!' %}</p>
+            {% endif %}
+        </div>
+        
+    </div>
+
+{% endblock %}

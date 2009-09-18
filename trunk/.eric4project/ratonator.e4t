@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
+<!-- eric4 tasks file for project ratonator -->
+<!-- Saved: 2009-09-17, 21:48:20 -->
+<Tasks version="4.2">
+  <Task priority="1" completed="False" bugfix="True">
+    <Summary>FIXME: Set on new votes, new definitions and new classifications</Summary>
+    <Description></Description>
+    <Created>2009-09-17, 12:07:14</Created>
+    <Resource>
+      <Filename>front/models.py</Filename>
+      <Linenumber>57</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Split time stamp for voting, defining and classifying</Summary>
+    <Description></Description>
+    <Created>2009-09-17, 12:07:14</Created>
+    <Resource>
+      <Filename>front/models.py</Filename>
+      <Linenumber>58</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Add fields with precalculations of rates and votes (partialAt, partialVotes, partialAverage)</Summary>
+    <Description></Description>
+    <Created>2009-09-17, 12:07:14</Created>
+    <Resource>
+      <Filename>front/models.py</Filename>
+      <Linenumber>62</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="True">
+    <Summary>FIXME: Not being automatically slugged</Summary>
+    <Description></Description>
+    <Created>2009-09-17, 12:07:14</Created>
+    <Resource>
+      <Filename>front/models.py</Filename>
+      <Linenumber>120</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Automatic slug set on save</Summary>
+    <Description></Description>
+    <Created>2009-09-17, 12:07:14</Created>
+    <Resource>
+      <Filename>front/models.py</Filename>
+      <Linenumber>121</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Add support to user profile (language, rated content, picture)</Summary>
+    <Description></Description>
+    <Created>2009-09-17, 12:07:14</Created>
+    <Resource>
+      <Filename>front/models.py</Filename>
+      <Linenumber>249</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Search</Summary>
+    <Description></Description>
+    <Created>2009-09-17, 17:25:24</Created>
+    <Resource>
+      <Filename>front/views.py</Filename>
+      <Linenumber>133</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-4.6.dtd">
+<!-- eric4 project file for project ratonator -->
+<!-- Saved: 2009-09-18, 02:02:19 -->
+<!-- Copyright (C) 2009 Flavio de Sousa, flavio@moonlighting.com.br -->
+<Project version="4.6">
+  <Language>en</Language>
+  <ProgLanguage mixed="0">Python</ProgLanguage>
+  <ProjectType>Django</ProjectType>
+  <Description></Description>
+  <Version>0.1</Version>
+  <Author>Flavio de Sousa</Author>
+  <Email>flavio@moonlighting.com.br</Email>
+  <TranslationPattern>locale/%language%/LC_MESSAGES/django.po</TranslationPattern>
+  <TranslationsBinPath>locale/%language%/LC_MESSAGES/django.mo</TranslationsBinPath>
+  <Sources>
+    <Source>front/views.py</Source>
+    <Source>front/models.py</Source>
+    <Source>front/admin.py</Source>
+    <Source>front/tests.py</Source>
+    <Source>front/__init__.py</Source>
+    <Source>manage.py</Source>
+    <Source>settings.py</Source>
+    <Source>urls.py</Source>
+    <Source>__init__.py</Source>
+  </Sources>
+  <Forms>
+    <Form>templates/index.html</Form>
+    <Form>templates/master.html</Form>
+    <Form>templates/addRate.html</Form>
+    <Form>templates/subject.html</Form>
+    <Form>templates/addDefinition.html</Form>
+    <Form>templates/language.html</Form>
+    <Form>templates/search.html</Form>
+    <Form>templates/logon.html</Form>
+    <Form>templates/addSubject.html</Form>
+    <Form>templates/searchResults.html</Form>
+    <Form>templates/addCategory.html</Form>
+    <Form>templates/register.html</Form>
+  </Forms>
+  <Translations>
+    <Translation>locale/zh/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/pt/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/zh/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/pt/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/ar/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/de/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/en/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/es/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/fr/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/he/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/it/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/ja/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/ko/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/pl/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/ru/LC_MESSAGES/django.po</Translation>
+  </Translations>
+  <Resources>
+  </Resources>
+  <Interfaces>
+  </Interfaces>
+  <Others>
+    <Other>sql</Other>
+    <Other>static</Other>
+  </Others>
+  <MainScript>manage.py</MainScript>
+  <Vcs>
+    <VcsType>Subversion</VcsType>
+    <VcsOptions>
+      <dict>
+        <key>
+          <string>add</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>checkout</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>commit</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>diff</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>export</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>global</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>history</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>log</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>remove</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>status</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>tag</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+        <key>
+          <string>update</string>
+        </key>
+        <value>
+          <list>
+          </list>
+        </value>
+      </dict>
+    </VcsOptions>
+    <VcsOtherData>
+      <dict>
+        <key>
+          <string>standardLayout</string>
+        </key>
+        <value>
+          <bool>True</bool>
+        </value>
+      </dict>
+    </VcsOtherData>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.html" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.htm" type="FORMS" />
+    <FiletypeAssociation pattern="*.po" type="TRANSLATIONS" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
+    <FiletypeAssociation pattern="*.js" type="FORMS" />
+    <FiletypeAssociation pattern="*.mo" type="TRANSLATIONS" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+  </FiletypeAssociations>
+</Project>

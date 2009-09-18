@@ -1,0 +1,357 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-18 01:31-0300\n"
+"PO-Revision-Date: 2009-09-17 20:28\n"
+"Last-Translator: <flavio@moonlighting.com.br>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.4.5.svn\n"
+
+#: front/models.py:13
+msgid "Impossibly good"
+msgstr "בלתי אפשרי טוב"
+
+#: front/models.py:14
+msgid "Best ever"
+msgstr "הטוב ביותר אי פעם"
+
+#: front/models.py:15
+msgid "Excellent"
+msgstr "מעולה"
+
+#: front/models.py:16
+msgid "Very good"
+msgstr "טוב מאוד"
+
+#: front/models.py:17
+msgid "Good"
+msgstr "טוב"
+
+#: front/models.py:18
+msgid "Regular"
+msgstr "רגיל"
+
+#: front/models.py:19
+msgid "Weak"
+msgstr "חלש"
+
+#: front/models.py:20
+msgid "Bad"
+msgstr "רע"
+
+#: front/models.py:21
+msgid "Very Bad"
+msgstr "רע מאוד"
+
+#: front/models.py:22
+msgid "Worse ever"
+msgstr "גרוע אי פעם"
+
+#: front/models.py:23
+msgid "Impossibly bad"
+msgstr "בלתי אפשרי רע"
+
+#: front/views.py:54
+#, python-format
+msgid "\"%s\" already exists"
+msgstr "\"s%s\" כבר קיימת"
+
+#: front/views.py:175
+msgid "Logon failure"
+msgstr "כישלון כניסה"
+
+#: front/views.py:179
+msgid "Inactive account"
+msgstr "חשבון לא פעיל"
+
+#: front/views.py:202 front/views.py:222
+msgid "Name"
+msgstr "שם"
+
+#: front/views.py:203 front/views.py:211
+msgid "Definition"
+msgstr "הגדרה"
+
+#: front/views.py:216 templates/addRate.html:6
+msgid "Rate"
+msgstr "דירוג"
+
+#: front/views.py:217
+msgid "Comments"
+msgstr "תגובות"
+
+#: front/views.py:227
+msgid "Language"
+msgstr "שפה"
+
+#: front/views.py:232
+msgid "Remember me"
+msgstr "זכור אותי"
+
+#: front/views.py:233
+msgid "User name"
+msgstr "שם משתמש"
+
+#: front/views.py:234 front/views.py:241
+msgid "Password"
+msgstr "סיסמה"
+
+#: front/views.py:239
+msgid "email"
+msgstr "דוא\"ל"
+
+#: front/views.py:240
+msgid "Public username"
+msgstr "שם המשתמש ציבור"
+
+#: front/views.py:242
+msgid "Confirm"
+msgstr "לאשר"
+
+#: front/views.py:247 templates/search.html:6 templates/rosetta/pofile.html:33
+msgid "Search"
+msgstr "חיפוש"
+
+#: templates/addCategory.html:6
+msgid "Add a new category for"
+msgstr "הוסף קטגוריה חדשה"
+
+#: templates/addCategory.html:10 templates/addDefinition.html:10
+msgid "Add"
+msgstr "להוסיף"
+
+#: templates/addDefinition.html:6
+msgid "Add a new definition for"
+msgstr "הוסף הגדרה חדשה עבור"
+
+#: templates/addRate.html:10 templates/addSubject.html:8
+msgid "Create"
+msgstr "צור"
+
+#: templates/index.html:26
+msgid "Top Subjects"
+msgstr "נושאים למעלה"
+
+#: templates/index.html:30 templates/index.html.py:43 templates/index.html:56
+msgid "votes"
+msgstr "הצבעות"
+
+#: templates/index.html:34
+msgid "No Top Subjects"
+msgstr "אין נושאים למעלה"
+
+#: templates/index.html:39
+msgid "Hot Subjects"
+msgstr "נושאים חמים"
+
+#: templates/index.html:47
+msgid "No Hot Subjects"
+msgstr "אין נושאים חמים"
+
+#: templates/index.html:52
+msgid "New Subjects"
+msgstr "נושאים חדשים"
+
+#: templates/index.html:60
+msgid "No New Subjects"
+msgstr "אין נושאים חדשים"
+
+#: templates/language.html:6
+msgid "Change"
+msgstr "שינוי"
+
+#: templates/logon.html:5
+msgid "Logout"
+msgstr "התנתקות"
+
+#: templates/logon.html:9
+msgid "Logon"
+msgstr "כניסה"
+
+#: templates/logon.html:11 templates/register.html:8
+msgid "Register"
+msgstr "הרשמה"
+
+#: templates/master.html:6
+msgid "ratonator - a rate for everything!"
+msgstr "ratonator - שיעור על הכל!"
+
+#: templates/master.html:59
+msgid ""
+"This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING "
+"PROPERLY"
+msgstr "שירות זה בשלב האלפא המוקדמת, עדיין לא שלם, אינו פועל כראוי"
+
+#: templates/master.html:74
+msgid "New subject"
+msgstr "נושא חדש"
+
+#: templates/subject.html:74
+msgid "Categories:"
+msgstr "קטגוריות:"
+
+#: templates/subject.html:76 templates/subject.html.py:97
+#: templates/subject.html:112
+msgid "New"
+msgstr "חדש"
+
+#: templates/subject.html:88
+msgid "Nothing above!"
+msgstr "שום דבר לא מעל!"
+
+#: templates/subject.html:95
+msgid "Definitions:"
+msgstr "הגדרות:"
+
+#: templates/subject.html:106
+msgid "No definitions!"
+msgstr "לא הגדרות!"
+
+#: templates/subject.html:110
+msgid "Rates:"
+msgstr "יומיים:"
+
+#: templates/subject.html:129
+msgid "No rates!"
+msgstr "אין שיעור!"
+
+#: templates/subject.html:135
+msgid "Subjects"
+msgstr "נושאים"
+
+#: templates/subject.html:145
+msgid "Nothing Below!"
+msgstr "שום דבר מתחת!"
+
+#: templates/rosetta/languages.html:3 templates/rosetta/pofile.html:13
+msgid "Home"
+msgstr "בית"
+
+#: templates/rosetta/languages.html:3 templates/rosetta/languages.html.py:4
+msgid "Language selection"
+msgstr "בחירת שפה"
+
+#: templates/rosetta/languages.html:14
+msgid "File"
+msgstr "קובץ"
+
+#: templates/rosetta/languages.html:15
+msgid "Messages"
+msgstr "הודעות"
+
+#: templates/rosetta/languages.html:16
+msgid "Translated"
+msgstr "תורגם"
+
+#: templates/rosetta/languages.html:17
+msgid "Obsolete"
+msgstr "מיושן"
+
+#: templates/rosetta/languages.html:18
+msgid "Progress"
+msgstr "התקדמות"
+
+#: templates/rosetta/languages.html:37
+msgid "Nothing to translate!"
+msgstr ""
+
+#: templates/rosetta/languages.html:38
+msgid ""
+"You haven't specified any languages in your settings file, or haven't yet "
+"generated a batch of translation catalogs."
+msgstr ""
+
+#: templates/rosetta/languages.html:39
+#, python-format
+msgid ""
+"Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</"
+"a> for a guide on how to set up internationalization for your project."
+msgstr ""
+
+#: templates/rosetta/pofile.html:7
+msgid "Pick another file"
+msgstr ""
+
+#: templates/rosetta/pofile.html:8
+msgid "Download this catalog"
+msgstr ""
+
+#: templates/rosetta/pofile.html:16
+msgid "Progress: %(percent_translated)s%"
+msgstr ""
+
+#: templates/rosetta/pofile.html:17
+msgid "File is read-only: download the file when done editing!"
+msgstr ""
+
+#: templates/rosetta/pofile.html:19 templates/rosetta/pofile.html.py:44
+msgid "English"
+msgstr ""
+
+#: templates/rosetta/pofile.html:21
+#, python-format
+msgid "Translate into %(rosetta_i18n_lang_name)s"
+msgstr ""
+
+#: templates/rosetta/pofile.html:24
+msgid "Display:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:25
+msgid "Untranslated only"
+msgstr ""
+
+#: templates/rosetta/pofile.html:26
+msgid "Translated only"
+msgstr ""
+
+#: templates/rosetta/pofile.html:27
+msgid "Both"
+msgstr ""
+
+#: templates/rosetta/pofile.html:35
+msgid "Go"
+msgstr ""
+
+#: templates/rosetta/pofile.html:46
+msgid "Occurrences(s)"
+msgstr ""
+
+#: templates/rosetta/pofile.html:67
+msgid "suggest"
+msgstr ""
+
+#: templates/rosetta/pofile.html:75
+#, python-format
+msgid "%(more_count)s more"
+msgid_plural "%(more_count)s more"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/rosetta/pofile.html:87
+msgid "Save and translate next block"
+msgstr ""
+
+#: templates/rosetta/pofile.html:91
+msgid "Skip to page:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:104
+msgid "Displaying:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:106
+#, python-format
+msgid "%(hits)s/%(message_number)s message"
+msgid_plural "%(hits)s/%(message_number)s messages"
+msgstr[0] ""
+msgstr[1] ""

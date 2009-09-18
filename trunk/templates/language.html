@@ -1,0 +1,8 @@
+{% load i18n %}
+
+<div id="language">
+    <form method="post" action="{% url ratonator.front.views.language %}">
+        {{ language_form.as_p }}
+        <input type="submit" name="languageSubmit" value="{% trans 'Change' %}" />
+    </form>
+</div>

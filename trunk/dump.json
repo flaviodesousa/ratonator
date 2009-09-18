@@ -1,0 +1,2227 @@
+[
+  {
+    "pk": 1, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "English", 
+      "code": "en", 
+      "name": "English"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "Portugu\u00eas", 
+      "code": "pt", 
+      "name": "Portuguese"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "\u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a", 
+      "code": "ru", 
+      "name": "Russian"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "\u4e2d\u6587 (Zh\u014dngw\u00e9n), \u6c49\u8bed, \u6f22\u8a9e", 
+      "code": "zh", 
+      "name": "Chinese"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "Italiano", 
+      "code": "it", 
+      "name": "Italian"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": null, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "ce386722-7bdf-4360-8aea-d10c6a10e3be"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": null, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "61d78a03-9fd7-4b75-9241-7bcff37d797a"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "339605b2-d8b8-4ef8-ad1c-53daba73c93a"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "b71695ff-f3e3-42c0-b4dd-ff90011b5839"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "ae5c40ca-0849-42fc-9cb9-27e0cf638a68"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "93ac254f-a881-401c-90df-d60286ab4c3d"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "a49376f3-f906-429a-817d-ac3419d6a542"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "2cf47f23-ffd0-4e7b-b193-9d05e0253bb2"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:07:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "1f03b001-bdf2-4da4-8f76-09d6da2ebded"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:09:46", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:09:46", 
+      "uuid": "113c0bba-dd1e-40de-8cd2-2f6d0a79cd6e"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:10:11", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:10:11", 
+      "uuid": "8f439ad1-b261-47c9-ad4d-e546f0fb8570"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:10:58", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:10:58", 
+      "uuid": "3e6345c5-838f-4eba-aede-527556727e02"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:11:44", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:11:44", 
+      "uuid": "3130fab2-d6eb-4152-8a9a-844371e49d1a"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:17:16", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:17:16", 
+      "uuid": "f44e50f0-e0a4-4701-b854-f7d1630bd22a"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:17:16", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:17:16", 
+      "uuid": "ac8a9e1b-aea3-4289-97e4-f222b661e1db"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:17:24", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:17:24", 
+      "uuid": "aaa36fa3-4db7-4f78-a5b9-181d838962be"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:17:24", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:17:24", 
+      "uuid": "d0ee91eb-4025-4f37-80f7-9b88ee78bc41"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:17:31", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:17:31", 
+      "uuid": "fbd13f09-e183-4351-b94f-1a125f8425aa"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:17:31", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:17:31", 
+      "uuid": "8567e105-fbfd-49b5-abc2-78d7cefb32fc"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:18:07", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:18:07", 
+      "uuid": "0ab0dfdc-36f8-486b-9ced-7785afd558ae"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:18:07", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:18:07", 
+      "uuid": "a8937251-4f37-47d0-b04b-9c2d6485d3bb"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:18:29", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 13:18:29", 
+      "uuid": "cd277c48-d31f-4e74-b5ec-34a4602c9faf"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:31:58", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:31:58", 
+      "uuid": "2b5d6b67-0d34-40f9-b563-6e8e1c4d3e45"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:51:17", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:51:17", 
+      "uuid": "dca22de6-ca7d-49a8-bad9-fe38e0bbc353"
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:52:38", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:52:38", 
+      "uuid": "60e35ce6-046c-427a-a532-8977dbd66947"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 13:34:22", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:34:22", 
+      "uuid": "e7012924-6011-4840-aaa4-60a1073c56c1"
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:00:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:00:21", 
+      "uuid": "c6a47159-2947-4589-be4a-ed3c8fb2d8c8"
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:00:39", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:00:39", 
+      "uuid": "865958ee-ead2-496c-af21-96996c558921"
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:37:19", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:37:19", 
+      "uuid": "95f9dd38-874a-4dab-a31a-1a6909638d4d"
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:45:19", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 15:45:19", 
+      "uuid": "e6ca52e2-844c-48fe-bde2-30db6778eebb"
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:46:35", 
+      "createdBy": null, 
+      "createdAt": "2009-09-07 15:46:35", 
+      "uuid": "85d13786-5034-4e2d-94e6-0df9db323810"
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:47:34", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-07 15:47:34", 
+      "uuid": "21418a3c-f1bc-4c19-852a-ab768d9fa7db"
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:48:16", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-07 15:48:16", 
+      "uuid": "112a055f-3fd9-49ec-a9a9-5086cfd9986a"
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:49:25", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-07 15:49:25", 
+      "uuid": "a26d2c29-39d3-4601-a8c9-b878af4ed299"
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:49:25", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-07 15:49:25", 
+      "uuid": "b0480c79-1d76-4c2b-b2cf-1f0ffea06254"
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:49:57", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-07 15:49:57", 
+      "uuid": "6e217538-f3e7-43c1-9d69-bbe58c3f96c0"
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:49:57", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-07 15:49:57", 
+      "uuid": "08e43bee-1db7-42a9-8510-2c9599ada37b"
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:50:10", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-07 15:50:10", 
+      "uuid": "89f74c8b-e248-45ff-b69d-8ca47dfd03c3"
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:50:39", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-07 15:50:39", 
+      "uuid": "f04b1e17-5d54-4d3a-a9ec-b15b8ea142a1"
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:52:31", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:52:31", 
+      "uuid": "5deacfbd-a803-4a04-9074-88a5ccff621c"
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:53:58", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:53:58", 
+      "uuid": "13bdd149-f2cf-4f0f-add9-441b10209c5e"
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:57:39", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:57:39", 
+      "uuid": "2955e3ad-b9e3-4640-8f37-f9bb382f199c"
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:57:39", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:57:39", 
+      "uuid": "9f9783ff-cfdb-4066-866b-264921234bd5"
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:58:58", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:58:58", 
+      "uuid": "90331375-8956-4e20-a7dd-ec86c1025eb4"
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:59:42", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:59:42", 
+      "uuid": "0fd368a4-ddd2-40f2-871f-b4c8721bf618"
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:59:42", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:59:42", 
+      "uuid": "378c2a4a-db66-4a09-9505-0c8920f31c65"
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:59:49", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:59:49", 
+      "uuid": "b1f43355-4da4-47d4-b555-8f84db1321ba"
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:59:58", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:59:58", 
+      "uuid": "05cdbf7d-08f0-4b2f-867c-3d05c6785316"
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:59:58", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:59:58", 
+      "uuid": "14f6178c-cca5-40de-813c-fbd4f8e91084"
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 16:00:56", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 16:00:56", 
+      "uuid": "02aa0a22-7aa0-4370-ac04-6d8a5b0d3a87"
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 16:15:09", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 16:15:09", 
+      "uuid": "e137a784-2bef-4dbb-a73e-17d05e19e2d3"
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:58:23", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:58:23", 
+      "uuid": "dc317ee3-ea03-4ed1-b8bd-f392ed514740"
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 19:23:25", 
+      "createdBy": 2, 
+      "createdAt": "2009-09-07 19:23:25", 
+      "uuid": "5e273a7d-1921-476a-814a-3bb2232e4df0"
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:19:40", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:19:40", 
+      "uuid": "b6879e05-4674-4126-83a0-0dcbefb9b215"
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:20:15", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:20:15", 
+      "uuid": "b5ecb488-6113-4f95-9e34-bc3263eb057c"
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:20:52", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:20:52", 
+      "uuid": "ab5c8a64-4477-4c7f-b5cb-15f8165a31d4"
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:21:04", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:21:04", 
+      "uuid": "1f4d580e-258a-4cd1-8ce5-33b8402db51d"
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:22:04", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:22:04", 
+      "uuid": "ac8224b4-f700-4420-bd6d-33a8c9058dcd"
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:22:14", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:22:14", 
+      "uuid": "67655bc9-7468-4c82-ad82-7301133fe89c"
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:23:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:23:21", 
+      "uuid": "19d9cbd2-7c25-46bf-9848-5b04470cc072"
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:25:00", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-08 15:25:00", 
+      "uuid": "633e8d0b-7c43-4243-a3ea-f1afad209281"
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 18:43:10", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 18:43:10", 
+      "uuid": "7e8f8c85-7cd3-4cf6-bcd2-33e71498f5c6"
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 18:43:49", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 18:43:10", 
+      "uuid": "cd6a3ff1-f59d-4708-aec3-f8794b9db921"
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 18:44:06", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 18:44:06", 
+      "uuid": "1d15403c-9b1b-4e82-b271-6aeb795b5c48"
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-09 17:18:28", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-09 17:18:28", 
+      "uuid": "5367a3f4-6b64-4db8-a61d-28c16da87fa4"
+    }
+  }, 
+  {
+    "pk": 81, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-10 18:56:19", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-10 18:56:19", 
+      "uuid": "0fb83c9a-b26c-4939-a630-dfd571a6bc89"
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:34:18", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:34:18", 
+      "uuid": "c28dbbed-dd86-4ca7-a49a-69848fb35526"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:34:18", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "cc787258-1ef1-4eed-8c11-4f0f62398f81"
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:34:43", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:34:43", 
+      "uuid": "2b5afa37-3dbd-416a-a69b-760052e739f9"
+    }
+  }, 
+  {
+    "pk": 80, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-09 17:19:03", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-09 17:19:03", 
+      "uuid": "73cb0d3a-01d7-4fae-bb14-5c8fc7dd5adf"
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:57:54", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:57:54", 
+      "uuid": "11a57626-27f5-425e-aa01-fec334081124"
+    }
+  }, 
+  {
+    "pk": 89, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:58:11", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:58:11", 
+      "uuid": "54b46f8c-c05a-4208-84ae-84f64abfed35"
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:58:29", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:58:29", 
+      "uuid": "e55eaa64-ce62-445a-9e9f-760e81a537dd"
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:58:48", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:58:48", 
+      "uuid": "13352cc6-a512-46e2-9e33-ee683724fa11"
+    }
+  }, 
+  {
+    "pk": 95, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:12:08", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:12:08", 
+      "uuid": "b7af2360-3c5b-4a60-8ff0-491b38060dcb"
+    }
+  }, 
+  {
+    "pk": 96, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:12:30", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:12:30", 
+      "uuid": "39e7439e-1a2f-40e6-9baa-cb499089861c"
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:14:47", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:14:47", 
+      "uuid": "f2cda65e-73f9-4d31-9718-52c65a04f57a"
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:15:18", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:15:18", 
+      "uuid": "e45ef22f-7456-479b-9a21-2e18049f9864"
+    }
+  }, 
+  {
+    "pk": 100, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:15:28", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:15:28", 
+      "uuid": "e0820c8c-ee09-4e76-9605-5d20fe2e40c7"
+    }
+  }, 
+  {
+    "pk": 103, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:16:07", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:16:07", 
+      "uuid": "11a19ef9-99cf-417b-b3ea-319a8cbe8cc6"
+    }
+  }, 
+  {
+    "pk": 104, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:16:16", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:16:16", 
+      "uuid": "f0302e0c-98d7-446c-8d07-eb9e8e3a94bd"
+    }
+  }, 
+  {
+    "pk": 106, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:16:35", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:16:35", 
+      "uuid": "ef859b49-9860-4ea1-9074-ca9a7d6c5b19"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-09 18:40:57", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 13:07:21", 
+      "uuid": "dd67399b-67e2-46bb-a9b0-acfa1c219376"
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 19:23:25", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:53:58", 
+      "uuid": "080f294d-5c04-45e8-8c23-58ad5018f2c3"
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:20:47", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:20:47", 
+      "uuid": "8b8551a0-3638-423e-8f1e-2691e341bee9"
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:20:52", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:20:52", 
+      "uuid": "a408bc41-dc1b-4bf9-9b31-5b50cfbffd0f"
+    }
+  }, 
+  {
+    "pk": 66, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:22:04", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:22:04", 
+      "uuid": "1c9acebd-95c1-4b12-978b-d3341f9928ae"
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:22:22", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:22:22", 
+      "uuid": "19c82bc4-25c9-4ce0-bf53-65405ca103ad"
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:23:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:20:47", 
+      "uuid": "2bfa687d-5b5f-4533-ae91-5c2bb0d1641c"
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 15:25:00", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 15:19:40", 
+      "uuid": "8b29f97a-13b4-4e43-8567-9211cb89f614"
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 18:43:49", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 18:43:49", 
+      "uuid": "c792def6-8508-45cb-af6e-056208427cd1"
+    }
+  }, 
+  {
+    "pk": 76, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-08 18:44:06", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-08 18:44:06", 
+      "uuid": "320cbb86-6648-46c9-95be-aab76d8e97ac"
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-09 17:18:37", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-09 17:18:37", 
+      "uuid": "e2ef5494-680a-49e2-96e9-a7bd6366613c"
+    }
+  }, 
+  {
+    "pk": 82, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-10 18:58:36", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-10 18:58:36", 
+      "uuid": "d5f147aa-73c2-4c9c-be95-fca5e3c09529"
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-07 15:28:19", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-07 15:28:19", 
+      "uuid": "f81f8df6-327c-484a-98fc-8262cc4a4c73"
+    }
+  }, 
+  {
+    "pk": 77, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:34:43", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-09 17:18:27", 
+      "uuid": "979c708f-dcbd-4880-b96f-f0a18dd63319"
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:41:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:41:21", 
+      "uuid": "9501028f-2236-4368-9f16-2386a03cf81e"
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:58:21", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:58:21", 
+      "uuid": "a92ca65b-42ff-49bf-b436-7c88f4bebad5"
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:58:40", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:58:40", 
+      "uuid": "9f80a1af-37ac-49bb-a662-8ae0090eddd1"
+    }
+  }, 
+  {
+    "pk": 94, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 08:58:48", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:58:48", 
+      "uuid": "c11876da-16e1-4f84-97a3-9397abc7203c"
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:12:08", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:41:21", 
+      "uuid": "95d8b893-5547-494d-9e1b-beeb9e88f7f6"
+    }
+  }, 
+  {
+    "pk": 88, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:14:47", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-11 08:58:11", 
+      "uuid": "132d35a1-8c22-45d9-be8a-43aec3c87276"
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:15:18", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:15:18", 
+      "uuid": "7c8e84ac-6a7e-4741-97f4-17bae337c776"
+    }
+  }, 
+  {
+    "pk": 101, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:15:35", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:15:35", 
+      "uuid": "84a149f4-fc48-4c72-b100-e91ad0203f27"
+    }
+  }, 
+  {
+    "pk": 105, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:16:23", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:16:23", 
+      "uuid": "78d5ed33-68f5-40df-9091-9e22c4775568"
+    }
+  }, 
+  {
+    "pk": 102, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-11 09:16:35", 
+      "createdBy": 34, 
+      "createdAt": "2009-09-11 09:16:07", 
+      "uuid": "79536ca6-a759-4266-996a-d29e6324d67b"
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "front.rateablestuff", 
+    "fields": {
+      "lastTouchedAt": "2009-09-14 00:33:33", 
+      "createdBy": 1, 
+      "createdAt": "2009-09-14 00:33:33", 
+      "uuid": "143030a6-7ba2-4e54-91c2-a2c78043539a"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 7, 
+      "comments": "Not that bad!", 
+      "subject": 6
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": 10, 
+      "theRate": 6, 
+      "comments": "Still in the beginning", 
+      "subject": 6
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 8, 
+      "comments": "Perfect for this point of the project", 
+      "subject": 9
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 4, 
+      "comments": "A good idea in the sixties, now barely workable", 
+      "subject": 4
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 7, 
+      "comments": "Can't live without her!", 
+      "subject": 3
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 6, 
+      "comments": "Good place to seek trends!", 
+      "subject": 22
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": 26, 
+      "theRate": 8, 
+      "comments": "A good way to get a living!", 
+      "subject": 4
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 5, 
+      "comments": "Slow and invites to slacking", 
+      "subject": 3
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": 29, 
+      "theRate": 8, 
+      "comments": "A good way to get a living!", 
+      "subject": 4
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": 30, 
+      "theRate": 6, 
+      "comments": "A bit slow, but essential", 
+      "subject": 4
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": 31, 
+      "theRate": 7, 
+      "comments": "A bit slow, but essential", 
+      "subject": 4
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 4, 
+      "comments": "Boring stuff", 
+      "subject": 16
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 8, 
+      "comments": "Will rule the world", 
+      "subject": 6
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 5, 
+      "comments": "Nao entendi nada", 
+      "subject": 6
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 5, 
+      "comments": "Precisa melhorar o atendimento e ter maior variedade de tamanhos das pecas", 
+      "subject": 39
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 6, 
+      "comments": "Tem otimas cuecas", 
+      "subject": 39
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 6, 
+      "comments": "So falta dar educacao pro povo", 
+      "subject": 46
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 6, 
+      "comments": "Bom preco", 
+      "subject": 50
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 6, 
+      "comments": "O Plano e otimo o resto deixa a desejar", 
+      "subject": 44
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": 56, 
+      "theRate": 7, 
+      "comments": "Bom demais!", 
+      "subject": 44
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 5, 
+      "comments": "good transit, but hard to find parking", 
+      "subject": 44
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 10, 
+      "comments": "E o melhor shopping do mundo!", 
+      "subject": 58
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 5, 
+      "comments": "Dificil de estacionar e todos iguais", 
+      "subject": 61
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 3, 
+      "comments": "Cheio de gente feia", 
+      "subject": 58
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 7, 
+      "comments": "Nunca imaginei que seria tao facil internacionalizar!", 
+      "subject": 72
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 3, 
+      "comments": "Too complicated names", 
+      "subject": 4
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": 83, 
+      "theRate": 7, 
+      "comments": "A bit slow, but essential", 
+      "subject": 4
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 2, 
+      "comments": "Doomed for extintion", 
+      "subject": 77
+    }
+  }, 
+  {
+    "pk": 80, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": 84, 
+      "theRate": 6, 
+      "comments": "Many interesting services, the original search feature is worthless", 
+      "subject": 77
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 6, 
+      "comments": "Atendimento padrao", 
+      "subject": 85
+    }
+  }, 
+  {
+    "pk": 95, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 7, 
+      "comments": "O ribs on the barbie e excelente", 
+      "subject": 85
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 7, 
+      "comments": "Igual ao de Brasilia, porem com mais espaco. Nao se precisa esperar 2 horas para pegar um lugar!", 
+      "subject": 88
+    }
+  }, 
+  {
+    "pk": 106, 
+    "model": "front.rate", 
+    "fields": {
+      "superseder": null, 
+      "theRate": 6, 
+      "comments": "Vai bem com o chope", 
+      "subject": 102
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Internet", 
+      "name": "Internet", 
+      "language": "en"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Computing", 
+      "name": "Computing", 
+      "language": "en"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Networking", 
+      "name": "Networking", 
+      "language": "en"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Slacking", 
+      "name": "Slacking", 
+      "language": "en"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "reddit.com", 
+      "name": "reddit.com", 
+      "language": "en"
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Lojas", 
+      "name": "Lojas", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Casa Raquel", 
+      "name": "Casa Raquel", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Brasil", 
+      "name": "Brasil", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Primo Piato", 
+      "name": "Primo Piato", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Restaurantes", 
+      "name": "Restaurantes", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Goiania", 
+      "name": "Goiania", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Internacionalizador do Django", 
+      "name": "Internacionalizador do Django", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Programacao", 
+      "name": "Programacao", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Sites", 
+      "name": "Sites", 
+      "language": "en"
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Restaurantes em Goiania", 
+      "name": "Restaurantes em Goiania", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Ribs on the Barbie", 
+      "name": "Ribs on the Barbie", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "ratonator.com", 
+      "name": "ratonator.com", 
+      "language": "en"
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Brasilia", 
+      "name": "Brasilia", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 66, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Park Shopping", 
+      "name": "Park Shopping", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Shopping Centers", 
+      "name": "Shopping Centers", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Buriti Shopping", 
+      "name": "Buriti Shopping", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 77, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "yahoo.com", 
+      "name": "yahoo.com", 
+      "language": "en"
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Outback", 
+      "name": "Outback", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 88, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Outback Goiania", 
+      "name": "Outback Goiania", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 102, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Blooming Onion", 
+      "name": "Blooming Onion", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "front.nameablerateablestuff", 
+    "fields": {
+      "disambiguator": null, 
+      "nameSlugged": "Anapolis", 
+      "name": "Anapolis", 
+      "language": "pt"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 16, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 18, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 20, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 22, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 37, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 39, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 46, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 50, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 53, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 44, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 63, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 66, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 61, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 58, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 72, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 75, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 6, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 4, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 77, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 93, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 85, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 88, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 98, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 102, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 107, 
+    "model": "front.classifiablerateablestuff", 
+    "fields": {}
+  }, 
+  {
+    "pk": 5, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 3, 
+      "subject": 4
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 4, 
+      "subject": 6
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 16, 
+      "subject": 3
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 18, 
+      "subject": 3
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 20, 
+      "subject": 3
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 4, 
+      "subject": 22
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 37, 
+      "subject": 39
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 44, 
+      "subject": 39
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 46, 
+      "subject": 44
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 44, 
+      "subject": 50
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 53, 
+      "subject": 50
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 61, 
+      "subject": 58
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 63, 
+      "subject": 58
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 46, 
+      "subject": 63
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 61, 
+      "subject": 66
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 44, 
+      "subject": 66
+    }
+  }, 
+  {
+    "pk": 76, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 75, 
+      "subject": 72
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 4, 
+      "subject": 77
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 85, 
+      "subject": 88
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 63, 
+      "subject": 88
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 53, 
+      "subject": 88
+    }
+  }, 
+  {
+    "pk": 94, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 93, 
+      "subject": 88
+    }
+  }, 
+  {
+    "pk": 96, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 53, 
+      "subject": 85
+    }
+  }, 
+  {
+    "pk": 100, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 85, 
+      "subject": 98
+    }
+  }, 
+  {
+    "pk": 101, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 88, 
+      "subject": 98
+    }
+  }, 
+  {
+    "pk": 104, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 85, 
+      "subject": 102
+    }
+  }, 
+  {
+    "pk": 105, 
+    "model": "front.classification", 
+    "fields": {
+      "category": 88, 
+      "subject": 102
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 6, 
+      "theDefinition": "a site about rating... Everything!"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 4, 
+      "theDefinition": "Stuff created on the sixties"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 3, 
+      "theDefinition": "A network of networks. Technically a correct definition, but doesn't show its magnitude and effect!"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 22, 
+      "theDefinition": "It rates only stuff on the web... Does it well, though!"
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 6, 
+      "theDefinition": "Mais um jeito de desperdicar tempo na net"
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 37, 
+      "theDefinition": "Onde se gasta dinheiro"
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 39, 
+      "theDefinition": "Onde compro lingerie"
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 50, 
+      "theDefinition": "Pizzaria na 707 Norte"
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 58, 
+      "theDefinition": "Shopping mais galeria de Goiania"
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 66, 
+      "theDefinition": "O melhor estacionamento sem vagas de brasilia, o shopping mais proximo para quem adora dirigir"
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 72, 
+      "theDefinition": "Da trabalho aprender a usa-lo, mas funciona"
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 77, 
+      "theDefinition": "an old sit, one of the oldest"
+    }
+  }, 
+  {
+    "pk": 81, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 44, 
+      "theDefinition": "Capital do Brasil"
+    }
+  }, 
+  {
+    "pk": 82, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 44, 
+      "theDefinition": "Capital do Brasil"
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 85, 
+      "theDefinition": "restaurante americano com decoracao australiana"
+    }
+  }, 
+  {
+    "pk": 89, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 88, 
+      "theDefinition": "outback perto do flamboyant"
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 98, 
+      "theDefinition": "Prato muito bom, porem bem pesado"
+    }
+  }, 
+  {
+    "pk": 103, 
+    "model": "front.definition", 
+    "fields": {
+      "subject": 102, 
+      "theDefinition": "Cebolao frito gigante"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "front.rateableuser", 
+    "fields": {
+      "lastLoggedOnAt": null, 
+      "validatedAt": null, 
+      "user": 1, 
+      "defaultLanguage": "en"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "front.rateableuser", 
+    "fields": {
+      "lastLoggedOnAt": null, 
+      "validatedAt": null, 
+      "user": 2, 
+      "defaultLanguage": "en"
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "front.rateableuser", 
+    "fields": {
+      "lastLoggedOnAt": null, 
+      "validatedAt": null, 
+      "user": 3, 
+      "defaultLanguage": "en"
+    }
+  }
+]

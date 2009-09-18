@@ -1,0 +1,14 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% block body %}
+
+<div id="newSubject">
+    <p>{% trans 'Add a new definition for' %}
+    <em>{{ subject.name }}</em>:</p>
+    <form method="post" action="{% url ratonator.front.views.addDefinition subject.language subject.nameSlugged %}">
+        {{ add_definition_form.as_p }}
+        <input type="submit" name="submit" value="{% trans 'Add' %}" />
+    </form>
+</div>
+
+{% endblock %}

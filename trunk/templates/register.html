@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% block body %}
+
+<div id="register">
+<form method="post" action="{% url ratonator.front.views.register %}">
+    {{ register_form.as_p }}
+    <input type="submit" name="submit" value="{% trans 'Register' %}" />
+</form>
+</div>
+
+{% endblock %}

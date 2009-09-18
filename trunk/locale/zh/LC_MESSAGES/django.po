@@ -1,0 +1,360 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-18 01:29-0300\n"
+"PO-Revision-Date: 2009-09-17 13:51\n"
+"Last-Translator: <flavio@moonlighting.com.br>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.4.5.svn\n"
+
+#: front/models.py:13
+msgid "Impossibly good"
+msgstr "不可思议良好"
+
+#: front/models.py:14
+msgid "Best ever"
+msgstr "有史以来最好的"
+
+#: front/models.py:15
+msgid "Excellent"
+msgstr "优秀"
+
+#: front/models.py:16
+msgid "Very good"
+msgstr "非常好"
+
+#: front/models.py:17
+msgid "Good"
+msgstr "良好的"
+
+#: front/models.py:18
+msgid "Regular"
+msgstr "定期"
+
+#: front/models.py:19
+msgid "Weak"
+msgstr "虚弱的"
+
+#: front/models.py:20
+msgid "Bad"
+msgstr "糟糕的"
+
+#: front/models.py:21
+msgid "Very Bad"
+msgstr "极坏的"
+
+#: front/models.py:22
+msgid "Worse ever"
+msgstr "更糟糕的过"
+
+#: front/models.py:23
+msgid "Impossibly bad"
+msgstr "不可思议坏"
+
+#: front/views.py:54
+#, python-format
+msgid "\"%s\" already exists"
+msgstr "%s 已经存在"
+
+#: front/views.py:175
+msgid "Logon failure"
+msgstr "登录失败"
+
+#: front/views.py:179
+msgid "Inactive account"
+msgstr "不动户口"
+
+#: front/views.py:202 front/views.py:222
+msgid "Name"
+msgstr "名字"
+
+#: front/views.py:203 front/views.py:211
+msgid "Definition"
+msgstr "定义"
+
+#: front/views.py:216 templates/addRate.html:6
+msgid "Rate"
+msgstr "比率"
+
+#: front/views.py:217
+msgid "Comments"
+msgstr "评论"
+
+#: front/views.py:227
+msgid "Language"
+msgstr "语言"
+
+#: front/views.py:232
+msgid "Remember me"
+msgstr "记住我"
+
+#: front/views.py:233
+msgid "User name"
+msgstr "用户名"
+
+#: front/views.py:234 front/views.py:241
+msgid "Password"
+msgstr "密码"
+
+#: front/views.py:239
+msgid "email"
+msgstr "电子邮件"
+
+#: front/views.py:240
+msgid "Public username"
+msgstr "公众用户名"
+
+#: front/views.py:242
+msgid "Confirm"
+msgstr "确认"
+
+#: front/views.py:247 templates/search.html:6 templates/rosetta/pofile.html:33
+msgid "Search"
+msgstr "搜索"
+
+#: templates/addCategory.html:6
+msgid "Add a new category for"
+msgstr "添加新类别"
+
+#: templates/addCategory.html:10 templates/addDefinition.html:10
+msgid "Add"
+msgstr "添加"
+
+#: templates/addDefinition.html:6
+msgid "Add a new definition for"
+msgstr "添加新的定义"
+
+#: templates/addRate.html:10 templates/addSubject.html:8
+msgid "Create"
+msgstr "创建"
+
+#: templates/index.html:26
+msgid "Top Subjects"
+msgstr "热门学科"
+
+#: templates/index.html:30 templates/index.html.py:43 templates/index.html:56
+msgid "votes"
+msgstr "票"
+
+#: templates/index.html:34
+msgid "No Top Subjects"
+msgstr "没有热门学科"
+
+#: templates/index.html:39
+msgid "Hot Subjects"
+msgstr "热点问题"
+
+#: templates/index.html:47
+msgid "No Hot Subjects"
+msgstr "没有热点问题"
+
+#: templates/index.html:52
+msgid "New Subjects"
+msgstr "新议题"
+
+#: templates/index.html:60
+msgid "No New Subjects"
+msgstr "没有新学科"
+
+#: templates/language.html:6
+msgid "Change"
+msgstr "更改"
+
+#: templates/logon.html:5
+msgid "Logout"
+msgstr "注销"
+
+#: templates/logon.html:9
+msgid "Logon"
+msgstr "登录"
+
+#: templates/logon.html:11 templates/register.html:8
+msgid "Register"
+msgstr "注册"
+
+#: templates/master.html:6
+msgid "ratonator - a rate for everything!"
+msgstr "ratonator -一个适用于所有率！"
+
+#: templates/master.html:59
+msgid ""
+"This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING "
+"PROPERLY"
+msgstr "这项服务是在早期的alpha阶段，但并不完整，不能正常工作"
+
+#: templates/master.html:74
+msgid "New subject"
+msgstr "新主题"
+
+#: templates/subject.html:74
+msgid "Categories:"
+msgstr "分类："
+
+#: templates/subject.html:76 templates/subject.html.py:97
+#: templates/subject.html:112
+msgid "New"
+msgstr "新的"
+
+#: templates/subject.html:88
+msgid "Nothing above!"
+msgstr "没有上述！"
+
+#: templates/subject.html:95
+msgid "Definitions:"
+msgstr "定义："
+
+#: templates/subject.html:106
+msgid "No definitions!"
+msgstr "没有定义！"
+
+#: templates/subject.html:110
+msgid "Rates:"
+msgstr "房价："
+
+#: templates/subject.html:129
+msgid "No rates!"
+msgstr "无率！"
+
+#: templates/subject.html:135
+msgid "Subjects"
+msgstr "科目"
+
+#: templates/subject.html:145
+msgid "Nothing Below!"
+msgstr "没有以下！"
+
+#: templates/rosetta/languages.html:3 templates/rosetta/pofile.html:13
+msgid "Home"
+msgstr ""
+
+#: templates/rosetta/languages.html:3 templates/rosetta/languages.html.py:4
+#, fuzzy
+msgid "Language selection"
+msgstr "语言"
+
+#: templates/rosetta/languages.html:14
+msgid "File"
+msgstr ""
+
+#: templates/rosetta/languages.html:15
+msgid "Messages"
+msgstr ""
+
+#: templates/rosetta/languages.html:16
+msgid "Translated"
+msgstr ""
+
+#: templates/rosetta/languages.html:17
+msgid "Obsolete"
+msgstr ""
+
+#: templates/rosetta/languages.html:18
+msgid "Progress"
+msgstr ""
+
+#: templates/rosetta/languages.html:37
+#, fuzzy
+msgid "Nothing to translate!"
+msgstr "没有上述！"
+
+#: templates/rosetta/languages.html:38
+msgid ""
+"You haven't specified any languages in your settings file, or haven't yet "
+"generated a batch of translation catalogs."
+msgstr ""
+
+#: templates/rosetta/languages.html:39
+#, python-format
+msgid ""
+"Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</"
+"a> for a guide on how to set up internationalization for your project."
+msgstr ""
+
+#: templates/rosetta/pofile.html:7
+msgid "Pick another file"
+msgstr ""
+
+#: templates/rosetta/pofile.html:8
+msgid "Download this catalog"
+msgstr ""
+
+#: templates/rosetta/pofile.html:16
+msgid "Progress: %(percent_translated)s%"
+msgstr ""
+
+#: templates/rosetta/pofile.html:17
+msgid "File is read-only: download the file when done editing!"
+msgstr ""
+
+#: templates/rosetta/pofile.html:19 templates/rosetta/pofile.html.py:44
+msgid "English"
+msgstr ""
+
+#: templates/rosetta/pofile.html:21
+#, python-format
+msgid "Translate into %(rosetta_i18n_lang_name)s"
+msgstr ""
+
+#: templates/rosetta/pofile.html:24
+msgid "Display:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:25
+msgid "Untranslated only"
+msgstr ""
+
+#: templates/rosetta/pofile.html:26
+msgid "Translated only"
+msgstr ""
+
+#: templates/rosetta/pofile.html:27
+msgid "Both"
+msgstr ""
+
+#: templates/rosetta/pofile.html:35
+#, fuzzy
+msgid "Go"
+msgstr "良好的"
+
+#: templates/rosetta/pofile.html:46
+msgid "Occurrences(s)"
+msgstr ""
+
+#: templates/rosetta/pofile.html:67
+msgid "suggest"
+msgstr ""
+
+#: templates/rosetta/pofile.html:75
+#, python-format
+msgid "%(more_count)s more"
+msgid_plural "%(more_count)s more"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/rosetta/pofile.html:87
+msgid "Save and translate next block"
+msgstr ""
+
+#: templates/rosetta/pofile.html:91
+msgid "Skip to page:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:104
+msgid "Displaying:"
+msgstr ""
+
+#: templates/rosetta/pofile.html:106
+#, python-format
+msgid "%(hits)s/%(message_number)s message"
+msgid_plural "%(hits)s/%(message_number)s messages"
+msgstr[0] ""
+msgstr[1] ""
