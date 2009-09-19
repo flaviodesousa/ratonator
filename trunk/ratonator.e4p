@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project ratonator -->
-<!-- Saved: 2009-09-19, 12:24:45 -->
+<!-- Saved: 2009-09-19, 13:25:56 -->
 <!-- Copyright (C) 2009 Flavio de Sousa, flavio@moonlighting.com.br -->
 <Project version="4.6">
   <Language>en</Language>
@@ -52,6 +52,19 @@
     <Translation>locale/ko/LC_MESSAGES/django.po</Translation>
     <Translation>locale/pl/LC_MESSAGES/django.po</Translation>
     <Translation>locale/ru/LC_MESSAGES/django.po</Translation>
+    <Translation>locale/pl/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/it/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/de/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/zh/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/es/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/ru/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/ar/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/fr/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/en/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/pt/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/ko/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/ja/LC_MESSAGES/django.mo</Translation>
+    <Translation>locale/he/LC_MESSAGES/django.mo</Translation>
   </Translations>
   <Resources>
   </Resources>

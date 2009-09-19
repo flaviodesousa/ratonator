@@ -63,7 +63,7 @@ msgstr "مستحيل سيئة"
 #: front/views.py:54
 #, python-format
 msgid "\"%s\" already exists"
-msgstr "\"s٪\" موجود بالفعل"
+msgstr " موجود بالفعل '%s'"
 
 #: front/views.py:175
 msgid "Logon failure"
