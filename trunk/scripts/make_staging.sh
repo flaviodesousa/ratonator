@@ -2,7 +2,7 @@
 
 dateref=`date +'%Y%m%d%H%M'`
 
-cd ~flavio/projects
+cd ~flavio/
 
 echo Creating source tree backup...
 tar jcf /tmp/backup-ratonator-${dateref}.tar.bz2 ratonator
@@ -10,7 +10,7 @@ tar jcf /tmp/backup-ratonator-${dateref}.tar.bz2 ratonator
 echo Copying source tree to staging...
 cd ~flavio/staging
 rm --recursive --force ratonator/*
-cp --recursive ~flavio/projects/ratonator ~flavio/staging
+cp --recursive ~flavio/ratonator ~flavio/staging
 
 echo Deleting sql scripts...
 rm --recursive --force ratonator/sql
@@ -20,6 +20,9 @@ rm --recursive --force ratonator/scripts
 
 echo Deleting eric4 configurations...
 rm --recursive --force ratonator/.eric4project
+
+echo Deleting subversion bindings...
+find . -name '.svn' -exec rm -rf \{\} +
 
 echo Deleting unwanted files...
 find ratonator \( -name '*~' -o -name 'ratonator.e4p' -o -name '*po' \) -delete -print

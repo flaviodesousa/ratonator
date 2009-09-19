@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 01:29-0300\n"
+"POT-Creation-Date: 2009-09-19 12:00-0300\n"
 "PO-Revision-Date: 2009-09-17 16:13\n"
 "Last-Translator: <flavio@moonlighting.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,7 +117,11 @@ msgstr "الجمهور المستخدم"
 msgid "Confirm"
 msgstr "تأكيد"
 
-#: front/views.py:247 templates/search.html:6 templates/rosetta/pofile.html:33
+#: front/views.py:243
+msgid "Preferred language"
+msgstr ""
+
+#: front/views.py:248 templates/search.html:6
 msgid "Search"
 msgstr "بحث"
 
@@ -232,131 +236,90 @@ msgstr "المواضيع"
 msgid "Nothing Below!"
 msgstr "لا شيء أقل!"
 
-#: templates/rosetta/languages.html:3 templates/rosetta/pofile.html:13
-msgid "Home"
-msgstr "منزل"
+#~ msgid "Home"
+#~ msgstr "منزل"
 
-#: templates/rosetta/languages.html:3 templates/rosetta/languages.html.py:4
-msgid "Language selection"
-msgstr "اختيار اللغة"
+#~ msgid "Language selection"
+#~ msgstr "اختيار اللغة"
 
-#: templates/rosetta/languages.html:14
-msgid "File"
-msgstr "ملف"
+#~ msgid "File"
+#~ msgstr "ملف"
 
-#: templates/rosetta/languages.html:15
-msgid "Messages"
-msgstr "رسائل"
+#~ msgid "Messages"
+#~ msgstr "رسائل"
 
-#: templates/rosetta/languages.html:16
-msgid "Translated"
-msgstr "ترجم"
+#~ msgid "Translated"
+#~ msgstr "ترجم"
 
-#: templates/rosetta/languages.html:17
-msgid "Obsolete"
-msgstr "عفا عليها الزمن"
+#~ msgid "Obsolete"
+#~ msgstr "عفا عليها الزمن"
 
-#: templates/rosetta/languages.html:18
-msgid "Progress"
-msgstr "التقدم"
+#~ msgid "Progress"
+#~ msgstr "التقدم"
 
-#: templates/rosetta/languages.html:37
-msgid "Nothing to translate!"
-msgstr "ليس لترجمة!"
+#~ msgid "Nothing to translate!"
+#~ msgstr "ليس لترجمة!"
 
-#: templates/rosetta/languages.html:38
-msgid ""
-"You haven't specified any languages in your settings file, or haven't yet "
-"generated a batch of translation catalogs."
-msgstr ""
-"أنت لم تحدد أي اللغات في ملف الإعدادات الخاصة بك ، أو لم تكن قد ولدت مجموعة "
-"من كتالوجات الترجمة."
+#~ msgid ""
+#~ "You haven't specified any languages in your settings file, or haven't yet "
+#~ "generated a batch of translation catalogs."
+#~ msgstr ""
+#~ "أنت لم تحدد أي اللغات في ملف الإعدادات الخاصة بك ، أو لم تكن قد ولدت "
+#~ "مجموعة من كتالوجات الترجمة."
 
-#: templates/rosetta/languages.html:39
-#, python-format
-msgid ""
-"Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</"
-"a> for a guide on how to set up internationalization for your project."
-msgstr ""
-"يرجى الرجوع إلى <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</"
-"a> لدليل على كيفية إعداد تدويل للمشروع الخاص بك.\n"
-"<a href=\"%(i18n_doc_link)s\">Django's I18N documentation</a>"
+#~ msgid ""
+#~ "Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N "
+#~ "documentation</a> for a guide on how to set up internationalization for "
+#~ "your project."
+#~ msgstr ""
+#~ "يرجى الرجوع إلى <a href=\"%(i18n_doc_link)s\">Django's I18N "
+#~ "documentation</a> لدليل على كيفية إعداد تدويل للمشروع الخاص بك.\n"
+#~ "<a href=\"%(i18n_doc_link)s\">Django's I18N documentation</a>"
 
-#: templates/rosetta/pofile.html:7
-msgid "Pick another file"
-msgstr "اختيار ملف آخر"
+#~ msgid "Pick another file"
+#~ msgstr "اختيار ملف آخر"
 
-#: templates/rosetta/pofile.html:8
-msgid "Download this catalog"
-msgstr "تنزيل هذا الكتالوج"
+#~ msgid "Download this catalog"
+#~ msgstr "تنزيل هذا الكتالوج"
 
-#: templates/rosetta/pofile.html:16
-msgid "Progress: %(percent_translated)s%"
-msgstr "التقدم : (percent_translated)% ق ٪"
+#~ msgid "Progress: %(percent_translated)s%"
+#~ msgstr "التقدم : (percent_translated)% ق ٪"
 
-#: templates/rosetta/pofile.html:17
-msgid "File is read-only: download the file when done editing!"
-msgstr "الملف هو للقراءة فقط : تحميل الملف عندما يتم تحرير!"
+#~ msgid "File is read-only: download the file when done editing!"
+#~ msgstr "الملف هو للقراءة فقط : تحميل الملف عندما يتم تحرير!"
 
-#: templates/rosetta/pofile.html:19 templates/rosetta/pofile.html.py:44
-msgid "English"
-msgstr "الانجليزية"
+#~ msgid "English"
+#~ msgstr "الانجليزية"
 
-#: templates/rosetta/pofile.html:21
-#, python-format
-msgid "Translate into %(rosetta_i18n_lang_name)s"
-msgstr "تترجم (rosetta_i18n_lang_name)% ق"
+#~ msgid "Translate into %(rosetta_i18n_lang_name)s"
+#~ msgstr "تترجم (rosetta_i18n_lang_name)% ق"
 
-#: templates/rosetta/pofile.html:24
-msgid "Display:"
-msgstr "عرض :"
+#~ msgid "Display:"
+#~ msgstr "عرض :"
 
-#: templates/rosetta/pofile.html:25
-msgid "Untranslated only"
-msgstr "غير مترجمة فقط"
+#~ msgid "Untranslated only"
+#~ msgstr "غير مترجمة فقط"
 
-#: templates/rosetta/pofile.html:26
-msgid "Translated only"
-msgstr "ترجم فقط"
+#~ msgid "Translated only"
+#~ msgstr "ترجم فقط"
 
-#: templates/rosetta/pofile.html:27
-msgid "Both"
-msgstr "كلا"
+#~ msgid "Both"
+#~ msgstr "كلا"
 
-#: templates/rosetta/pofile.html:35
-msgid "Go"
-msgstr "يذهب"
+#~ msgid "Go"
+#~ msgstr "يذهب"
 
-#: templates/rosetta/pofile.html:46
-msgid "Occurrences(s)"
-msgstr "الحوادث (ق)"
+#~ msgid "Occurrences(s)"
+#~ msgstr "الحوادث (ق)"
 
-#: templates/rosetta/pofile.html:67
-msgid "suggest"
-msgstr "أقترح"
+#~ msgid "suggest"
+#~ msgstr "أقترح"
 
-#: templates/rosetta/pofile.html:75
-#, python-format
-msgid "%(more_count)s more"
-msgid_plural "%(more_count)s more"
-msgstr[0] ""
-msgstr[1] ""
+#~ msgid "Save and translate next block"
+#~ msgstr "حفظ وترجمة كتلة المقبل"
 
-#: templates/rosetta/pofile.html:87
-msgid "Save and translate next block"
-msgstr "حفظ وترجمة كتلة المقبل"
+#~ msgid "Skip to page:"
+#~ msgstr "انتقل الى صفحة :"
 
-#: templates/rosetta/pofile.html:91
-msgid "Skip to page:"
-msgstr "انتقل الى صفحة :"
-
-#: templates/rosetta/pofile.html:104
-msgid "Displaying:"
-msgstr "عرض :"
-
-#: templates/rosetta/pofile.html:106
-#, python-format
-msgid "%(hits)s/%(message_number)s message"
-msgid_plural "%(hits)s/%(message_number)s messages"
-msgstr[0] ""
-msgstr[1] ""
+#~ msgid "Displaying:"
+#~ msgstr "عرض :"

@@ -3,355 +3,258 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 01:32-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-09-19 12:00-0300\n"
+"PO-Revision-Date: 2009-09-18 18:50\n"
+"Last-Translator: <flavio@moonlighting.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.4.5.svn\n"
 
 #: front/models.py:13
 msgid "Impossibly good"
-msgstr ""
+msgstr "Niewiarygodnie dobry"
 
 #: front/models.py:14
 msgid "Best ever"
-msgstr ""
+msgstr "Najlepszy ze wszystkich"
 
 #: front/models.py:15
 msgid "Excellent"
-msgstr ""
+msgstr "Przykład doskonałości"
 
 #: front/models.py:16
 msgid "Very good"
-msgstr ""
+msgstr "Bardzo dobrze"
 
 #: front/models.py:17
 msgid "Good"
-msgstr ""
+msgstr "Dobry"
 
 #: front/models.py:18
 msgid "Regular"
-msgstr ""
+msgstr "Regularne"
 
 #: front/models.py:19
 msgid "Weak"
-msgstr ""
+msgstr "Słaby"
 
 #: front/models.py:20
 msgid "Bad"
-msgstr ""
+msgstr "Zły"
 
 #: front/models.py:21
 msgid "Very Bad"
-msgstr ""
+msgstr "Bardzo źle"
 
 #: front/models.py:22
 msgid "Worse ever"
-msgstr ""
+msgstr "Coraz gorzej"
 
 #: front/models.py:23
 msgid "Impossibly bad"
-msgstr ""
+msgstr "Nieprawdopodobnie złe"
 
 #: front/views.py:54
 #, python-format
 msgid "\"%s\" already exists"
-msgstr ""
+msgstr "\"%s\" już istnieje"
 
 #: front/views.py:175
 msgid "Logon failure"
-msgstr ""
+msgstr "Błąd logowania"
 
 #: front/views.py:179
 msgid "Inactive account"
-msgstr ""
+msgstr "Nieaktywne konta"
 
 #: front/views.py:202 front/views.py:222
 msgid "Name"
-msgstr ""
+msgstr "Imię"
 
 #: front/views.py:203 front/views.py:211
 msgid "Definition"
-msgstr ""
+msgstr "Definicja"
 
 #: front/views.py:216 templates/addRate.html:6
 msgid "Rate"
-msgstr ""
+msgstr "Klasyfikację"
 
 #: front/views.py:217
 msgid "Comments"
-msgstr ""
+msgstr "Komentarze"
 
 #: front/views.py:227
 msgid "Language"
-msgstr ""
+msgstr "Język"
 
 #: front/views.py:232
 msgid "Remember me"
-msgstr ""
+msgstr "Pamiętaj mnie"
 
 #: front/views.py:233
 msgid "User name"
-msgstr ""
+msgstr "Nazwa użytkownika"
 
 #: front/views.py:234 front/views.py:241
 msgid "Password"
-msgstr ""
+msgstr "Hasło"
 
 #: front/views.py:239
 msgid "email"
-msgstr ""
+msgstr "e-mail"
 
 #: front/views.py:240
 msgid "Public username"
-msgstr ""
+msgstr "Nazwa użytkownika publiczne"
 
 #: front/views.py:242
 msgid "Confirm"
+msgstr "Potwierdź"
+
+#: front/views.py:243
+msgid "Preferred language"
 msgstr ""
 
-#: front/views.py:247 templates/search.html:6 templates/rosetta/pofile.html:33
+#: front/views.py:248 templates/search.html:6
 msgid "Search"
-msgstr ""
+msgstr "Szukać"
 
 #: templates/addCategory.html:6
 msgid "Add a new category for"
-msgstr ""
+msgstr "Dodaj nową kategorię"
 
 #: templates/addCategory.html:10 templates/addDefinition.html:10
 msgid "Add"
-msgstr ""
+msgstr "Dodać"
 
 #: templates/addDefinition.html:6
 msgid "Add a new definition for"
-msgstr ""
+msgstr "Dodaj nową definicję"
 
 #: templates/addRate.html:10 templates/addSubject.html:8
 msgid "Create"
-msgstr ""
+msgstr "Tworzenie"
 
 #: templates/index.html:26
 msgid "Top Subjects"
-msgstr ""
+msgstr "Najlepsze tematy"
 
 #: templates/index.html:30 templates/index.html.py:43 templates/index.html:56
 msgid "votes"
-msgstr ""
+msgstr "głosów"
 
 #: templates/index.html:34
 msgid "No Top Subjects"
-msgstr ""
+msgstr "Nr najlepsze tematy"
 
 #: templates/index.html:39
 msgid "Hot Subjects"
-msgstr ""
+msgstr "Gorące tematy"
 
 #: templates/index.html:47
 msgid "No Hot Subjects"
-msgstr ""
+msgstr "gorący tematy"
 
 #: templates/index.html:52
 msgid "New Subjects"
-msgstr ""
+msgstr "Nowy tematy"
 
 #: templates/index.html:60
 msgid "No New Subjects"
-msgstr ""
+msgstr "Brak nowych tematy"
 
 #: templates/language.html:6
 msgid "Change"
-msgstr ""
+msgstr "Zmiana"
 
 #: templates/logon.html:5
 msgid "Logout"
-msgstr ""
+msgstr "Wyloguj"
 
 #: templates/logon.html:9
 msgid "Logon"
-msgstr ""
+msgstr "Logowanie"
 
 #: templates/logon.html:11 templates/register.html:8
 msgid "Register"
-msgstr ""
+msgstr "Zarejestruj się"
 
 #: templates/master.html:6
 msgid "ratonator - a rate for everything!"
-msgstr ""
+msgstr "ratonator - wszystko Oceń chcesz!"
 
 #: templates/master.html:59
 msgid ""
 "This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING "
 "PROPERLY"
 msgstr ""
+"Ta usługa jest w fazie alfa wcześnie, jeszcze nie kompletna i nie działa "
+"prawidłowo"
 
 #: templates/master.html:74
 msgid "New subject"
-msgstr ""
+msgstr "Nowy temat"
 
 #: templates/subject.html:74
 msgid "Categories:"
-msgstr ""
+msgstr "Kategorie:"
 
 #: templates/subject.html:76 templates/subject.html.py:97
 #: templates/subject.html:112
 msgid "New"
-msgstr ""
+msgstr "Nowy"
 
 #: templates/subject.html:88
 msgid "Nothing above!"
-msgstr ""
+msgstr "Żadne z powyższych!"
 
 #: templates/subject.html:95
 msgid "Definitions:"
-msgstr ""
+msgstr "Definicje:"
 
 #: templates/subject.html:106
 msgid "No definitions!"
-msgstr ""
+msgstr "Brak definicji!"
 
 #: templates/subject.html:110
 msgid "Rates:"
-msgstr ""
+msgstr "Kurs:"
 
 #: templates/subject.html:129
 msgid "No rates!"
-msgstr ""
+msgstr "Nr cenach!"
 
 #: templates/subject.html:135
 msgid "Subjects"
-msgstr ""
+msgstr "Przedmioty"
 
 #: templates/subject.html:145
 msgid "Nothing Below!"
-msgstr ""
+msgstr "Niczego poniżej tego tematu!"
 
-#: templates/rosetta/languages.html:3 templates/rosetta/pofile.html:13
-msgid "Home"
-msgstr ""
+#~ msgid "Home"
+#~ msgstr "Dom"
 
-#: templates/rosetta/languages.html:3 templates/rosetta/languages.html.py:4
-msgid "Language selection"
-msgstr ""
+#~ msgid "Language selection"
+#~ msgstr "Wybór języka"
 
-#: templates/rosetta/languages.html:14
-msgid "File"
-msgstr ""
+#~ msgid "File"
+#~ msgstr "Plik"
 
-#: templates/rosetta/languages.html:15
-msgid "Messages"
-msgstr ""
+#~ msgid "Messages"
+#~ msgstr "Wiadomości"
 
-#: templates/rosetta/languages.html:16
-msgid "Translated"
-msgstr ""
+#~ msgid "Translated"
+#~ msgstr "Przetłumaczone"
 
-#: templates/rosetta/languages.html:17
-msgid "Obsolete"
-msgstr ""
+#~ msgid "Obsolete"
+#~ msgstr "Przestarzałe"
 
-#: templates/rosetta/languages.html:18
-msgid "Progress"
-msgstr ""
-
-#: templates/rosetta/languages.html:37
-msgid "Nothing to translate!"
-msgstr ""
-
-#: templates/rosetta/languages.html:38
-msgid ""
-"You haven't specified any languages in your settings file, or haven't yet "
-"generated a batch of translation catalogs."
-msgstr ""
-
-#: templates/rosetta/languages.html:39
-#, python-format
-msgid ""
-"Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</"
-"a> for a guide on how to set up internationalization for your project."
-msgstr ""
-
-#: templates/rosetta/pofile.html:7
-msgid "Pick another file"
-msgstr ""
-
-#: templates/rosetta/pofile.html:8
-msgid "Download this catalog"
-msgstr ""
-
-#: templates/rosetta/pofile.html:16
-msgid "Progress: %(percent_translated)s%"
-msgstr ""
-
-#: templates/rosetta/pofile.html:17
-msgid "File is read-only: download the file when done editing!"
-msgstr ""
-
-#: templates/rosetta/pofile.html:19 templates/rosetta/pofile.html.py:44
-msgid "English"
-msgstr ""
-
-#: templates/rosetta/pofile.html:21
-#, python-format
-msgid "Translate into %(rosetta_i18n_lang_name)s"
-msgstr ""
-
-#: templates/rosetta/pofile.html:24
-msgid "Display:"
-msgstr ""
-
-#: templates/rosetta/pofile.html:25
-msgid "Untranslated only"
-msgstr ""
-
-#: templates/rosetta/pofile.html:26
-msgid "Translated only"
-msgstr ""
-
-#: templates/rosetta/pofile.html:27
-msgid "Both"
-msgstr ""
-
-#: templates/rosetta/pofile.html:35
-msgid "Go"
-msgstr ""
-
-#: templates/rosetta/pofile.html:46
-msgid "Occurrences(s)"
-msgstr ""
-
-#: templates/rosetta/pofile.html:67
-msgid "suggest"
-msgstr ""
-
-#: templates/rosetta/pofile.html:75
-#, python-format
-msgid "%(more_count)s more"
-msgid_plural "%(more_count)s more"
-msgstr[0] ""
-msgstr[1] ""
-
-#: templates/rosetta/pofile.html:87
-msgid "Save and translate next block"
-msgstr ""
-
-#: templates/rosetta/pofile.html:91
-msgid "Skip to page:"
-msgstr ""
-
-#: templates/rosetta/pofile.html:104
-msgid "Displaying:"
-msgstr ""
-
-#: templates/rosetta/pofile.html:106
-#, python-format
-msgid "%(hits)s/%(message_number)s message"
-msgid_plural "%(hits)s/%(message_number)s messages"
-msgstr[0] ""
-msgstr[1] ""
+#~ msgid "Progress"
+#~ msgstr "Postęp"

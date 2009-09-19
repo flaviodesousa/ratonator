@@ -240,6 +240,7 @@ class RegisterForm(forms.Form):
     username = forms.CharField(label=_('Public username'), max_length=30)
     password1 = forms.CharField(label=_('Password'), max_length=32, widget=forms.PasswordInput)
     password2 = forms.CharField(label=_('Confirm'), max_length=32, widget=forms.PasswordInput)
+    preferred_language = forms.ChoiceField(label=_('Preferred language'),  choices=Language.choices())
 
 
 
