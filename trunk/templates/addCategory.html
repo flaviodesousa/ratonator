@@ -5,7 +5,7 @@
 <div id="newCategory">
     <p>{% trans 'Add a new category for' %}
     <em>{{ subject.name }}</em>:</p>
-    <form method="post" action="{% url ratonator.front.views.addCategory subject.language subject.nameSlugged %}">
+    <form method="post" action="{% url front.views.addCategory subject.language subject.nameSlugged %}">
         {{ add_category_form.as_p }}
         <input type="submit" name="submit" value="{% trans 'Add' %}" />
     </form>

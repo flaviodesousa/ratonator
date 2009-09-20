@@ -73,14 +73,14 @@
         <div id="subject_categories">
             <p>{% trans 'Categories:' %}
             {% if user.is_authenticated %}
-                <a href="{% url ratonator.front.views.addCategory subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
+                <a href="{% url front.views.addCategory subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
             {% endif %}
             {% if subjects_above %}
                 <ul>
                     {% for subject_above in subjects_above %}
                         {% with subject_above.category as cat %}
-                            <!-- TODO: Extend template to generate those subject markers -->
-                            <li><span class="rateable"><a href="{% url ratonator.front.views.subject cat.language cat.nameSlugged %}">{{ cat.name }}</a> <span class="average">{{ subject_above.average_rate|default:"-" }}</span>/<span class="votes">{{ subject_above.rate_count }}</span></span> ({{ subject_above.createdBy.user.username }})</li>
+                            <!-- TODO: Create a template filter to generate those subject markers -->
+                            <li><span class="rateable"><a href="{% url front.views.subject cat.language cat.nameSlugged %}">{{ cat.name }}</a> <span class="average">{{ subject_above.average_rate|default:"-" }}</span>/<span class="votes">{{ subject_above.rate_count }}</span></span> ({{ subject_above.createdBy.user.username }})</li>
                         {% endwith %}
                     {% endfor %}
                 </ul>
@@ -94,7 +94,7 @@
             <div id="subject_definitions">
                 <p>{% trans 'Definitions:' %}
                 {% if user.is_authenticated %}
-                    <a href="{% url ratonator.front.views.addDefinition subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
+                    <a href="{% url front.views.addDefinition subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
                 {% endif %}
                 {% if definitions %}
                     <ul>
@@ -109,7 +109,7 @@
             <div id="subject_rates">
                 <p>{% trans 'Rates:' %}
                 {% if user.is_authenticated %}
-                    <a href="{% url ratonator.front.views.addRate subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
+                    <a href="{% url front.views.addRate subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
                 {% endif %}
                 {% if rates %}
                     <ul>
@@ -137,7 +137,7 @@
                 <ul>
                     {% for subject_below in subjects_below %}
                         {% with subject_below.subject as su %}
-                            <li><span class="rateable"><a href="{% url ratonator.front.views.subject su.language su.nameSlugged %}">{{ su.name }}</a> <span class="average">{{ subject_below.average_rate|default:"-" }}</span> <span class="votes">{{ subject_below.rate_count }}</span></span> ({{ subject_below.createdBy.user.username }})</li>
+                            <li><span class="rateable"><a href="{% url front.views.subject su.language su.nameSlugged %}">{{ su.name }}</a> <span class="average">{{ subject_below.average_rate|default:"-" }}</span> <span class="votes">{{ subject_below.rate_count }}</span></span> ({{ subject_below.createdBy.user.username }})</li>
                         {% endwith %}
                     {% endfor %}
                 </ul>

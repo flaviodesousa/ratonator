@@ -57,7 +57,7 @@
 
             <div id="master_top">
                 <p id="master_warning_alpha">{% trans 'This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING PROPERLY' %}</p>
-                <div id="master_logo"><a href="{% url ratonator.front.views.index %}"><img src="/static/images/ratonator_logo.png" /></a></div>
+                <div id="master_logo"><a href="{% url front.views.index %}"><img src="/static/images/ratonator_logo.png" /></a></div>
                 {% include "language.html" %}
                 {% include "logon.html" %}
                 {% include "search.html" %}
@@ -71,7 +71,7 @@
                 <div id="master_middle_right">
                     {% if user.is_authenticated %}
                         <div id="createNewSubject">
-                        <p><a href="{% url ratonator.front.views.addSubject %}">{% trans 'New subject' %}</a></p>
+                        <p><a href="{% url front.views.addSubject %}">{% trans 'New subject' %}</a></p>
                         </div>
                     {% endif %}
                 </div>
@@ -79,6 +79,7 @@
 
             <div id="master_bottom">
                 <a href="http://ruminations.ratonator.com">ruminations</a>
+                <a href="http://twitter.com/ratonator">twitter</a>
             </div>
 
         </div>

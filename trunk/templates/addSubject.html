@@ -3,7 +3,7 @@
 {% block body %}
 
 <div id="newSubject">
-<form method="post" action="{% url ratonator.front.views.addSubject %}">
+<form method="post" action="{% url front.views.addSubject %}">
     {{ add_subject_form.as_p }}
     <input type="submit" name="submit" value="{% trans 'Create' %}" />
 </form>

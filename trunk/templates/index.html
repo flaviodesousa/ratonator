@@ -27,7 +27,7 @@
             {% if top_subjects %}
                 <ul>
                 {% for subject in top_subjects %}
-                    <li><a href="{% url ratonator.front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                    <li><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -40,7 +40,7 @@
             {% if hot_subjects %}
                 <ul>
                 {% for subject in hot_subjects %}
-                    <li><a href="{% url ratonator.front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                    <li><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -53,7 +53,7 @@
             {% if new_subjects %}
                 <ul>
                 {% for subject in new_subjects %}
-                    <li><a href="{% url ratonator.front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                    <li><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
                 {% endfor %}
                 </ul>
             {% else %}

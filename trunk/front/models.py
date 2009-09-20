@@ -7,7 +7,11 @@ from django.db.models import Sum, Avg, Count
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 import datetime
+import unicodedata
 import uuid
+import re
+
+
 
 RATE_CHOICES = (
     (10, _('Impossibly good')),
@@ -22,6 +26,34 @@ RATE_CHOICES = (
     ( 1, _('Worse ever')),
     ( 0, _('Impossibly bad'))
 )
+
+
+
+#I18N_SLUGIFY_TONULL = re.compile(u'[^\w\s-]', re.UNICODE)
+#I18N_SLUGIFY_TODASH = re.compile(u'[-\s_]+', re.UNICODE)
+I18N_SLUGIFY_ASIS = re.compile('^[LN]') # letters and digits (numbers) - assumed previously lowercased
+I18N_SLUGIFY_DASH = re.compile('^[PMSZ]') # punctuations, markers, symbols and separators
+# TODO: convert occidental accented characters to unaccented counterparts
+def i18n_slugify(value):
+    slugged = u''
+    dash = False
+    for c in value.strip().lower():
+        cat=unicodedata.category(c)
+        if I18N_SLUGIFY_ASIS.match(cat):
+            if dash and slugged:
+                slugged += '-'
+            slugged += c
+            dash = False
+        elif not dash and I18N_SLUGIFY_DASH.match(cat):
+            dash = True
+    return slugged
+    #v = unicodedata.normalize('NFKD', value).encode('utf-8', 'ignore')
+    #print u'1 - "%s"' % v
+    #v = I18N_SLUGIFY_TONULL.sub(v,  '').strip().lower()
+    #print u'2 - "%s"' % v
+    #v = I18N_SLUGIFY_TODASH.sub(v,  '-')
+    #print u'3 - "%s"' % v
+    #return v
 
 
 
@@ -54,8 +86,6 @@ post_save.connect(post_save_handler)
 
 class RateableStuff(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True)
-    # FIXME: Set on new votes, new definitions and new classifications
-    # TODO: Split time stamp for voting, defining and classifying
     lastTouchedAt = models.DateTimeField(auto_now_add=True)
     createdBy = models.ForeignKey('RateableUser', related_name='additions', null=True)
     uuid = models.CharField(max_length=36, unique=True, default=uuidMaker)
@@ -117,8 +147,6 @@ class Rate(RateableStuff):
 
 class NameableRateableStuff(RateableStuff):
     name = models.CharField(max_length=255)
-    # FIXME: Not being automatically slugged
-    # TODO: Automatic slug set on save
     nameSlugged = models.SlugField(max_length=255)
     language = models.CharField(max_length=2)
     disambiguator = models.ForeignKey('Disambiguator', related_name='ambiguousSubjects', null=True)
@@ -144,9 +172,16 @@ class AspectRate(Rate):
 
 class ClassifiableRateableStuff(NameableRateableStuff):
 
-    @classmethod    
+    class NotSluggable():
+        pass
+
+    class AlreadyExists():
+        pass
+
+    @classmethod
     def get(cls, language_filter, name_slugged):
-        return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=name_slugged)
+        slugged_name = i18n_slugify(name_slugged)
+        return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=slugged_name)
 
     @classmethod
     def hotSubjects(cls, language_filter, days=1,  page=1,  max_subjects=20):
@@ -167,8 +202,17 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
     @classmethod
     def addSubject(cls, name, language, user, definition=None):
+        slugged = i18n_slugify(name)
+        if not slugged:
+            raise ClassifiableRateableStuff.NotSluggable()
+        try:
+            ClassifiableRateableStuff.get(language,  slugged)
+            raise AlreadyExists()
+        except ClassifiableRateableStuff.DoesNotExist:
+            pass
         new_subject = ClassifiableRateableStuff()
-        new_subject.nameSlugged = new_subject.name = name
+        new_subject.name = name
+        new_subject.nameSlugged = slugged
         new_subject.language = language
         new_subject.createdBy = user
         new_subject.save()
@@ -196,9 +240,12 @@ class ClassifiableRateableStuff(NameableRateableStuff):
             adding_category = ClassifiableRateableStuff.get(self.language, category_name)
         except ClassifiableRateableStuff.DoesNotExist:
             adding_category = ClassifiableRateableStuff.addSubject(category_name, self.language, user)
-        classification = Classification(subject=self, category=adding_category, createdBy=user)
-        classification.save()
-        self.touch()
+        try:
+            existing_classification = Classification.objects.filter(category=adding_category).get(subject=self)
+        except Classification.DoesNotExist:
+            classification = Classification(subject=self, category=adding_category, createdBy=user)
+            classification.save()
+            self.touch()
         return self
 
     def __unicode__(self):
@@ -263,4 +310,3 @@ class UserValidation(models.Model):
     expiresAt = models.DateTimeField()
     validatedAt = models.DateTimeField(null=True)
     user = models.ForeignKey('RateableUser')
-

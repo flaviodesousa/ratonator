@@ -1,37 +1,46 @@
 #! /bin/bash
 
+project_dir=ratonator
+source_path=~flavio/${project_dir}
+staging_path=~flavio/staging
 dateref=`date +'%Y%m%d%H%M'`
+source_backup=/tmp/backup-ratonator-${dateref}.tar.bz2
+deployment_archive=deploy-ratonator-${dateref}.tar.bz2
+deployment_path=/tmp
+shared_folder=/mnt/shared
+remote_target_address=
 
-cd ~flavio/
+cd ${source_path}
 
-echo Creating source tree backup...
-tar jcf /tmp/backup-ratonator-${dateref}.tar.bz2 ratonator
+echo Creating source tree backups...
+tar jcvf ${source_backup} ../${project_dir}
+mountpoint -q ${shared_folder} && cp ${source_backup} ${shared_folder}
 
 echo Copying source tree to staging...
-cd ~flavio/staging
-rm --recursive --force ratonator/*
-cp --recursive ~flavio/ratonator ~flavio/staging
+cd ${staging_path}
+rm --recursive --force ${project_dir}/*
+cp --recursive ${source_path} ${staging_path}
 
 echo Deleting sql scripts...
-rm --recursive --force ratonator/sql
+rm --recursive --force ${project_dir}/sql
 
 echo Deleting shell scripts...
-rm --recursive --force ratonator/scripts
+rm --recursive --force ${project_dir}/scripts
 
 echo Deleting eric4 configurations...
-rm --recursive --force ratonator/.eric4project
+rm --recursive --force ${project_dir}/.eric4project
 
 echo Deleting subversion bindings...
-find . -name '.svn' -exec rm -rf \{\} +
+find ${staging_path} -name '.svn' -exec rm -rf \{\} +
 
 echo Deleting unwanted files...
-find ratonator \( -name '*~' -o -name 'ratonator.e4p' -o -name '*po' \) -delete -print
+find ${staging_path} \( -name '*~' -o -name 'ratonator.e4p' -o -name '*po' -o -name '*.json' \) -delete -print
 
 echo Packaging deployment
-tar jcf /tmp/deploy-ratonator-${dateref}.tar.bz2 ratonator
+tar jcf ${deployment_path}/${deployment_archive} ratonator
 
 echo Sending to madelyn
-scp /tmp/deploy-ratonator-${dateref}.tar.bz2 flavio@madelyn.moonlighting.com.br:~/staging
+scp ${deployment_path}/${deployment_archive} flavio@madelyn.moonlighting.com.br:~/staging
 
 echo Aliasing to latest
-ssh flavio@madelyn.moonlighting.com.br ln --force --symbolic ~/staging/deploy-ratonator-${dateref}.tar.bz2 ~/staging/deploy-ratonator-latest.tar.bz2
+ssh flavio@madelyn.moonlighting.com.br ln --force --symbolic ~/staging/${deployment_archive} ~/staging/deploy-ratonator-latest.tar.bz2

@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # vim: set fileencoding=utf-8 :
 
-from ratonator import settings
-from ratonator.front.models import *
+import settings
+from front.models import *
 from django import forms
 from django.contrib.auth import authenticate, login, logout
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response,  redirect
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
@@ -50,15 +51,15 @@ def addSubject(request):
     new_name = add_subject_form.cleaned_data['name']
 
     try:
-        existing = ClassifiableRateableStuff.get(request.session[CURRENT_LANGUAGE], new_name)
+        new_subject = ClassifiableRateableStuff.addSubject(new_name, request.session[CURRENT_LANGUAGE], request.session[RATEABLE_USER], add_subject_form.cleaned_data['definition'])
+    except ClassifiableRateableStuff.NotSluggable:
+        add_subject_form.errors['name'] = [ _('"%s" is not a valid subject name') % new_name ]
+        return render_to_response('addSubject.html', locals(), context_instance=RequestContext(request))
+    except ClassifiableRateableStuff.AlreadyExists:
         add_subject_form.errors['name'] = [ _('"%s" already exists') % new_name ]
         return render_to_response('addSubject.html', locals(), context_instance=RequestContext(request))
-    except ClassifiableRateableStuff.DoesNotExist:
-        pass
 
-    new_subject = ClassifiableRateableStuff.addSubject(new_name, request.session[CURRENT_LANGUAGE], request.session[RATEABLE_USER], add_subject_form.cleaned_data['definition'])
-
-    return __subject(request, new_subject)
+    return redirect('front.views.subject',  language_code=new_subject.language,  subject_name_slugged=new_subject.nameSlugged)
 
 
 
@@ -76,12 +77,15 @@ def addDefinition(request, language_code, subject_name_slugged):
 
     subject.addDefinition(add_definition_form.cleaned_data['definition'], user)
 
-    return __subject(request, subject)
+    return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged)
 
 
 
 def addRate(request, language_code, subject_name_slugged):
-    subject = ClassifiableRateableStuff.objects.filter(language=language_code).get(nameSlugged=subject_name_slugged)
+    try:
+        subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
+    except ClassifiableRateableStuff.DoesNotExist:
+        return __subject_does_not_exist(request, language_code, subject_name_slugged)
     (language_form, search_form, logon_form) = __general_forms(request)
     if not request.method == 'POST':
         add_rate_form = AddRateForm()
@@ -94,12 +98,15 @@ def addRate(request, language_code, subject_name_slugged):
 
     subject.addRate(add_rate_form.cleaned_data['rate'], add_rate_form.cleaned_data['comments'], user)
 
-    return __subject(request, subject)
+    return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged)
 
 
 
 def addCategory(request, language_code, subject_name_slugged):
-    subject = ClassifiableRateableStuff.objects.filter(language=language_code).get(nameSlugged=subject_name_slugged)
+    try:
+        subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
+    except ClassifiableRateableStuff.DoesNotExist:
+        return __subject_does_not_exist(request, language_code, subject_name_slugged)
     (language_form, search_form, logon_form) = __general_forms(request)
     if not request.method == 'POST':
         add_category_form = AddCategoryForm()
@@ -112,20 +119,26 @@ def addCategory(request, language_code, subject_name_slugged):
 
     subject.addCategory(add_category_form.cleaned_data['name'], user)
 
-    return __subject(request, subject)
+    return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged)
 
 
 
 def subject(request, language_code, subject_name_slugged):
-    subject = ClassifiableRateableStuff.objects.filter(language=language_code).get(nameSlugged=subject_name_slugged)
-    return __subject(request, subject)
-
-
-
-def __subject(request, subject):
+    try:
+        subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
+        if subject.nameSlugged != subject_name_slugged:
+            return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged)
+    except ClassifiableRateableStuff.DoesNotExist:
+        return __subject_does_not_exist(request,  language_code, subject_name_slugged)
     (language_form, search_form, logon_form) = __general_forms(request)
     (definitions, rates, subjects_above, subjects_below) = subject.sample()
     return render_to_response("subject.html", locals(), context_instance=RequestContext(request))
+
+
+
+def __subject_does_not_exist(request,  language_code,  subject_name_slugged):
+    # TODO: Deal with subjects not found - see ambiguator? make a similarity check?
+    pass
 
 
 
@@ -147,13 +160,13 @@ def language(request):
 
     request.session[CURRENT_LANGUAGE] = language_form.cleaned_data['language']
 
-    return HttpResponseRedirect('/')
+    return redirect('front.views.index')
 
 
 
 def logoff(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return redirect('front.views.index')
 
 
 
