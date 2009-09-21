@@ -3,6 +3,7 @@
 
 {% block inside_head %}
 
+    <link href="/static/css/ratonator.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         #index_sample {
             background-color:#FFCCFF;
@@ -27,7 +28,14 @@
             {% if top_subjects %}
                 <ul>
                 {% for subject in top_subjects %}
-                    <li><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                    <li>
+                        <span id="sub{{ subject.uuid }}" class="rateable">
+                            <span class="rateable_name"><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a></span>
+                            <span class="rateable_average">{{ subject.average_rate|default:"&mdash;" }}</span>
+                            <span class="rateable_votes">{{ subject.rate_count }}</span>
+                            <span class="rateable_creator">{{ subject.createdBy.user.username }}</span>
+                        </span>
+                    </li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -40,7 +48,14 @@
             {% if hot_subjects %}
                 <ul>
                 {% for subject in hot_subjects %}
-                    <li><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                    <li>
+                        <span id="sub{{ subject.uuid }}" class="rateable">
+                            <span class="rateable_name"><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a></span>
+                            <span class="rateable_average">{{ subject.average_rate|default:"&mdash;" }}</span>
+                            <span class="rateable_votes">{{ subject.rate_count }}</span>
+                            <span class="rateable_creator">{{ subject.createdBy.user.username }}</span>
+                        </span>
+                    </li>
                 {% endfor %}
                 </ul>
             {% else %}
@@ -53,7 +68,14 @@
             {% if new_subjects %}
                 <ul>
                 {% for subject in new_subjects %}
-                    <li><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a> {{ subject.average_rate }} ({{ subject.rate_count }} {% trans 'votes' %})</li>
+                    <li>
+                        <span id="sub{{ subject.uuid }}" class="rateable">
+                            <span class="rateable_name"><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a></span>
+                            <span class="rateable_average">{{ subject.average_rate|default:"&mdash;" }}</span>
+                            <span class="rateable_votes">{{ subject.rate_count }}</span>
+                            <span class="rateable_creator">{{ subject.createdBy.user.username }}</span>
+                        </span>
+                    </li>
                 {% endfor %}
                 </ul>
             {% else %}

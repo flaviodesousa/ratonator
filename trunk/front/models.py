@@ -31,20 +31,20 @@ RATE_CHOICES = (
 
 #I18N_SLUGIFY_TONULL = re.compile(u'[^\w\s-]', re.UNICODE)
 #I18N_SLUGIFY_TODASH = re.compile(u'[-\s_]+', re.UNICODE)
-I18N_SLUGIFY_ASIS = re.compile('^[LN]') # letters and digits (numbers) - assumed previously lowercased
-I18N_SLUGIFY_DASH = re.compile('^[PMSZ]') # punctuations, markers, symbols and separators
+__I18N_SLUGIFY_ASIS = re.compile('^[LN]') # letters and digits (numbers) - assumed previously lowercased
+__I18N_SLUGIFY_DASH = re.compile('^[PMSZ]') # punctuations, markers, symbols and separators
 # TODO: convert occidental accented characters to unaccented counterparts
 def i18n_slugify(value):
     slugged = u''
     dash = False
     for c in value.strip().lower():
         cat=unicodedata.category(c)
-        if I18N_SLUGIFY_ASIS.match(cat):
+        if __I18N_SLUGIFY_ASIS.match(cat):
             if dash and slugged:
                 slugged += '-'
             slugged += c
             dash = False
-        elif not dash and I18N_SLUGIFY_DASH.match(cat):
+        elif not dash and __I18N_SLUGIFY_DASH.match(cat):
             dash = True
     return slugged
     #v = unicodedata.normalize('NFKD', value).encode('utf-8', 'ignore')
@@ -118,13 +118,14 @@ class RateableStuff(models.Model):
 
     def __aggregates(self):
         try:
-            return self.__aggregate_cache
+            return self.aggregate_cache
         except AttributeError:
-            self.__aggregate_cache = self.rates.filter(superseder__isnull=True).aggregate(Avg('theRate'),Count('theRate'))
-            return self._aggregate_cache
+            self.aggregate_cache = self.rates.filter(superseder__isnull=True).aggregate(Avg('theRate'),Count('theRate'))
+            return self.aggregate_cache
 
     def get_average_rate(self):
-        return round(self.__aggregates()['theRate__avg'], 1)
+        average = self.__aggregates()['theRate__avg']
+        return round(average, 1) if average else None
 
     def get_rate_count(self):
         return self.__aggregates()['theRate__count']
