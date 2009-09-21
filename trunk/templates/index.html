@@ -23,7 +23,7 @@
 
     <div id="index_sample">
         <div id="index_topSubjects">
-            {% trans 'Top Subjects' %}
+            <span id="index_top_subjects_title">{% trans 'Top Subjects' %}</span>
             {% if top_subjects %}
                 <ul>
                 {% for subject in top_subjects %}
@@ -36,7 +36,7 @@
         </div>
         
         <div id="index_hotSubjects">
-            {% trans 'Hot Subjects' %}
+            <span id="index_hot_subjects_tittle">{% trans 'Hot Subjects' %}</span>
             {% if hot_subjects %}
                 <ul>
                 {% for subject in hot_subjects %}
@@ -49,7 +49,7 @@
         </div>
         
         <div id="index_newSubjects">
-            {% trans 'New Subjects' %}
+            <span id="index_new_subjects_title">{% trans 'New Subjects' %}</span>
             {% if new_subjects %}
                 <ul>
                 {% for subject in new_subjects %}

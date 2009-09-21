@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- spaceless -->
 {% load i18n %}
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -50,40 +51,38 @@
     {% endblock %}
 </head>
 
-<!-- spaceless -->
-    <body>
+<body>
 
-        <div id="master_body">
+    <div id="master_body">
 
-            <div id="master_top">
-                <p id="master_warning_alpha">{% trans 'This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING PROPERLY' %}</p>
-                <div id="master_logo"><a href="{% url front.views.index %}"><img src="/static/images/ratonator_logo.png" /></a></div>
-                {% include "language.html" %}
-                {% include "logon.html" %}
-                {% include "search.html" %}
-            </div>
-
-            <div id="master_middle">
-                <div id="master_middle_left">
-                    {% block body %}
-                    {% endblock %}
-                </div>
-                <div id="master_middle_right">
-                    {% if user.is_authenticated %}
-                        <div id="createNewSubject">
-                        <p><a href="{% url front.views.addSubject %}">{% trans 'New subject' %}</a></p>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-
-            <div id="master_bottom">
-                <a href="http://ruminations.ratonator.com">ruminations</a>
-                <a href="http://twitter.com/ratonator">twitter</a>
-            </div>
-
+        <div id="master_top">
+            <p id="master_warning_alpha">{% trans 'This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING PROPERLY' %}</p>
+            <div id="master_logo"><a href="{% url front.views.index %}"><img src="/static/images/ratonator_logo.png" /></a></div>
+            {% include "language.html" %}
+            {% include "logon.html" %}
+            {% include "search.html" %}
         </div>
-    <!-- endspaceless -->
+
+        <div id="master_middle">
+            <div id="master_middle_left">
+                {% block body %}
+                {% endblock %}
+            </div>
+            <div id="master_middle_right">
+                {% if user.is_authenticated %}
+                    <div id="createNewSubject">
+                    <p><a href="{% url front.views.addSubject %}">{% trans 'New subject' %}</a></p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="master_bottom">
+            <a href="http://ruminations.ratonator.com">ruminations</a>
+            <a href="http://twitter.com/ratonator">twitter</a>
+        </div>
+
+    </div>
     <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -93,6 +92,7 @@
     var pageTracker = _gat._getTracker("UA-9946213-2");
     pageTracker._trackPageview();
     } catch(err) {}</script>
-    </body>
+</body>
 
 </html>
+<!-- endspaceless -->

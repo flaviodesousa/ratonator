@@ -71,7 +71,7 @@
     <div id="subject_subject">
     
         <div id="subject_categories">
-            <p>{% trans 'Categories:' %}
+            <p><span id="subject_categories_title>{% trans 'Categories:' %}</span>
             {% if user.is_authenticated %}
                 <a href="{% url front.views.addCategory subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
             {% endif %}
@@ -92,7 +92,7 @@
         <div id="subject_subjectDetails">
             <p><span class="rateable">{{ subject.name }} <span class="average">{{ subject.average_rate|default:"-" }}</span> <span class="votes">{{ subject.rate_count }}</span></span> ({{ subject.createdBy.user.username }})</p>
             <div id="subject_definitions">
-                <p>{% trans 'Definitions:' %}
+                <p><span id="subject_definitions_title">{% trans 'Definitions:' %}</span>
                 {% if user.is_authenticated %}
                     <a href="{% url front.views.addDefinition subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
                 {% endif %}
@@ -107,7 +107,7 @@
                 {% endif %}
             </div>
             <div id="subject_rates">
-                <p>{% trans 'Rates:' %}
+                <p><span id="subject_rates_title">{% trans 'Rates:' %}</span>
                 {% if user.is_authenticated %}
                     <a href="{% url front.views.addRate subject.language subject.nameSlugged %}">{% trans 'New' %}</a></p>
                 {% endif %}
@@ -121,7 +121,7 @@
                                     <span class="average">{{ rate.average_rate|default:"-" }}</span>
                                     <span class="votes">{{ rate.rate_count }}</span>
                                 </span>
-                                {{ rate.createdBy.user.username }}
+                                <span class="voter">{{ rate.createdBy.user.username }}</span>
                             </li>
                         {% endfor %}
                     </ul>
