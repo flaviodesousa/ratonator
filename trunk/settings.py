@@ -19,6 +19,12 @@ DATABASE_PASSWORD = 'piconano2'
 DATABASE_HOST = 'localhost'
 DATABASE_PORT = ''
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'rJ[3/0#Op3/-i?|wg'
+EMAIL_HOST_USER = 'mailer@ratonator.com'
+EMAIL_SUBJECT_PREFIX = '[ratonator.com] '
+EMAIL_USE_TLS = True
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.

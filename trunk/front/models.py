@@ -129,9 +129,14 @@ class RateableStuff(models.Model):
 
     def get_rate_count(self):
         return self.__aggregates()['theRate__count']
+        
+    def get_description(self):
+        return uuid
+    description = property(get_description)
 
     average_rate = property(get_average_rate)
     rate_count = property(get_rate_count)
+    description = property(get_description)
 
 
 
@@ -140,6 +145,11 @@ class Rate(RateableStuff):
     comments = models.TextField(null=True)
     superseder = models.OneToOneField('Rate', related_name='superseded', null=True)
     subject = models.ForeignKey('RateableStuff', related_name='rates')
+    
+    def get_description(self):
+        return self.comments
+        #return _("Rate of %(rate)d given to %(subject)s") % {'rate':self.theRate,  'subject':self.subject.description}
+    description = property(get_description)
 
     def __unicode__(self):
         return 'Rate{theRate="%d",comments="%s",superseder=[%s],subject=[%s],super=[%s]}' % (self.theRate,self.comments,self.superseder,self.subject,RateableStuff.__unicode__(self))
@@ -151,6 +161,10 @@ class NameableRateableStuff(RateableStuff):
     nameSlugged = models.SlugField(max_length=255)
     language = models.CharField(max_length=2)
     disambiguator = models.ForeignKey('Disambiguator', related_name='ambiguousSubjects', null=True)
+    
+    def get_description(self):
+        return _("Unqualified named \"%s\"") % name
+    description = property(get_description)
 
     def __unicode__(self):
         return 'NameableRateableStuff{name="%s",nameSlugged="%s",language="%s",super=[%s]}' % (self.name, self.nameSlugged, self.language, RateableStuff.__unicode__(self))
@@ -223,6 +237,10 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
         return new_subject
 
+    def get_description(self):
+        return self.name
+    description = property(get_description)
+
     def sample(self, max_definitions=5, max_rates=5):
         rates = NameableRateableStuff.getSample(self, max_rates)
         definitions = self.definitions.order_by('-createdAt')[:max_definitions]
@@ -258,6 +276,11 @@ class Classification(RateableStuff):
     subject = models.ForeignKey('ClassifiableRateableStuff', related_name='categories')
     category = models.ForeignKey('ClassifiableRateableStuff', related_name='subjects')
 
+    def get_description(self):
+        #return _('Classification of "%(subject)s" as a "%(category)s"') % {'subject': subject.name,  'category': category.name}
+        return '<>'
+    description = property(get_description)
+
     class Meta:
         unique_together = (('subject','category'),)
 
@@ -267,6 +290,11 @@ class Definition(RateableStuff):
     theDefinition = models.TextField()
     #superseder = models.OneToOneField('Definition', related_name='superseded', null=True)
     subject = models.ForeignKey('ClassifiableRateableStuff', related_name='definitions')
+    
+    def get_description(self):
+        #return _('Definition of "%(subject)s" as "%(definition)s"') % { 'subject': subject.name,  'definition': theDefinition }
+        return self.theDefinition
+    description = property(get_description)
 
 
 
@@ -296,6 +324,10 @@ class RateableUser(RateableStuff):
     user = models.ForeignKey(User, unique=True)
     # TODO: Add support to user profile (language, rated content, picture)
 
+    def get_definition(self):
+        #return _('user "%s"') % user.username
+        return user.username
+        
     def __unicode__(self):
         return 'RateableUser{defaultLanguage="%s",validatedAt="%s",lastLoggedOnAt="%s",user=[%s],super=[%s]}' % (self.defaultLanguage,self.validatedAt,self.lastLoggedOnAt,self.user,RateableStuff.__unicode__(self))
 

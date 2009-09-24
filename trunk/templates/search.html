@@ -1,8 +1,9 @@
 {% load i18n %}
-
-<div id="search">
+<div id="searchForm">
     <form type="get" action="{% url front.views.search %}">
-        {{ search_form.as_p }}
-        <input type="submit" name="searchSubmit" value="{% trans 'Search' %}" />
+        <ul>
+        {{ search_form.as_ul }}
+        </ul>
+        <input type="submit"  class="bnt" name="searchSubmit" value="{% trans 'Search' %}" />
     </form>
 </div>

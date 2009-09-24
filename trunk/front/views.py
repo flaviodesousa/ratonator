@@ -86,7 +86,30 @@ def addRate(request, language_code, subject_name_slugged):
         subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
     except ClassifiableRateableStuff.DoesNotExist:
         return __subject_does_not_exist(request, language_code, subject_name_slugged)
+    return add_rate(request,  'classifiable',  subject.uuid)
+
+
+
+def add_rate_with_parameters(request,  rateable_class,  rateable_uuid):
+    return add_rate(request,  rateable_class,  rateable_uuid)
+
+
+RATEABLE_CLASSES = [ 'classifiable',  'rate',  'classification',  'definition',  'user' ]
+def add_rate(request,  rateable_class,  rateable_uuid):
     (language_form, search_form, logon_form) = __general_forms(request)
+    if rateable_class not in RATEABLE_CLASSES:
+        return HttpResponse('Bad request!')
+    subject = None
+    # TODO: Move this logic to RateableStuff.AddRate()
+    if rateable_class == 'classifiable':
+        subject = ClassifiableRateableStuff.objects.get(uuid=rateable_uuid)
+    if rateable_class == 'rate':
+        subject = Rate.objects.get(uuid=rateable_uuid)
+
+    print 'desc 1'
+    rateable_description = subject.description
+    print 'desc 2 ',  rateable_description
+
     if not request.method == 'POST':
         add_rate_form = AddRateForm()
         return render_to_response('addRate.html', locals(), context_instance=RequestContext(request))
@@ -98,7 +121,8 @@ def addRate(request, language_code, subject_name_slugged):
 
     subject.addRate(add_rate_form.cleaned_data['rate'], add_rate_form.cleaned_data['comments'], user)
 
-    return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged)
+    return render_to_response('thickbox_iframe_closer.html',  locals())
+    #return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged)
 
 
 
@@ -148,17 +172,8 @@ def search(request):
 
 
 
-def language(request):
-    referer = request.META['HTTP_REFERER'] or '/'
-    if not request.method == 'POST':
-        return HttpResponseRedirect(referer)
-
-    language_form = LanguageForm(request.POST)
-    if not language_form.is_valid():
-        (dummy, search_form, logon_form) = __general_forms(request)
-        return __index(request, language_form, search_form, logon_form)
-
-    request.session[CURRENT_LANGUAGE] = language_form.cleaned_data['language']
+def language(request,  language_code):
+    request.session[CURRENT_LANGUAGE] = language_code
 
     return redirect('front.views.index')
 

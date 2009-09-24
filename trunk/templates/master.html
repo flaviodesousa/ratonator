@@ -1,43 +1,115 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- spaceless -->
 {% load i18n %}
+<!-- spaceless -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>{% trans "ratonator - a rate for everything!" %}{% block title %}{% endblock %}</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+    <link href="/static/css/ratonator.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body {
+          margin: 0px;
+          padding: 0px; 
           min-width:770px;
-          font-family:Arial, Helvetica, sans-serif;
+          font-family:Verdana, Geneva, sans-serif;
         }
 
-        #master_top, #master_middle, #master_bottom {
-            margin: 1px;
-            padding: 1px;
-            border: 1px solid #AAAAAA;
-            background-color: #CCFFFF;
-            float: left;
+        #master_top {
+            width: 100%;
+            height: 452px;
+            background-image: url(/static/images/faixa.gif);
+            background-repeat: repeat-x;
             width: 100%;
         }
-
-        #master_middle_left, #master_middle_right {
-            background-color: gray; 
-            padding: 4px; 
-            border: 1px solid white;
+        #topo01 {
+           width:400px;
+           height:300px;
+           padding-left: 50px;
+           padding-top: 20px;
+           float: left;
         }
-
-        #master_middle_right { 
-            width: 150px; 
-            float: right; 
+        #logo {
+           width:140px;
+           height:57px;
+           padding-top: 5px;
         }
-
+        #language {
+           width:400px;
+           height:40px;
+           padding-top: 15px;
+           padding-bottom: 20px;
+           
+        }
+        #topo02 {
+           width:330px;
+           height:330px;
+           font-family: Verdana, Geneva, sans-serif;
+           background-color: #CCC;
+           float: right;
+           margin-right: 50px;
+         }
+         #master_logon {
+           width: 280px;
+           height: 280px;
+           margin-top: 20px;
+           padding-right: 10px;
+           background-color:#9FC;
+          }
+         #search {
+           width: 310px;
+           height:30px;
+         }
+         #master_middle {
+            background-color: #FFF;
+            float: left;
+            width: 100%;
+         }
+        #master_middle_right {
+            width: 150px;
+            float: right;
+            background-color: #0FF;
+            margin-right:50px;
+        }
         #master_middle_left {
             float: left;
-            width: auto;
+            background-color: #CF9;
         }
-        
+        #master_bottom {
+            font-family: Verdana, Geneva, sans-serif;
+            color: #999;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: #dddddd;
+            font-size: 11px;
+            width: 100%;
+            text-align: center;
+            float: left;
+            margin-top: 5px;
+            padding-top: 7px;
+            padding-bottom:7px;
+         }
+         #master_bottom a:link {
+             text-decoration: none;
+             color: #999;
+             padding-right: 13px;
+             
+         }
+        #master_bottom a:visited {
+          text-decoration: none;
+          color: #999;
+          padding-right: 13px;
+        }
+        #master_bottom a:hover {
+           text-decoration: underline;
+           color: #333;
+           padding-right: 13px;
+        }
+        #master_bottom a:active {
+            text-decoration: none;
+            padding-right: 13px;
+        }
         #master_warning_alpha {
             font-size: x-large;
             font-weight: bold;
@@ -53,14 +125,17 @@
 
 <body>
 
-    <div id="master_body">
 
         <div id="master_top">
             <p id="master_warning_alpha">{% trans 'This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING PROPERLY' %}</p>
-            <div id="master_logo"><a href="{% url front.views.index %}"><img src="/static/images/ratonator_logo.png" /></a></div>
-            {% include "language.html" %}
-            {% include "logon.html" %}
-            {% include "search.html" %}
+            <div id="topo01">
+                <div id="language">{% include "language.html" %}</div>
+                <div id="logo"><a href="{% url front.views.index %}"><img src="/static/images/logo.png" alt="Ratonator" width="532" height="109" border="0" /></a></div>
+            </div>
+            <div id="topo02">
+                <div id="search">{% include "search.html" %}</div>
+                <div id="master_logon">{% include "logon.html" %}</div>
+            </div>
         </div>
 
         <div id="master_middle">
@@ -71,27 +146,27 @@
             <div id="master_middle_right">
                 {% if user.is_authenticated %}
                     <div id="createNewSubject">
-                    <p><a href="{% url front.views.addSubject %}">{% trans 'New subject' %}</a></p>
+                        <p><a href="{% url front.views.addSubject %}">{% trans 'New subject' %}</a></p>
                     </div>
                 {% endif %}
             </div>
         </div>
 
         <div id="master_bottom">
+            All rights reserved © 2009 - Ratonator
             <a href="http://ruminations.ratonator.com">ruminations</a>
             <a href="http://twitter.com/ratonator">twitter</a>
         </div>
 
-    </div>
-    <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-    try {
-    var pageTracker = _gat._getTracker("UA-9946213-2");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9946213-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
 </body>
 
 </html>

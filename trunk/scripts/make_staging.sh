@@ -10,12 +10,25 @@ deployment_archive=deploy-ratonator-${dateref}.tar.bz2
 deployment_path=${temp}
 shared_folder=/mnt/shared
 
+mountpoint -q ${shared_folder} || (
+    echo "Falta montar o shared folder..."
+    exit 1
+    )
 
 cd ${source_path}
 
 echo Creating source tree backups...
-tar jcvf ${source_backup} ../${project_dir}
-mountpoint -q ${shared_folder} && cp ${source_backup} ${shared_folder}
+tar jcvf ${source_backup} ../${project_dir} || (echo error creating backup; exit 1)
+
+echo Sending backup to flavio@moonlighting.com.br
+${source_path}/scripts/send_file.py \
+    flavio@moonlighting.com.br \
+    "[ratonator-backup] backup no deploy ${dateref}" \
+    "Project backup done in ${dateref}" \
+    ${source_backup}
+
+echo Copying backup to shared folder
+cp ${source_backup} ${shared_folder}
 
 echo Copying source tree to staging...
 cd ${staging_path}
@@ -36,6 +49,19 @@ find ${staging_path} -name '.svn' -exec rm -rf \{\} +
 
 echo Deleting unwanted files...
 find ${staging_path} \( -name '*~' -o -name 'ratonator.e4p' -o -name '*po' -o -name '*.json' \) -delete -print
+
+echo Generating static/deploy.html
+echo "<html><head><title>ratonator.com - deployment info</title></head><body><h1>Deploy ${dateref}</h1></body></html>" > ${staging_path}/${project_dir}/static/deploy.html
+
+echo Copying templates and sending them to renato
+cd ${staging_path}/${project_dir} &&
+    zip -r -q ${shared_folder}/templates-${dateref} templates/* &&
+    zip -r -q ${shared_folder}/static-${dateref} static/* &&
+    ${source_path}/scripts/send_file.py \
+        webrenat@gmail.com \
+        "templates no deploy ${dateref}" \
+        "Eis os templates constantes no deploy realizado em ${dateref}" \
+        ${shared_folder}/templates-${dateref}* # ${shared_folder}/static-${dateref}*
 
 echo "Patching for production"
 sed -e 's/DEBUG = True/DEBUG = False/' < ${staging_path}/${project_dir}/settings.py > ${temp}/settings.py-new &&

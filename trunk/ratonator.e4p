@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project ratonator -->
-<!-- Saved: 2009-09-19, 13:25:56 -->
+<!-- Saved: 2009-09-24, 14:35:55 -->
 <!-- Copyright (C) 2009 Flavio de Sousa, flavio@moonlighting.com.br -->
 <Project version="4.6">
   <Language>en</Language>
@@ -23,6 +23,8 @@
     <Source>settings.py</Source>
     <Source>urls.py</Source>
     <Source>__init__.py</Source>
+    <Source>front/templatetags/__init__.py</Source>
+    <Source>front/templatetags/ratonator.py</Source>
   </Sources>
   <Forms>
     <Form>templates/index.html</Form>
@@ -37,6 +39,8 @@
     <Form>templates/searchResults.html</Form>
     <Form>templates/addCategory.html</Form>
     <Form>templates/register.html</Form>
+    <Form>templates/thickbox_iframe_closer.html</Form>
+    <Form>templates/rateable_template.html</Form>
   </Forms>
   <Translations>
     <Translation>locale/zh/LC_MESSAGES/django.po</Translation>
@@ -180,12 +184,12 @@
   <FiletypeAssociations>
     <FiletypeAssociation pattern="*.html" type="FORMS" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
-    <FiletypeAssociation pattern="*.mo" type="TRANSLATIONS" />
+    <FiletypeAssociation pattern="*.htm" type="FORMS" />
     <FiletypeAssociation pattern="*.po" type="TRANSLATIONS" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
-    <FiletypeAssociation pattern="*.js" type="FORMS" />
     <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
-    <FiletypeAssociation pattern="*.htm" type="FORMS" />
+    <FiletypeAssociation pattern="*.js" type="FORMS" />
+    <FiletypeAssociation pattern="*.mo" type="TRANSLATIONS" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

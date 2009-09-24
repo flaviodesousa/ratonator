@@ -6,7 +6,9 @@
     <p>{% trans 'Add a new category for' %}
     <em>{{ subject.name }}</em>:</p>
     <form method="post" action="{% url front.views.addCategory subject.language subject.nameSlugged %}">
-        {{ add_category_form.as_p }}
+        <ul>
+            {{ add_category_form.as_ul }}
+        </ul>
         <input type="submit" name="submit" value="{% trans 'Add' %}" />
     </form>
 </div>
