@@ -1,0 +1,20 @@
+{% load i18n %}
+<span id="sub{{ subject.uuid }}" class="rateable">
+    {% if subject.theRate %}
+        <span class="rateable_rate">{{ subject.theRate }}</span>
+    {% endif %}
+    {% if subject.name and follow %}
+        <span class="rateable_name"><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a></span>
+    {% else %}
+        <span class="rateable_name">{{ subject.description }}</span>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <span class="rateable_average">
+            <a href="{% url front.views.add_rate_with_parameters 'classifiable' subject.uuid %}" title="{% trans 'Add your vote too!' %}" class="thickbox">{{ subject.average_rate|default:"&mdash;" }}</a>
+        </span>
+    {% else %}
+        <span class="rateable_average">{{ subject.average_rate|default:"&mdash;" }}</span>
+    {% endif %}
+    <span class="rateable_votes">{{ subject.rate_count }}</span>
+    <span class="rateable_creator">{{ subject.createdBy.user.username }}</span>
+</span>
