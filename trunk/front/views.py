@@ -15,7 +15,7 @@ CURRENT_LANGUAGE = 'django_language'
 RATEABLE_USER = 'rateable_user'
 
 def __general_forms(request):
-    (language_form, search_form, logon_form) = (LanguageForm(), SearchForm(), LogonForm())
+    (language_form, search_form, logon_form) = (LanguageForm(auto_id="language_form_%s"), SearchForm(auto_id="search_form_%s"), LogonForm(auto_id="logon_form_%s"))
     if not CURRENT_LANGUAGE in request.session:
         request.session[CURRENT_LANGUAGE] = settings.RATONATOR_DEFAULT_LANGUAGE
     language_form.fields['language'].initial = request.session[CURRENT_LANGUAGE]
@@ -42,9 +42,9 @@ def __index(request, language_form, search_form, logon_form):
 def addSubject(request):
     (language_form, search_form, logon_form) = __general_forms(request)
     if not request.method == 'POST':
-        add_subject_form = AddSubjectForm()
+        add_subject_form = AddSubjectForm(auto_id="add_subject_form_%s")
         return render_to_response('addSubject.html', locals(), context_instance=RequestContext(request))
-    add_subject_form = AddSubjectForm(request.POST)
+    add_subject_form = AddSubjectForm(request.POST,  auto_id="add_subject_form_%s")
     if not add_subject_form.is_valid():
         return render_to_response('addSubject.html', locals(), context_instance=RequestContext(request))
 
@@ -67,9 +67,9 @@ def addDefinition(request, language_code, subject_name_slugged):
     subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
     (language_form, search_form, logon_form) = __general_forms(request)
     if not request.method == 'POST':
-        add_definition_form = AddDefinitionForm()
+        add_definition_form = AddDefinitionForm(auto_id="add_definition_form_%s")
         return render_to_response('addDefinition.html', locals(), context_instance=RequestContext(request))
-    add_definition_form = AddDefinitionForm(request.POST)
+    add_definition_form = AddDefinitionForm(request.POST,  auto_id="add_definition_form_%s")
     if not add_definition_form.is_valid():
         return render_to_response('addDefinition.html', locals(), context_instance=RequestContext(request))
 
@@ -111,9 +111,9 @@ def add_rate(request,  rateable_class,  rateable_uuid):
     print 'desc 2 ',  rateable_description
 
     if not request.method == 'POST':
-        add_rate_form = AddRateForm()
+        add_rate_form = AddRateForm(auto_id="add_rate_form_%d")
         return render_to_response('addRate.html', locals(), context_instance=RequestContext(request))
-    add_rate_form = AddRateForm(request.POST)
+    add_rate_form = AddRateForm(request.POST,  auto_id="add_rate_form_%d")
     if not add_rate_form.is_valid():
         return render_to_response('addRate.html', locals(), context_instance=RequestContext(request))
 
@@ -133,9 +133,9 @@ def addCategory(request, language_code, subject_name_slugged):
         return __subject_does_not_exist(request, language_code, subject_name_slugged)
     (language_form, search_form, logon_form) = __general_forms(request)
     if not request.method == 'POST':
-        add_category_form = AddCategoryForm()
+        add_category_form = AddCategoryForm(auto_id="add_category_form_%s")
         return render_to_response('addCategory.html', locals(), context_instance=RequestContext(request))
-    add_category_form = AddCategoryForm(request.POST)
+    add_category_form = AddCategoryForm(request.POST,  auto_id="add_category_form_%s")
     if not add_category_form.is_valid():
         return render_to_response('addCategory.html', locals(), context_instance=RequestContext(request))
 
@@ -192,7 +192,7 @@ def logon(request):
     if not request.method == 'POST':
         return HttpResponseRedirect(referer)
 
-    logon_form = LogonForm(request.POST)
+    logon_form = LogonForm(request.POST,  auto_id="logon_form_%s")
 
     if not logon_form.is_valid():
         return __index(request, language_form, search_form, logon_form)
@@ -219,10 +219,14 @@ def logon(request):
 def register(request):
     if not request.method == POST:
         (language_form, search_form, logon_form) = __general_forms(request)
-        add_subject_form = RegisterForm()
+        register_form = RegisterForm(auto_id="register_form_%s")
         return render_to_response('register.html', locals(), context_instance=RequestContext(request))
-    else:
+    pass
+
+def forgot_password(request):
+    if not request.method == POST:
         pass
+    pass
 
 
 

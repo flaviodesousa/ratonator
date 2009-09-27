@@ -5,11 +5,9 @@ import re
 
 
 register = template.Library()
-rateable_template = template.loader.get_template('rateable_template.html')
 
 
 follow_re = re.compile('follow=(True|False)')
-
 @register.tag
 def rateable(parser, token):
     try:
@@ -32,6 +30,7 @@ def rateable(parser, token):
 
 
 
+rateable_template = template.loader.get_template('rateable_template.html')
 class RateableNode(template.Node):
 
     def __init__(self, subject_varname, follow):

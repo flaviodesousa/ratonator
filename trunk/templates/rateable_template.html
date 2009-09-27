@@ -3,10 +3,15 @@
     {% if subject.theRate %}
         <span class="rateable_rate">{{ subject.theRate }}</span>
     {% endif %}
-    {% if subject.name and follow %}
-        <span class="rateable_name"><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a></span>
-    {% else %}
-        <span class="rateable_name">{{ subject.description }}</span>
+    {% if subject.name %}
+        {% if follow %}
+            <span class="rateable_name"><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a></span>
+        {% else %}
+            <span class="rateable_name">{{ subject.name }}</span>
+        {% endif %}
+    {% endif %}
+    {% if subject.comments %}
+            <span class="rateable_name">{{ subject.comments }}</span>
     {% endif %}
     {% if user.is_authenticated %}
         <span class="rateable_average">

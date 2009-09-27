@@ -126,16 +126,34 @@ class RateableStuff(models.Model):
     def get_average_rate(self):
         average = self.__aggregates()['theRate__avg']
         return round(average, 1) if average else None
+    average_rate = property(get_average_rate)
 
     def get_rate_count(self):
         return self.__aggregates()['theRate__count']
-        
+    rate_count = property(get_rate_count)
+    
+    # TODO: Find another way to find the correct downclassed object on relationships
+    def get_downclassed(self):
+        try:
+            return ClassifiableRateableStuff.objects.get(id=self.id)
+        except ClassifiableRateableStuff.DoesNotExist:
+            try:
+                return Rate.objects.get(id=self.id)
+            except Rate.DoesNotExit:
+                try:
+                    return Definition.objects.get(id=self.id)
+                except Definition.DoesNotExist:
+                    try:
+                        return RateableUser.objects.get(id=self.id)
+                    except RateableUser.DoesNotExit:
+                        try:
+                            return AspectRate.objects.get(id=self.id)
+                        except AspectRate.DoesNotExist:
+                            return Aspect.objects.get(id=self.id)
+    downclassed = property(get_downclassed)
+
     def get_description(self):
         return uuid
-    description = property(get_description)
-
-    average_rate = property(get_average_rate)
-    rate_count = property(get_rate_count)
     description = property(get_description)
 
 
@@ -147,8 +165,11 @@ class Rate(RateableStuff):
     subject = models.ForeignKey('RateableStuff', related_name='rates')
     
     def get_description(self):
-        return self.comments
-        #return _("Rate of %(rate)d given to %(subject)s") % {'rate':self.theRate,  'subject':self.subject.description}
+        return _("a rate of %(rate)d given by %(user)s to %(subject)s") % {
+            'rate':self.theRate,
+            'user':self.createdBy.user.username,
+            'subject':self.subject.downclassed.description
+        }
     description = property(get_description)
 
     def __unicode__(self):
@@ -176,12 +197,25 @@ class NameableRateableStuff(RateableStuff):
 
 class Aspect(NameableRateableStuff):
     subjects = models.ManyToManyField('ClassifiableRateableStuff', related_name='aspects')
+    
+    def get_description(self):
+        return super(NameableRateableStuff, self).get_description()
+    description = property(get_description)
 
 
 
 class AspectRate(Rate):
     aspect = models.ForeignKey('Aspect')
     baseRate = models.ForeignKey('Rate', related_name='ratingAspects')
+    
+    def get_description(self):
+        return _('a rate of %(rate)d given by %(user)s for the "%(aspect_name)s" aspect of "%(subject_name)s"') % {
+            'rate': self.theRate, 
+            'user': self.createdBy.user.username, 
+            'aspect_name': aspect.name, 
+            'subject_name': subject.description
+        }
+    description = property(get_description)
 
 
 
@@ -277,9 +311,12 @@ class Classification(RateableStuff):
     category = models.ForeignKey('ClassifiableRateableStuff', related_name='subjects')
 
     def get_description(self):
-        #return _('Classification of "%(subject)s" as a "%(category)s"') % {'subject': subject.name,  'category': category.name}
-        return '<>'
+        return _('Classification of "%(subject)s" as a "%(category)s"') % {'subject': subject.name,  'category': category.name}
     description = property(get_description)
+    
+    def get_marker(self):
+        return 'classification'
+    marker = property(get_marker)
 
     class Meta:
         unique_together = (('subject','category'),)
@@ -288,12 +325,10 @@ class Classification(RateableStuff):
 
 class Definition(RateableStuff):
     theDefinition = models.TextField()
-    #superseder = models.OneToOneField('Definition', related_name='superseded', null=True)
     subject = models.ForeignKey('ClassifiableRateableStuff', related_name='definitions')
     
     def get_description(self):
-        #return _('Definition of "%(subject)s" as "%(definition)s"') % { 'subject': subject.name,  'definition': theDefinition }
-        return self.theDefinition
+        return _('Definition of "%(subject)s" as "%(definition)s"') % { 'subject': subject.name,  'definition': theDefinition }
     description = property(get_description)
 
 
@@ -324,9 +359,9 @@ class RateableUser(RateableStuff):
     user = models.ForeignKey(User, unique=True)
     # TODO: Add support to user profile (language, rated content, picture)
 
-    def get_definition(self):
-        #return _('user "%s"') % user.username
-        return user.username
+    def get_description(self):
+        return _('user "%s"') % user.username
+    description = property(get_description)
         
     def __unicode__(self):
         return 'RateableUser{defaultLanguage="%s",validatedAt="%s",lastLoggedOnAt="%s",user=[%s],super=[%s]}' % (self.defaultLanguage,self.validatedAt,self.lastLoggedOnAt,self.user,RateableStuff.__unicode__(self))

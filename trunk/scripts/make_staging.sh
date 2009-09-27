@@ -10,15 +10,20 @@ deployment_archive=deploy-ratonator-${dateref}.tar.bz2
 deployment_path=${temp}
 shared_folder=/mnt/shared
 
-mountpoint -q ${shared_folder} || (
-    echo "Falta montar o shared folder..."
-    exit 1
-    )
+mountpoint -q ${shared_folder} ||
+{
+    echo "Falta montar o shared folder...";
+    exit 1;
+}
 
 cd ${source_path}
 
 echo Creating source tree backups...
-tar jcvf ${source_backup} ../${project_dir} || (echo error creating backup; exit 1)
+tar jcvf ${source_backup} ../${project_dir} ||
+{
+    echo error creating backup;
+    exit 1;
+}
 
 echo Sending backup to flavio@moonlighting.com.br
 ${source_path}/scripts/send_file.py \

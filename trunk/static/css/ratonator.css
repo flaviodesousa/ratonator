@@ -1,3 +1,13 @@
+body {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    color: #333;
+}
+
 #languageSelector {
      font-family: Verdana, Geneva, sans-serif;
      color: #333;
@@ -119,15 +129,112 @@ input {
     border: thin black solid;
 }
 
-#logon input {
-    float:left;
+/* Logon Begin */
+#logon_form { float: left; }
+#logon_services a { display: block; }
+#logon  label[for=logon_form_username], #logon label[for=logon_form_password] {
+        display:block;
 }
-
-#logon label {
-    float:left;
-    width:100%;
-}
-
+#logon input[id=logon_form_username] { display: block; }
 #logon li {
-    list-style-type:none;
+      list-style-type:none;
 }
+#logon > input {
+    /*float: left;
+    width: 100%;*/
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    color: #333;
+    border: 1px solid #efeeee;
+    padding-left: 2px;
+    padding-top: 2px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    background-color: #FFF;
+}
+#logon .bnt {
+    width: auto;
+    height:auto;
+    font-family: Verdana, Geneva, sans-serif;
+    color: #333;
+    text-align: center;
+    font-size: 11px;
+    font-weight: normal;
+    background-image: url(static/images/bnt.gif);
+}
+#logon a:link {
+    text-decoration: none;
+    color: #F60;
+    padding-left: 7px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+}
+#logon a:visited {
+    text-decoration: none;
+    color: #F60;
+    padding-left: 7px;
+}
+#logon a:hover {
+    text-decoration: underline;
+    color: #C00;
+    padding-left: 7px;
+}
+#logon a:active {
+    text-decoration: none;
+    padding-left: 7px;
+}
+/* Logon End */
+
+/* Search Begin */
+#search label[for="search_form_pattern"] { display: none; }
+
+#search ul.col LI {
+    padding-left: 7px;
+    padding-bottom: 3px;
+    margin-bottom: 2px;
+    display: inline;
+    padding-top: 2px;
+    list-style-type: none;
+    list-style-position: inside;
+    padding-right: 0px;
+    position: relative;
+    right: 5px;
+    clip: rect(auto,auto,auto,auto);
+}
+#search > input {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    color: #333;
+    border: 1px solid #efeeee;
+    padding-left: 2px;
+    padding-top: 2px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    background-color: #FFF;
+}
+#search > input.bnt {
+    padding-left: 2px;
+    padding-top: 2px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    background-color: #FFF;
+}
+#search .bnt {
+    width:17px;
+    height:17px;
+    font-family: Verdana, Geneva, sans-serif;
+    color: transparent;
+    text-align: center;
+    font-size: 11px;
+    font-weight: normal;
+    background-image: url(/static/images/lupa.gif);
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    background-repeat: no-repeat;
+}
+/* Search End */

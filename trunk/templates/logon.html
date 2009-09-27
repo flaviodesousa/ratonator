@@ -2,14 +2,19 @@
 
 <div id="logon">
     {% if user.is_authenticated %}
-        <div id="loggedUser">{{ user.username }} <a href="{% url front.views.logoff %}">{% trans 'Logout' %}</a></div>
+        <div id="logon_user_logged">{{ user.username }} <a href="{% url front.views.logoff %}">{% trans 'Logout' %}</a></div>
     {% else %}
-        <form action="{% url front.views.logon %}" method="post">
-            <ul>
-            {{ logon_form.as_ul }}
-            </ul>
-            <input type="submit" name="logonSubmit" value="{% trans 'Logon' %}" />
-        </form>
-        <a href="{% url front.views.register %}">{% trans 'Register' %}</a>
+        <div id="logon_form">
+            <form action="{% url front.views.logon %}" method="post">
+                <ul>
+                    {{ logon_form.as_ul }}
+                    <li><input type="submit"  class="bnt" name="logonSubmit" value="{% trans 'Logon' %}" /></li>
+                </ul>
+            </form>
+        </div>
+        <div id="logon_services">
+            <a href="{% url front.views.register %}">{% trans 'Register' %}</a>
+            <a href="{% url front.views.forgot_password %}">{% trans 'Forgot password?' %}</a>
+        </div>
     {% endif %}
 </div>
