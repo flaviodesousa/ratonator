@@ -1,69 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project ratonator -->
-<!-- Saved: 2009-09-29, 18:39:12 -->
+<!-- Saved: 2009-10-01, 01:17:54 -->
 <Tasks version="4.2">
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Move this logic to RateableStuff.AddRate()</Summary>
+    <Description></Description>
+    <Created>2009-10-01, 00:29:47</Created>
+    <Resource>
+      <Filename>front/views.py</Filename>
+      <Linenumber>118</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Deal with subjects not found - see ambiguator? make a similarity check?</Summary>
+    <Description></Description>
+    <Created>2009-10-01, 00:29:47</Created>
+    <Resource>
+      <Filename>front/views.py</Filename>
+      <Linenumber>184</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Search</Summary>
+    <Description></Description>
+    <Created>2009-10-01, 00:29:47</Created>
+    <Resource>
+      <Filename>front/views.py</Filename>
+      <Linenumber>190</Linenumber>
+    </Resource>
+  </Task>
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: convert occidental accented characters to unaccented counterparts</Summary>
     <Description></Description>
-    <Created>2009-09-29, 01:27:33</Created>
+    <Created>2009-10-01, 00:51:27</Created>
     <Resource>
       <Filename>front/models.py</Filename>
       <Linenumber>39</Linenumber>
     </Resource>
   </Task>
   <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: Add fields with precalculations of rates and votes (partialAt, partialVotes, partialAverage)</Summary>
+    <Summary>TODO: post_save for User is conflicting with create_new_user() at RateableUser.register_new_user(), find out why. post_save helps to ensure RateableUser created if user created in admin</Summary>
     <Description></Description>
-    <Created>2009-09-29, 01:27:33</Created>
+    <Created>2009-10-01, 00:51:27</Created>
     <Resource>
       <Filename>front/models.py</Filename>
-      <Linenumber>95</Linenumber>
+      <Linenumber>79</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: find out how @post_save_handler() works</Summary>
+    <Description></Description>
+    <Created>2009-10-01, 00:51:27</Created>
+    <Resource>
+      <Filename>front/models.py</Filename>
+      <Linenumber>80</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: Add fields with precalculations of rates and votes (partialAt, partialVotes, partialAverage)</Summary>
+    <Description></Description>
+    <Created>2009-10-01, 00:51:27</Created>
+    <Resource>
+      <Filename>front/models.py</Filename>
+      <Linenumber>94</Linenumber>
     </Resource>
   </Task>
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: Find another way to find the correct downclassed object on relationships</Summary>
     <Description></Description>
-    <Created>2009-09-29, 01:27:33</Created>
+    <Created>2009-10-01, 00:51:27</Created>
     <Resource>
       <Filename>front/models.py</Filename>
-      <Linenumber>138</Linenumber>
+      <Linenumber>137</Linenumber>
     </Resource>
   </Task>
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: Add support to user profile (language, rated content, picture)</Summary>
     <Description></Description>
-    <Created>2009-09-29, 01:27:33</Created>
+    <Created>2009-10-01, 00:51:27</Created>
     <Resource>
       <Filename>front/models.py</Filename>
-      <Linenumber>363</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: Move this logic to RateableStuff.AddRate()</Summary>
-    <Description></Description>
-    <Created>2009-09-29, 16:48:01</Created>
-    <Resource>
-      <Filename>front/views.py</Filename>
-      <Linenumber>119</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: Deal with subjects not found - see ambiguator? make a similarity check?</Summary>
-    <Description></Description>
-    <Created>2009-09-29, 16:48:01</Created>
-    <Resource>
-      <Filename>front/views.py</Filename>
-      <Linenumber>177</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" bugfix="False">
-    <Summary>TODO: Search</Summary>
-    <Description></Description>
-    <Created>2009-09-29, 16:48:01</Created>
-    <Resource>
-      <Filename>front/views.py</Filename>
-      <Linenumber>183</Linenumber>
+      <Linenumber>361</Linenumber>
     </Resource>
   </Task>
 </Tasks>

@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block title %} &mdash; {{ title }}{% endblock %}
+
+{% block body %}
+    <div id="messages">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
