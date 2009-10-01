@@ -66,7 +66,7 @@ cd ${staging_path}/${project_dir} &&
         webrenat@gmail.com \
         "templates no deploy ${dateref}" \
         "Eis os templates constantes no deploy realizado em ${dateref}" \
-        ${shared_folder}/templates-${dateref}* # ${shared_folder}/static-${dateref}*
+        ${shared_folder}/templates-${dateref}* ${shared_folder}/static-${dateref}*
 
 echo "Patching for production"
 sed -e 's/DEBUG = True/DEBUG = False/' < ${staging_path}/${project_dir}/settings.py > ${temp}/settings.py-new &&

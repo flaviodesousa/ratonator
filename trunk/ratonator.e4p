@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project ratonator -->
-<!-- Saved: 2009-09-24, 14:35:55 -->
+<!-- Saved: 2009-10-01, 01:17:19 -->
 <!-- Copyright (C) 2009 Flavio de Sousa, flavio@moonlighting.com.br -->
 <Project version="4.6">
   <Language>en</Language>
@@ -25,6 +25,7 @@
     <Source>__init__.py</Source>
     <Source>front/templatetags/__init__.py</Source>
     <Source>front/templatetags/ratonator.py</Source>
+    <Source>scripts/send_file.py</Source>
   </Sources>
   <Forms>
     <Form>templates/index.html</Form>
@@ -41,6 +42,12 @@
     <Form>templates/register.html</Form>
     <Form>templates/thickbox_iframe_closer.html</Form>
     <Form>templates/rateable_template.html</Form>
+    <Form>templates/forgot_password.html</Form>
+    <Form>templates/password_reset.html</Form>
+    <Form>templates/password_change.html</Form>
+    <Form>templates/password_reset_email.html</Form>
+    <Form>templates/messages.html</Form>
+    <Form>templates/registration_validation_email.html</Form>
   </Forms>
   <Translations>
     <Translation>locale/zh/LC_MESSAGES/django.po</Translation>
@@ -78,6 +85,8 @@
     <Other>sql</Other>
     <Other>static</Other>
     <Other>scripts</Other>
+    <Other>scripts/save_sql.sh</Other>
+    <Other>scripts/make_staging.sh</Other>
   </Others>
   <MainScript>manage.py</MainScript>
   <Vcs>

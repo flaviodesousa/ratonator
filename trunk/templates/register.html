@@ -1,5 +1,8 @@
 {% extends "master.html" %}
 {% load i18n %}
+
+{% block title %} &mdash {% trans 'New user registration' %}{% endblock %}
+
 {% block inside_head %}
 <style type="text/css">
 <!--
@@ -41,12 +44,12 @@ input {
 {% block body %}
 
 <div id="register">
-<form method="post" action="{% url front.views.register %}">
-    <ul>
-        {{ register_form.as_ul }}
-    </ul>
-    <input type="submit"  class="bnt" name="submit" value="{% trans 'Register' %}" />
-</form>
+    <form method="post" action="{% url front.views.register %}">
+        <ul>
+            {{ register_form.as_ul }}
+        </ul>
+        <input type="submit"  class="bnt" name="submit" value="{% trans 'Register' %}" />
+    </form>
 </div>
 
 {% endblock %}

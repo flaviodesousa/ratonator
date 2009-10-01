@@ -2,14 +2,17 @@
 # vim: set fileencoding=utf-8 :
 
 from django.contrib.auth.models import User
+from django.core.mail import EmailMessage
 from django.db import models
 from django.db.models import Sum, Avg, Count
 from django.db.models.signals import post_save
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 import datetime
+import re
+import settings
 import unicodedata
 import uuid
-import re
 
 
 
@@ -73,14 +76,13 @@ class Language(models.Model):
 
 
 
-def post_save_handler(sender, **kwargs):
-    if sender is User and kwargs['created']:
-        rateable_user = RateableUser(defaultLanguage='en', user=kwargs['instance'])
-        rateable_user.save()
-
-
-
-post_save.connect(post_save_handler)
+# TODO: post_save for User is conflicting with create_new_user() at RateableUser.register_new_user(), find out why. post_save helps to ensure RateableUser created if user created in admin
+# TODO: find out how @post_save_handler() works
+#def post_save_handler(sender, **kwargs):
+#    if sender is User and kwargs['created']:
+#        rateable_user = RateableUser(defaultLanguage='en', user=kwargs['instance'])
+#        rateable_user.save()
+#post_save.connect(post_save_handler)
 
 
 
@@ -131,7 +133,7 @@ class RateableStuff(models.Model):
     def get_rate_count(self):
         return self.__aggregates()['theRate__count']
     rate_count = property(get_rate_count)
-    
+
     # TODO: Find another way to find the correct downclassed object on relationships
     def get_downclassed(self):
         try:
@@ -163,7 +165,7 @@ class Rate(RateableStuff):
     comments = models.TextField(null=True)
     superseder = models.OneToOneField('Rate', related_name='superseded', null=True)
     subject = models.ForeignKey('RateableStuff', related_name='rates')
-    
+
     def get_description(self):
         return _("a rate of %(rate)d given by %(user)s to %(subject)s") % {
             'rate':self.theRate,
@@ -182,7 +184,7 @@ class NameableRateableStuff(RateableStuff):
     nameSlugged = models.SlugField(max_length=255)
     language = models.CharField(max_length=2)
     disambiguator = models.ForeignKey('Disambiguator', related_name='ambiguousSubjects', null=True)
-    
+
     def get_description(self):
         return _("Unqualified named \"%s\"") % name
     description = property(get_description)
@@ -197,7 +199,7 @@ class NameableRateableStuff(RateableStuff):
 
 class Aspect(NameableRateableStuff):
     subjects = models.ManyToManyField('ClassifiableRateableStuff', related_name='aspects')
-    
+
     def get_description(self):
         return super(NameableRateableStuff, self).get_description()
     description = property(get_description)
@@ -207,7 +209,7 @@ class Aspect(NameableRateableStuff):
 class AspectRate(Rate):
     aspect = models.ForeignKey('Aspect')
     baseRate = models.ForeignKey('Rate', related_name='ratingAspects')
-    
+
     def get_description(self):
         return _('a rate of %(rate)d given by %(user)s for the "%(aspect_name)s" aspect of "%(subject_name)s"') % {
             'rate': self.theRate, 
@@ -229,8 +231,7 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
     @classmethod
     def get(cls, language_filter, name_slugged):
-        slugged_name = i18n_slugify(name_slugged)
-        return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=slugged_name)
+        return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=name_slugged)
 
     @classmethod
     def hotSubjects(cls, language_filter, days=1,  page=1,  max_subjects=20):
@@ -313,7 +314,7 @@ class Classification(RateableStuff):
     def get_description(self):
         return _('Classification of "%(subject)s" as a "%(category)s"') % {'subject': subject.name,  'category': category.name}
     description = property(get_description)
-    
+
     def get_marker(self):
         return 'classification'
     marker = property(get_marker)
@@ -326,7 +327,7 @@ class Classification(RateableStuff):
 class Definition(RateableStuff):
     theDefinition = models.TextField()
     subject = models.ForeignKey('ClassifiableRateableStuff', related_name='definitions')
-    
+
     def get_description(self):
         return _('Definition of "%(subject)s" as "%(definition)s"') % { 'subject': subject.name,  'definition': theDefinition }
     description = property(get_description)
@@ -362,19 +363,168 @@ class RateableUser(RateableStuff):
     def get_description(self):
         return _('user "%s"') % user.username
     description = property(get_description)
-        
+
     def __unicode__(self):
         return 'RateableUser{defaultLanguage="%s",validatedAt="%s",lastLoggedOnAt="%s",user=[%s],super=[%s]}' % (self.defaultLanguage,self.validatedAt,self.lastLoggedOnAt,self.user,RateableStuff.__unicode__(self))
 
-    def get(**kwargs):
-        if kwargs['email']:
-            return RateableUser.objects.get(email=email)
+    @classmethod
+    def get(cls,  **kwargs):
+        return cls.__get(kwargs)
+
+    @classmethod
+    def __get(cls,  kwargs):
+        if 'username' in kwargs and kwargs['username']:
+            try:
+                return User.objects.get(username=kwargs['username']).get_profile()
+            except User.DoesNotExist:
+                raise RateableUser.Unknown('username',  kwargs['username'])
+        elif 'email' in kwargs and kwargs['email']:
+            try:
+                return User.objects.get(email=kwargs['email']).get_profile()
+            except User.DoesNotExist:
+                raise RateableUser.Unknown('email',  kwargs['email'])
+        else: raise ValueError()
+
+    def begin_password_reset_process(self):
+        request = PasswordResetRequest()
+        request.expiresAt = datetime.datetime.now() + datetime.timedelta(days=settings.PASSWORD_RESET_EXPIRATION_DAYS)
+        request.user = self
+        request.save()
+        request.begin_password_reset_process()
+        return self
+    
+    @classmethod
+    def register_new_user(cls,  **kwargs):
+        try:
+            user = User.objects.get(username=kwargs['username'])
+            if user.email <> kwargs['email']:
+                raise RateableUser.ValidationException(property='username', messages=[ _('Username taken. Please, choose another one.')])
+            rateable_user = user.get_profile()
+            if user.validatedAt <> None:
+                raise RateableUser.ValidationException(property='username', messages=[ _('Account already exists.'),  _('Have you forgotten your password?')])
+            # account already created, but not yet validated. Allow resending validation email
+        except User.DoesNotExist:
+            user = User.objects.create_user(kwargs['username'],  kwargs['email'],  kwargs['password1'])
+            user.save()
+            rateable_user = RateableUser(defaultLanguage=kwargs['preferred_language'],  user=user)
+            rateable_user.save()
+        validation = UserValidation()
+        validation.expiresAt = datetime.datetime.now() + datetime.timedelta(days=settings.ACCOUNT_VALIDATION_EXPIRATION_DAYS)
+        validation.user = rateable_user
+        validation.save()
+        validation.begin_account_validation_process()
+        return user
+
+
+
+    class ValidationException(UserWarning):
+        def __init__(self,  **kwargs):
+            if 'property' in kwargs:
+                self.property=kwargs['property']
+            if 'messages' in kwargs:
+                self.messages=kwargs['messages']
+
+
+
+    class Unknown(UserWarning):
+        def __init__(self, property_name,  property_value):
+            self.property_name = property_name
+            self.property_value = property_value
 
 
 
 class UserValidation(models.Model):
-    uuid = models.CharField(max_length=36, unique=True)
+    uuid = models.CharField(max_length=36, unique=True,  default=uuidMaker)
     requestedAt = models.DateTimeField(auto_now_add=True)
     expiresAt = models.DateTimeField()
     validatedAt = models.DateTimeField(null=True)
     user = models.ForeignKey('RateableUser')
+
+    def begin_account_validation_process(self):
+        self.user.user.email_user(
+            '[ratonator] (ACTION NEEDED) New account validation', 
+            render_to_string('registration_validation_email.html', { 'key': self.uuid,  'days_to_expire': settings.ACCOUNT_VALIDATION_EXPIRATION_DAYS })
+        )
+        return self
+    
+    def end_account_validation_process(self):
+        if self.validatedAt <> None:
+            raise UserValidation.ValidationException(message=_('Account already validated.'))
+        if self.expiresAt < datetime.datetime.now():
+            raise UserValidation.ValidationException(message=_('This validation link has been expired. Please try registering again.'))
+        self.validatedAt = datetime.datetime.now()
+        self.save()
+        self.user.validatedAt = datetime.datetime.now()
+        self.user.save()
+        return self
+    
+    @classmethod
+    def get(cls,  **kwargs):
+        if 'key' in kwargs:
+            try:
+                return UserValidation.objects.get(uuid=kwargs['key'])
+            except UserValidation.DoesNotExist:
+                raise UserValidation.ValidationException(message=_('Invalid link. Perhaps long expired. Please try registering again.'))
+        raise ValueError('Required parameter not present')
+    
+    
+    
+    class ValidationException():
+        def __init__(self,  **kwargs):
+            if 'message' in kwargs:
+                self.message = kwargs['message']
+
+
+
+class PasswordResetRequest(models.Model):
+    uuid = models.CharField(max_length=36, unique=True, default=uuidMaker)
+    requestedAt = models.DateTimeField(auto_now_add=True)
+    expiresAt = models.DateTimeField()
+    validatedAt = models.DateTimeField(null=True)
+    user = models.ForeignKey('RateableUser')
+
+    def begin_password_reset_process(self):
+        email = EmailMessage()
+        email.subject = '[ratonator] (ACTION NEEDED) Password reset requested'
+        email.body = render_to_string('password_reset_email.html', { 'key': self.uuid,  'days_to_expire': settings.PASSWORD_RESET_EXPIRATION_DAYS })
+        email.from_email = 'mailer@ratonator.com'
+        email.to = [ self.user.user.email ]
+        email.send()
+        return self
+
+    def end_password_reset_process(self,  password1,  password2):
+        if self.expiresAt < datetime.datetime.now():
+            raise PasswordResetRequest.ValidationException(
+                property='password1', 
+                messages=[ _('This password reset request expired. '),  _('Request another one if you still want to reset your password.') ]
+            )
+        if not self.validatedAt == None:
+            raise PasswordResetRequest.ValidationException(
+                property='password1', 
+                messages=[ _('This password reset request was already consumed. '),  _('Request another one if you still want to reset your password.') ]
+            )
+        if password1 <> password2:
+            raise PasswordResetRequest.ValidationException(
+                property='password2', 
+                messages=[ _('Passwords do not match') ]
+            )
+        self.validatedAt = datetime.datetime.now()
+        self.save()
+        self.user.user.set_password(password1)
+        self.user.user.save()
+        return self
+
+    @classmethod
+    def get(cls,  **kwargs):
+        if 'key' in kwargs:
+            return PasswordResetRequest.objects.get(uuid=kwargs['key'])
+        raise ValueError('Required parameter not present')
+
+
+
+    class ValidationException(UserWarning):
+        def __init__(self,  **kwargs):
+            if 'messages' in kwargs:
+                self.messages = kwargs['messages']
+            if 'property' in kwargs:
+                self.property = kwargs['property']

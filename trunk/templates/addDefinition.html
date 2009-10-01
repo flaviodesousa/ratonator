@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block body %}
 
-<div id="newSubject">
+<div id="add_definition">
     <p>{% trans 'Add a new definition for' %}
     <em>{{ subject.name }}</em>:</p>
     <form method="post" action="{% url front.views.addDefinition subject.language subject.nameSlugged %}">

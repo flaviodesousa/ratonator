@@ -12,61 +12,54 @@
     <script type="text/javascript" src="/static/js/jquery.js"></script>
     <script type="text/javascript" src="/static/js/thickbox/thickbox-compressed.js"></script>
     <style type="text/css">
-        body {
-          margin: 0px;
-          padding: 0px; 
-          min-width:770px;
-          font-family:Verdana, Geneva, sans-serif;
-        }
-
         #master_top {
             width: 100%;
-            height: 452px;
+            height:271px;
             background-image: url(/static/images/faixa.gif);
             background-repeat: repeat-x;
-            width: 100%;
         }
         #topo01 {
-           width:400px;
-           height:300px;
-           padding-left: 50px;
-           padding-top: 20px;
+           width:410px;
+           height:210px;
+           padding-left: 10px;
+           padding-top: 10px;
            float: left;
         }
         #logo {
-           width:140px;
-           height:57px;
+           width:auto;
+           height:auto;
            padding-top: 5px;
         }
         #language {
            width:400px;
-           height:40px;
+           height:25px;
            padding-top: 15px;
            padding-bottom: 20px;
-           
         }
         #topo02 {
            width:330px;
-           height:330px;
+           height:210px;
            font-family: Verdana, Geneva, sans-serif;
            float: right;
-           margin-right: 50px;
+           margin-right: 10px;
+           margin-top: 25px;
            font-size: 11px;
          }
          #master_logon {
            width: 280px;
-           height: 220px;
+           height: 160px;
            margin-top: 20px;
            padding-right: 10px;
          }
-         #search {
+         #master_search {
            width: 310px;
-           height:50px;
+           height:25px;
          }
          #master_middle {
             background-color: #FFF;
             float: left;
             width: 100%;
+            clear: none;
          }
         #master_middle_right {
             width: 150px;
@@ -129,13 +122,15 @@
 
 
         <div id="master_top">
+            {% comment %}
             <p id="master_warning_alpha">{% trans 'This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING PROPERLY' %}</p>
+            {% endcomment %}
             <div id="topo01">
                 <div id="language">{% include "language.html" %}</div>
-                <div id="logo"><a href="{% url front.views.index %}"><img src="/static/images/logo.png" alt="Ratonator" width="532" height="109" border="0" /></a></div>
+                <div id="logo"><a href="{% url front.views.root %}"><img src="/static/images/logo.png" alt="logo" width="391" height="78" border="0" /></a></div>
             </div>
             <div id="topo02">
-                <div id="search">{% include "search.html" %}</div>
+                <div id="master_search">{% include "search.html" %}</div>
                 <div id="master_logon">{% include "logon.html" %}</div>
             </div>
         </div>
@@ -156,8 +151,7 @@
 
         <div id="master_bottom">
             <p>All rights reserved © 2009 - Ratonator</p>
-            <p><a href="http://ruminations.ratonator.com">ruminations</a></p>
-            <p><a href="http://twitter.com/ratonator">twitter</a></p>
+            <p><a href="http://ruminations.ratonator.com">ruminations</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://twitter.com/ratonator">twitter</a></p>
         </div>
 
 <script type="text/javascript">

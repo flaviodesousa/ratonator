@@ -1,12 +1,20 @@
-# Django settings for ratonator project.
+# ratonator settings
 
 STATIC_PATH = '/var/www/rate228/app/ratonator/static'
+ACCOUNT_VALIDATION_EXPIRATION_DAYS = 5
+PASSWORD_RESET_EXPIRATION_DAYS = 3
+
+# Django settings for ratonator project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+DEFAULT_FROM_EMAIL = 'mailer@ratonator.com'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
 ADMINS = (
-    # ('Flavio de Sousa', 'flavio@ratonator.com'),
+    ('Flavio de Sousa', 'flavio@ratonator.com'),
+    ('Flavio de Sousa',  'flavio@moonlighting.com.br')
 )
 
 MANAGERS = ADMINS
@@ -34,8 +42,9 @@ TIME_ZONE = 'America/Sao_Paulo'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
+RATONATOR_DEFAULT_LANGUAGE = 'en'
 LANGUAGE_CODE = 'en-us'
-
+LANGUAGE_COOKIE_NAME = 'language.ratonator.com'
 LANGUAGES = (
   ('ar',  ('Arabic')), 
   ('de',  ('German')), 
@@ -82,6 +91,8 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.csrf.middleware.CsrfMiddleware',
@@ -110,5 +121,3 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = 'front.RateableUser'
-
-RATONATOR_DEFAULT_LANGUAGE = 'en'
