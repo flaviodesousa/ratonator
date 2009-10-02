@@ -1,10 +1,13 @@
 {% load i18n %}
 <html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/ratonator.css" />
+</head>
 <body>
 <div id="addRate">
     <p>{% trans 'Rate' %}
-    <em>{{ subject.name }}</em>:</p>
-    <form method="post" action="{% url front.views.add_rate rateable_class rateable_uuid %}">
+    <em>{{ subject.description }}</em>:</p>
+    <form method="post" action="{% url front.views.add_rate rateable_uuid %}">
         <ul>
             {{ add_rate_form.as_ul }}
         </ul>

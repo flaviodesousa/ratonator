@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block title %} &mdash; {% trans '404 - Not Found' %}{% endblock %}
+
+{% block body %}
+    <h1>404 Not Found</h1>
+    <h2>{% trans 'Yes, you got the infamous 404...' %}</h2>
+    <p>{% trans "This means the address above (URL for geeks) did not translate into anything meaningful to the current ratonator.com configuration." %}</p>
+    <p>{% trans "If that happened without you typing anything on the address bar, it was OUR fault, we apologize dearly and, in this very moment, we are trying hard to fix the problem that caused it." %}</p>
+    <p>{% trans "However, if you typed something in the address bar, well, we know you are smart enough to figure out what was wrong..." %}</p>
+{% endblock %}

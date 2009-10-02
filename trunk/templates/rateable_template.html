@@ -13,9 +13,12 @@
     {% if subject.comments %}
             <span class="rateable_name">{{ subject.comments }}</span>
     {% endif %}
+    {% if subject.theDefinition %}
+            <span class="rateable_name">{{ subject.theDefinition }}</span>
+    {% endif %}
     {% if user.is_authenticated %}
         <span class="rateable_average">
-            <a href="{% url front.views.add_rate_with_parameters 'classifiable' subject.uuid %}" title="{% trans 'Add your vote too!' %}" class="thickbox">{{ subject.average_rate|default:"&mdash;" }}</a>
+            <a href="{% url front.views.add_rate_with_parameters subject.uuid %}" title="{% trans 'Add your vote too!' %}" class="thickbox">{{ subject.average_rate|default:"&mdash;" }}</a>
         </span>
     {% else %}
         <span class="rateable_average">{{ subject.average_rate|default:"&mdash;" }}</span>

@@ -7,6 +7,22 @@ body {
     color: #333;
 }
 
+input {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    color: #333;
+    border: 1px solid #cacabe;
+    padding-left: 2px;
+    padding-top: 2px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+}
+
+li {
+    list-style-type: none;
+}
+
 #languageSelector {
      font-family: Verdana, Geneva, sans-serif;
      color: #333;
@@ -37,20 +53,8 @@ body {
     height:auto;
 }
 
-input {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 11px;
-    color: #333;
-    border: 1px solid #7b1f10;
-    padding-left: 2px;
-    padding-top: 2px;
-    margin-top: 2px;
-    margin-bottom: 3px;
-    margin-right: 3px;
-}
-
 .bnt {
-    width: 56px;
+    min-width: 56px;
     height:19px;
     background-image: url(/static/images/bnt.gif);
     background-repeat: no-repeat;
@@ -113,7 +117,7 @@ input {
     left: 0em;
     background-color: blue;
     color: yellow;
-    font-size: 0.2em;
+    font-size: 0.15em;
     height: 8px;
     padding: 0em;
     margin: 0em;
@@ -122,11 +126,16 @@ input {
 }
 
 .rateable_creator:hover {
+    position: absolute;
     font-size: 1em;
     line-height: 1em;
     top: 18px;
     border: thin black solid;
 }
+
+
+
+
 
 /* Logon Begin */
 #logon_form { float: left; }
@@ -138,13 +147,12 @@ input {
 #logon li {
       list-style-type:none;
 }
-#logon > input {
+#logon input {
     /*float: left;
     width: 100%;*/
     font-family: Verdana, Geneva, sans-serif;
     font-size: 11px;
     color: #333;
-    border: 1px solid #efeeee;
     padding-left: 2px;
     padding-top: 2px;
     margin-top: 2px;
@@ -160,7 +168,8 @@ input {
     text-align: center;
     font-size: 11px;
     font-weight: normal;
-    background-image: url(/static/images/bnt.gif);
+    border: 1px solid #cacabe;
+    background-color: #ecf1eb;
 }
 #logon a:link {
     text-decoration: none;
@@ -185,6 +194,10 @@ input {
 }
 /* Logon End */
 
+
+
+
+
 /* Search Begin */
 #search label[for="search_form_pattern"] { display: none; }
 
@@ -201,11 +214,9 @@ input {
     right: 5px;
     clip: rect(auto,auto,auto,auto);
 }
-#search > input {
+#search input {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 11px;
-    color: #333;
-    border: 1px solid #efeeee;
     padding-left: 2px;
     padding-top: 2px;
     margin-top: 2px;
@@ -222,6 +233,7 @@ input {
     background-color: #FFF;
 }
 #search .bnt {
+    min-width: 17px;
     width:17px;
     height:17px;
     font-family: Verdana, Geneva, sans-serif;
@@ -234,7 +246,6 @@ input {
     border-right-style: none;
     border-bottom-style: none;
     border-left-style: none;
-    background-repeat: no-repeat;
     cursor: pointer;
     cursor: hand; /* ie 5 */
 }

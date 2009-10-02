@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project ratonator -->
-<!-- Saved: 2009-10-01, 01:17:19 -->
+<!-- Saved: 2009-10-02, 18:08:07 -->
 <!-- Copyright (C) 2009 Flavio de Sousa, flavio@moonlighting.com.br -->
 <Project version="4.6">
   <Language>en</Language>
@@ -48,6 +48,8 @@
     <Form>templates/password_reset_email.html</Form>
     <Form>templates/messages.html</Form>
     <Form>templates/registration_validation_email.html</Form>
+    <Form>templates/404.html</Form>
+    <Form>templates/500.html</Form>
   </Forms>
   <Translations>
     <Translation>locale/zh/LC_MESSAGES/django.po</Translation>
@@ -193,12 +195,12 @@
   <FiletypeAssociations>
     <FiletypeAssociation pattern="*.html" type="FORMS" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
-    <FiletypeAssociation pattern="*.htm" type="FORMS" />
+    <FiletypeAssociation pattern="*.mo" type="TRANSLATIONS" />
     <FiletypeAssociation pattern="*.po" type="TRANSLATIONS" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
-    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
     <FiletypeAssociation pattern="*.js" type="FORMS" />
-    <FiletypeAssociation pattern="*.mo" type="TRANSLATIONS" />
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
+    <FiletypeAssociation pattern="*.htm" type="FORMS" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

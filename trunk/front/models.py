@@ -120,10 +120,10 @@ class RateableStuff(models.Model):
 
     def __aggregates(self):
         try:
-            return self.aggregate_cache
+            return self.__aggregate_cache
         except AttributeError:
-            self.aggregate_cache = self.rates.filter(superseder__isnull=True).aggregate(Avg('theRate'),Count('theRate'))
-            return self.aggregate_cache
+            self.__aggregate_cache = self.rates.filter(superseder__isnull=True).aggregate(Avg('theRate'),Count('theRate'))
+            return self.__aggregate_cache
 
     def get_average_rate(self):
         average = self.__aggregates()['theRate__avg']
@@ -135,27 +135,45 @@ class RateableStuff(models.Model):
     rate_count = property(get_rate_count)
 
     # TODO: Find another way to find the correct downclassed object on relationships
-    def get_downclassed(self):
+    def __downclassed(self):
         try:
-            return ClassifiableRateableStuff.objects.get(id=self.id)
-        except ClassifiableRateableStuff.DoesNotExist:
+            return self.__downclassed_cache
+        except AttributeError:
+            self.__downclassed_cache = ('unknown',  None)
             try:
-                return Rate.objects.get(id=self.id)
-            except Rate.DoesNotExit:
+                self.__downclassed_cache = ('subject',  ClassifiableRateableStuff.objects.get(id=self.id))
+            except ClassifiableRateableStuff.DoesNotExist:
                 try:
-                    return Definition.objects.get(id=self.id)
-                except Definition.DoesNotExist:
+                    self.__downclassed_cache = ('rate',  Rate.objects.get(id=self.id))
+                except Rate.DoesNotExist:
                     try:
-                        return RateableUser.objects.get(id=self.id)
-                    except RateableUser.DoesNotExit:
+                        self.__downclassed_cache = ('definition',  Definition.objects.get(id=self.id))
+                    except Definition.DoesNotExist:
                         try:
-                            return AspectRate.objects.get(id=self.id)
-                        except AspectRate.DoesNotExist:
-                            return Aspect.objects.get(id=self.id)
+                            self.__downclassed_cache = ('user',  RateableUser.objects.get(id=self.id))
+                        except RateableUser.DoesNotExist:
+                            try:
+                                self.__downclassed_cache = ('classification',  Classification.objects.get(id=self.id))
+                            except Classification.DoesNotExist:
+                                try:
+                                    self.__downclassed_cache = ('aspect_rate',  AspectRate.objects.get(id=self.id))
+                                except AspectRate.DoesNotExist:
+                                    try:
+                                        self.__downclassed_cache = ('aspect',  Aspect.objects.get(id=self.id))
+                                    except Aspect.DoesNotExist:
+                                        pass # use default value ('unknown', None)
+        return self.__downclassed_cache
+    
+    def get_downclassed(self):
+        return self.__downclassed()[1]
     downclassed = property(get_downclassed)
+    
+    def get_kind(self):
+        return self.__downclassed()[0]
+    kind = property(get_kind)
 
     def get_description(self):
-        return uuid
+        return self.downclassed.description
     description = property(get_description)
 
 
@@ -186,7 +204,7 @@ class NameableRateableStuff(RateableStuff):
     disambiguator = models.ForeignKey('Disambiguator', related_name='ambiguousSubjects', null=True)
 
     def get_description(self):
-        return _("Unqualified named \"%s\"") % name
+        return _("Unqualified named \"%s\"") % self.name
     description = property(get_description)
 
     def __unicode__(self):
@@ -201,7 +219,7 @@ class Aspect(NameableRateableStuff):
     subjects = models.ManyToManyField('ClassifiableRateableStuff', related_name='aspects')
 
     def get_description(self):
-        return super(NameableRateableStuff, self).get_description()
+        return _('Aspect named "%s"') % self.name
     description = property(get_description)
 
 
@@ -214,8 +232,8 @@ class AspectRate(Rate):
         return _('a rate of %(rate)d given by %(user)s for the "%(aspect_name)s" aspect of "%(subject_name)s"') % {
             'rate': self.theRate, 
             'user': self.createdBy.user.username, 
-            'aspect_name': aspect.name, 
-            'subject_name': subject.description
+            'aspect_name': self.aspect.name, 
+            'subject_name': self.subject.description
         }
     description = property(get_description)
 
@@ -231,7 +249,8 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
     @classmethod
     def get(cls, language_filter, name_slugged):
-        return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=name_slugged)
+        reslugged = i18n_slugify(name_slugged)
+        return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=reslugged)
 
     @classmethod
     def hotSubjects(cls, language_filter, days=1,  page=1,  max_subjects=20):
@@ -257,7 +276,7 @@ class ClassifiableRateableStuff(NameableRateableStuff):
             raise ClassifiableRateableStuff.NotSluggable()
         try:
             ClassifiableRateableStuff.get(language,  slugged)
-            raise AlreadyExists()
+            raise ClassifiableRateableStuff.AlreadyExists()
         except ClassifiableRateableStuff.DoesNotExist:
             pass
         new_subject = ClassifiableRateableStuff()
@@ -312,7 +331,7 @@ class Classification(RateableStuff):
     category = models.ForeignKey('ClassifiableRateableStuff', related_name='subjects')
 
     def get_description(self):
-        return _('Classification of "%(subject)s" as a "%(category)s"') % {'subject': subject.name,  'category': category.name}
+        return _('Classification of "%(subject)s" as a "%(category)s"') % {'subject': self.subject.name,  'category': self.category.name}
     description = property(get_description)
 
     def get_marker(self):
@@ -329,7 +348,7 @@ class Definition(RateableStuff):
     subject = models.ForeignKey('ClassifiableRateableStuff', related_name='definitions')
 
     def get_description(self):
-        return _('Definition of "%(subject)s" as "%(definition)s"') % { 'subject': subject.name,  'definition': theDefinition }
+        return _('Definition of "%(subject)s" as "%(definition)s"') % { 'subject': self.subject.name,  'definition': self.theDefinition }
     description = property(get_description)
 
 
@@ -361,7 +380,7 @@ class RateableUser(RateableStuff):
     # TODO: Add support to user profile (language, rated content, picture)
 
     def get_description(self):
-        return _('user "%s"') % user.username
+        return _('user "%s"') % self.user.username
     description = property(get_description)
 
     def __unicode__(self):

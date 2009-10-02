@@ -6,7 +6,7 @@ from front.models import *
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render_to_response,  redirect
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
@@ -16,7 +16,7 @@ RATEABLE_USER = 'rateable_user'
 
 
 
-def __current_language(request):
+def _current_language(request):
     cl = settings.RATONATOR_DEFAULT_LANGUAGE
     if CURRENT_LANGUAGE in request.session and request.session[CURRENT_LANGUAGE]:
         cl = request.session[CURRENT_LANGUAGE]
@@ -27,35 +27,37 @@ def __current_language(request):
 
 
 
-def __general_forms(request):
+def _general_forms(request):
     (search_form, logon_form) = (SearchForm(auto_id="search_form_%s"), LogonForm(auto_id="logon_form_%s"))
     return (search_form, logon_form)
 
 
 
 def index(request,  language_code):
-    (search_form, logon_form) = __general_forms(request)
-    return __index(request, search_form, logon_form)
+    (search_form, logon_form) = _general_forms(request)
+    return _index(request, language_code, search_form, logon_form)
     #Historic response:
     #return HttpResponse("Rate-o-nator (aka Ratonator) up and running!")
     
     
     
 def root(request):
-    return redirect('front.views.index',  language_code=__current_language(request))
+    return redirect('front.views.index',  language_code=_current_language(request))
 
 
 
-def __index(request, search_form, logon_form):
-    hot_subjects = ClassifiableRateableStuff.hotSubjects(__current_language(request))
-    top_subjects = ClassifiableRateableStuff.topSubjects(__current_language(request))
-    new_subjects = ClassifiableRateableStuff.newSubjects(__current_language(request))
-    return render_to_response("index.html", locals(), context_instance=RequestContext(request))
+def _index(request, language_code, search_form, logon_form):
+    if not language_code == _current_language(request):
+        return _set_language(request,  language_code, redirect('front.views.index',  language_code=language_code))
+    hot_subjects = ClassifiableRateableStuff.hotSubjects(language_code)
+    top_subjects = ClassifiableRateableStuff.topSubjects(language_code)
+    new_subjects = ClassifiableRateableStuff.newSubjects(language_code)
+    return _set_language(request, language_code, render_to_response("index.html", locals(), context_instance=RequestContext(request)))
 
 
 
 def addSubject(request):
-    (search_form, logon_form) = __general_forms(request)
+    (search_form, logon_form) = _general_forms(request)
     if not request.method == 'POST':
         add_subject_form = AddSubjectForm(auto_id="add_subject_form_%s")
         return render_to_response('addSubject.html', locals(), context_instance=RequestContext(request))
@@ -66,7 +68,7 @@ def addSubject(request):
     new_name = add_subject_form.cleaned_data['name']
 
     try:
-        new_subject = ClassifiableRateableStuff.addSubject(new_name, __current_language(request), request.session[RATEABLE_USER], add_subject_form.cleaned_data['definition'])
+        new_subject = ClassifiableRateableStuff.addSubject(new_name, _current_language(request), request.session[RATEABLE_USER], add_subject_form.cleaned_data['definition'])
     except ClassifiableRateableStuff.NotSluggable:
         add_subject_form.errors['name'] = [ _('"%s" is not a valid subject name') % new_name ]
         return render_to_response('addSubject.html', locals(), context_instance=RequestContext(request))
@@ -78,9 +80,9 @@ def addSubject(request):
 
 
 
-def addDefinition(request, language_code, subject_name_slugged):
-    subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
-    (search_form, logon_form) = __general_forms(request)
+def addDefinition(request, rateable_uuid):
+    subject = ClassifiableRateableStuff.objects.get(uuid=rateable_uuid)
+    (search_form, logon_form) = _general_forms(request)
     if not request.method == 'POST':
         add_definition_form = AddDefinitionForm(auto_id="add_definition_form_%s")
         return render_to_response('addDefinition.html', locals(), context_instance=RequestContext(request))
@@ -96,31 +98,13 @@ def addDefinition(request, language_code, subject_name_slugged):
 
 
 
-def addRate(request, language_code, subject_name_slugged):
-    try:
-        subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
-    except ClassifiableRateableStuff.DoesNotExist:
-        return __subject_does_not_exist(request, language_code, subject_name_slugged)
-    return add_rate(request,  'classifiable',  subject.uuid)
+def add_rate_with_parameters(request,  rateable_uuid):
+    return add_rate(request,  rateable_uuid)
 
 
-
-def add_rate_with_parameters(request,  rateable_class,  rateable_uuid):
-    return add_rate(request,  rateable_class,  rateable_uuid)
-
-
-RATEABLE_CLASSES = [ 'classifiable',  'rate',  'classification',  'definition',  'user' ]
-def add_rate(request,  rateable_class,  rateable_uuid):
-    (search_form, logon_form) = __general_forms(request)
-    if rateable_class not in RATEABLE_CLASSES:
-        return HttpResponse('Bad request!')
-    subject = None
-    # TODO: Move this logic to RateableStuff.AddRate()
-    if rateable_class == 'classifiable':
-        subject = ClassifiableRateableStuff.objects.get(uuid=rateable_uuid)
-    if rateable_class == 'rate':
-        subject = Rate.objects.get(uuid=rateable_uuid)
-
+def add_rate(request,  rateable_uuid):
+    (search_form, logon_form) = _general_forms(request)
+    subject = RateableStuff.objects.get(uuid=rateable_uuid).downclassed
     rateable_description = subject.description
 
     if not request.method == 'POST':
@@ -138,12 +122,12 @@ def add_rate(request,  rateable_class,  rateable_uuid):
 
 
 
-def addCategory(request, language_code, subject_name_slugged):
+def addCategory(request, rateable_uuid):
     try:
-        subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
+        subject = ClassifiableRateableStuff.objects.get(uuid=rateable_uuid)
     except ClassifiableRateableStuff.DoesNotExist:
-        return __subject_does_not_exist(request, language_code, subject_name_slugged)
-    (search_form, logon_form) = __general_forms(request)
+        return _subject_does_not_exist(request, _current_language(request), rateable_uuid)
+    (search_form, logon_form) = _general_forms(request)
     if not request.method == 'POST':
         add_category_form = AddCategoryForm(auto_id="add_category_form_%s")
         return render_to_response('addCategory.html', locals(), context_instance=RequestContext(request))
@@ -159,30 +143,33 @@ def addCategory(request, language_code, subject_name_slugged):
 
 
 
+# Deprecated, permanent
 def subject_old(request,  language_code,  subject_name_slugged):
     return redirect('front.views.subject',  language_code=language_code,  subject_name_slugged=subject_name_slugged,  permanent=True)
 
 
 
 def subject(request, language_code, subject_name_slugged):
+    re_slugged = i18n_slugify(subject_name_slugged)
+    if not language_code == _current_language(request):
+        return _set_language(request,  language_code, redirect('front.views.subject',  language_code=language_code,  subject_name_slugged=re_slugged,  permanent=True))
     try:
-        re_slugged = i18n_slugify(subject_name_slugged)
         if re_slugged != subject_name_slugged: # provavel url informada pelo usuario
             return redirect('front.views.subject',  language_code=language_code,  subject_name_slugged=re_slugged,  permanent=True)
         subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
         if subject.nameSlugged != subject_name_slugged: # provavel url informada pelo usuario
             return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged,  permanent=True)
     except ClassifiableRateableStuff.DoesNotExist:
-        return __subject_does_not_exist(request,  language_code, subject_name_slugged)
-    (search_form, logon_form) = __general_forms(request)
+        return _subject_does_not_exist(request,  language_code, subject_name_slugged)
+    (search_form, logon_form) = _general_forms(request)
     (definitions, rates, subjects_above, subjects_below) = subject.sample()
     return render_to_response("subject.html", locals(), context_instance=RequestContext(request))
 
 
 
-def __subject_does_not_exist(request,  language_code,  subject_name_slugged):
+def _subject_does_not_exist(request,  language_code,  subject_name_slugged):
     # TODO: Deal with subjects not found - see ambiguator? make a similarity check?
-    pass
+    return HttpResponseNotFound(render_to_response("404.html"))
 
 
 
@@ -192,23 +179,31 @@ def search(request):
 
 
 
+# Deprecated, permanent
 def language(request,  language_code):
-    request.session[CURRENT_LANGUAGE] = language_code
-    response = redirect('front.views.index',  language_code)
-    response.cookies[settings.LANGUAGE_COOKIE_NAME] = language_code
+    return redirect('front.views.index',  language_code,  permanent=True)
+
+
+
+# sets language on exit for language based pages
+def _set_language(request,  language_code,  response=None):
+    if not CURRENT_LANGUAGE in request.session or not request.session[CURRENT_LANGUAGE] == language_code:
+        request.session[CURRENT_LANGUAGE] = language_code
+    if not response == None:
+        if not settings.LANGUAGE_COOKIE_NAME in request.COOKIES or not request.COOKIES[settings.LANGUAGE_COOKIE_NAME] == language_code:
+            response.cookies[settings.LANGUAGE_COOKIE_NAME] = language_code
     return response
 
 
-
 def logoff(request):
-    language = __current_language(request)
+    language = _current_language(request)
     logout(request)
     return redirect('front.views.language',  language_code = language)
 
 
 
 def logon(request):
-    (search_form, logon_form) = __general_forms(request)
+    (search_form, logon_form) = _general_forms(request)
 
     if not request.method == 'POST':
         return redirect('front.views.root')
@@ -216,32 +211,32 @@ def logon(request):
     logon_form = LogonForm(request.POST,  auto_id="logon_form_%s")
 
     if not logon_form.is_valid():
-        return __index(request, search_form, logon_form)
+        return _index(request, _current_language(request), search_form, logon_form)
 
     user = authenticate(username=logon_form.cleaned_data['username'], password=logon_form.cleaned_data['password'])
 
     if user is None:
         logon_form.errors['username'] = [ _('Logon failure') ]
-        return __index(request, search_form, logon_form)
+        return _index(request, _current_language(request), search_form, logon_form)
 
     if not user.is_active or user.get_profile().validatedAt == None:
         logon_form.errors['username'] = [ _('Inactive account. Please check your email for activation instructions.') ]
-        return __index(request, search_form, logon_form)
+        return _index(request, _current_language(request), search_form, logon_form)
 
     login(request, user)
 
     rateable_user = user.get_profile()
     request.session[RATEABLE_USER] = rateable_user
-    request.session[CURRENT_LANGUAGE] = rateable_user.defaultLanguage
+    _set_language(request,  rateable_user.defaultLanguage)
     return redirect('front.views.index',  rateable_user.defaultLanguage)
 
 
 
 def register(request):
-    (search_form, logon_form) = __general_forms(request)
+    (search_form, logon_form) = _general_forms(request)
     if not request.method == 'POST':
         register_form = RegisterForm(auto_id="register_form_%s")
-        register_form.fields['preferred_language'].initial = __current_language(request)
+        register_form.fields['preferred_language'].initial = _current_language(request)
         return render_to_response('register.html', locals(), context_instance=RequestContext(request))
     register_form = RegisterForm(request.POST,  auto_id='register_form_%s')
     if not register_form.is_valid():
@@ -288,13 +283,13 @@ def registration_validation(request,  key):
     except UserValidation.ValidationException,  ex:
         title = _('Account activation error')
         messages = [ ex.message ]
-    (search_form, logon_form) = __general_forms(request)
+    (search_form, logon_form) = _general_forms(request)
     return render_to_response('messages.html',  locals(),  context_instance=RequestContext(request))
 
 
 
 def forgot_password(request):
-    (search_form, logon_form) = __general_forms(request)
+    (search_form, logon_form) = _general_forms(request)
     if not request.method == 'POST':
         forgot_password_form = ForgotPasswordForm(auto_id='forgot_password_form_%s')
         return render_to_response('forgot_password.html',  locals(),  context_instance=RequestContext(request))
@@ -319,7 +314,7 @@ def forgot_password(request):
 
 
 def password_reset(request,  key):
-    (search_form, logon_form) = __general_forms(request)
+    (search_form, logon_form) = _general_forms(request)
     if not request.method == 'POST':
         password_reset_form = PasswordResetForm(auto_id='password_reset_form_%s')
         password_reset_form.fields['key'].initial = key
@@ -356,7 +351,7 @@ class AddDefinitionForm(forms.Form):
 
 
 class AddRateForm(forms.Form):
-    rate = forms.ChoiceField(widget=forms.RadioSelect, choices=RATE_CHOICES, label=_("Rate"))
+    rate = forms.ChoiceField(widget=forms.RadioSelect, choices=RATE_CHOICES, label=_("Rate"),  initial=5)
     comments = forms.CharField(widget=forms.Textarea, label=_("Comments"))
 
 
