@@ -20,9 +20,8 @@ def _current_language(request):
     cl = settings.RATONATOR_DEFAULT_LANGUAGE
     if CURRENT_LANGUAGE in request.session and request.session[CURRENT_LANGUAGE]:
         cl = request.session[CURRENT_LANGUAGE]
-    elif settings.LANGUAGE_COOKIE_NAME in request.COOKIES and request.COOKIES[CURRENT_LANGUAGE]:
-        request.session[CURRENT_LANGUAGE] = request.COOKIES[CURRENT_LANGUAGE]
-        cl = request.COOKIES[settings.LANGUAGE_COOKIE_NAME]
+    elif settings.LANGUAGE_COOKIE_NAME in request.COOKIES and request.COOKIES[settings.LANGUAGE_COOKIE_NAME]:
+        cl = request.session[CURRENT_LANGUAGE] = request.COOKIES[settings.LANGUAGE_COOKIE_NAME]
     return cl
 
 

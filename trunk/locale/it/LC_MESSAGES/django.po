@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-19 12:00-0300\n"
-"PO-Revision-Date: 2009-09-17 13:45\n"
+"PO-Revision-Date: 2009-10-02 19:21\n"
 "Last-Translator: <flavio@moonlighting.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Translated-Using: django-rosetta 0.4.5.svn\n"
+"X-Translated-Using: django-rosetta 0.4.7\n"
 
 #: front/models.py:13
 msgid "Impossibly good"
@@ -190,12 +190,8 @@ msgid "ratonator - a rate for everything!"
 msgstr "ratonator - un tasso di tutto!"
 
 #: templates/master.html:59
-msgid ""
-"This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING "
-"PROPERLY"
-msgstr ""
-"Questo servizio è in alpha fase di avvio, ancora non completo, e non "
-"funziona correttamente"
+msgid "This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING PROPERLY"
+msgstr "Questo servizio è in alpha fase di avvio, ancora non completo, e non funziona correttamente"
 
 #: templates/master.html:74
 msgid "New subject"
@@ -238,14 +234,11 @@ msgstr "Soggetti"
 msgid "Nothing Below!"
 msgstr "Sotto niente!"
 
-#, fuzzy
 #~ msgid "Language selection"
 #~ msgstr "Lingua"
 
-#, fuzzy
 #~ msgid "Nothing to translate!"
-#~ msgstr "Nulla di cui sopra!"
+#~ msgstr "Nulla a tradurre!"
 
-#, fuzzy
 #~ msgid "Go"
-#~ msgstr "Buono"
+#~ msgstr "Andare"
