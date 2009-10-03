@@ -4,9 +4,24 @@ import re
 
 
 
+UNLOADED = 'unloaded'
 register = template.Library()
 # preloads
 follow_re = re.compile('follow=(True|False)')
+
+_rateable_template = UNLOADED
+def get_rateable_template():
+    global _rateable_template
+    if _rateable_template == UNLOADED:
+        _rateable_template = template.loader.get_template('rateable_tag.html')
+    return _rateable_template
+
+_rates_template = UNLOADED
+def get_rates_template():
+    global _rates_template
+    if _rates_template == UNLOADED:
+        _rates_template = template.loader.get_template('rates_tag.html')
+    return _rates_template
 
 
 
@@ -47,7 +62,6 @@ def rates(parser, token):
 
 
 
-rateable_template = None
 class RateableNode(template.Node):
 
     def __init__(self, subject_varname, follow):
@@ -62,14 +76,11 @@ class RateableNode(template.Node):
             'follow': self.follow
         })
         
-        # TODO: restore preload of template
-        #if rateable_template == None:
-        #    rateable_template = template.loader.get_template('rateable_tag.html')
-        return template.loader.get_template('rateable_tag.html').render(c)
+        return get_rateable_template().render(c)
 
 
 
-rates_template = None
+
 class RatesNode(template.Node):
 
     def __init__(self, subject_varname):
@@ -84,6 +95,5 @@ class RatesNode(template.Node):
             'rates': rates, 
             'user':self.user_ref.resolve(context)
         })
-        # TODO: restore preload of template
-        #if rates_template == None: rates_template = template.loader.get_template('rates_tag.html')
-        return template.loader.get_template('rates_tag.html').render(c)
+
+        return get_rates_template().render(c)
