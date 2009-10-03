@@ -148,13 +148,18 @@ def subject_old(request,  language_code,  subject_name_slugged):
 
 
 
+def rates(request,  rateable_uuid):
+    subject = RateableStuff.objects.get(uuid=rateable_uuid)
+    (search_form, logon_form) = _general_forms(request)
+    return render_to_response('rates.html',  locals(),  context_instance=RequestContext(request))
+    
+
+
 def subject(request, language_code, subject_name_slugged):
     re_slugged = i18n_slugify(subject_name_slugged)
     if not language_code == _current_language(request):
         return _set_language(request,  language_code, redirect('front.views.subject',  language_code=language_code,  subject_name_slugged=re_slugged,  permanent=True))
     try:
-        if re_slugged != subject_name_slugged: # provavel url informada pelo usuario
-            return redirect('front.views.subject',  language_code=language_code,  subject_name_slugged=re_slugged,  permanent=True)
         subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
         if subject.nameSlugged != subject_name_slugged: # provavel url informada pelo usuario
             return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged,  permanent=True)
@@ -168,6 +173,7 @@ def subject(request, language_code, subject_name_slugged):
 
 def _subject_does_not_exist(request,  language_code,  subject_name_slugged):
     # TODO: Deal with subjects not found - see ambiguator? make a similarity check?
+    (search_form, logon_form) = _general_forms(request)
     return HttpResponseNotFound(render_to_response("404.html"))
 
 
@@ -240,7 +246,7 @@ def register(request):
     register_form = RegisterForm(request.POST,  auto_id='register_form_%s')
     if not register_form.is_valid():
         return render_to_response('register.html', locals(), context_instance=RequestContext(request))
-    if register_form.cleaned_data['password1'] <> register_form.cleaned_data['password2']:
+    if register_form.cleaned_data['password1'] != register_form.cleaned_data['password2']:
         register_form.errors['password2'] = [ _('Passwords do not match') ]
         return render_to_response('register.html', locals(), context_instance=RequestContext(request))
     try:
@@ -396,6 +402,13 @@ class PasswordResetForm(forms.Form):
     key = forms.CharField(widget=forms.HiddenInput)
     password1 = forms.CharField(label=_('New Password'), max_length=32, widget=forms.PasswordInput)
     password2 = forms.CharField(label=_('Confirm'), max_length=32, widget=forms.PasswordInput)
+
+
+
+class UserProfile(forms.Form):
+    email = forms.EmailField(label=_("email"))
+    username = forms.CharField(label=_('Public username'), max_length=30)
+    preferred_language = forms.ChoiceField(label=_('Preferred language'),  choices=Language.choices())
 
 
 

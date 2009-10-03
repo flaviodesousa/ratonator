@@ -5,9 +5,11 @@ import re
 
 
 register = template.Library()
-
-
+# preloads
 follow_re = re.compile('follow=(True|False)')
+
+
+
 @register.tag
 def rateable(parser, token):
     try:
@@ -30,7 +32,22 @@ def rateable(parser, token):
 
 
 
-rateable_template = template.loader.get_template('rateable_template.html')
+@register.tag
+def rates(parser, token):
+    try:
+        tokens = token.split_contents()
+        if len(tokens) != 2:
+            raise ValueError
+    except ValueError:
+        raise template.TemplateSyntaxError,  "%r tag requires a single argument" % token.contents.split()[0]
+
+    subject_varname = tokens[1]
+
+    return RatesNode(subject_varname)
+
+
+
+rateable_template = None
 class RateableNode(template.Node):
 
     def __init__(self, subject_varname, follow):
@@ -39,11 +56,34 @@ class RateableNode(template.Node):
         self.follow = follow
 
     def render(self, context):
-        
         c = template.Context({
             'subject': self.subject_ref.resolve(context),
             'user': self.user_ref.resolve(context), 
             'follow': self.follow
         })
         
-        return rateable_template.render(c)
+        # TODO: restore preload of template
+        #if rateable_template == None:
+        #    rateable_template = template.loader.get_template('rateable_tag.html')
+        return template.loader.get_template('rateable_tag.html').render(c)
+
+
+
+rates_template = None
+class RatesNode(template.Node):
+
+    def __init__(self, subject_varname):
+        self.subject_ref = template.Variable(subject_varname)
+        self.user_ref = template.Variable('user')
+    
+    def render(self, context):
+        subject = self.subject_ref.resolve(context)
+        rates = subject.rates.all()
+        c = template.Context({
+            'subject':subject, 
+            'rates': rates, 
+            'user':self.user_ref.resolve(context)
+        })
+        # TODO: restore preload of template
+        #if rates_template == None: rates_template = template.loader.get_template('rates_tag.html')
+        return template.loader.get_template('rates_tag.html').render(c)

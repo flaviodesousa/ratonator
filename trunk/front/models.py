@@ -139,29 +139,14 @@ class RateableStuff(models.Model):
         try:
             return self.__downclassed_cache
         except AttributeError:
-            self.__downclassed_cache = ('unknown',  None)
-            try:
-                self.__downclassed_cache = ('subject',  ClassifiableRateableStuff.objects.get(id=self.id))
-            except ClassifiableRateableStuff.DoesNotExist:
+            for c in [ ClassifiableRateableStuff, Rate, Definition, RateableUser, Classification, AspectRate, Aspect, UserBio ]:
                 try:
-                    self.__downclassed_cache = ('rate',  Rate.objects.get(id=self.id))
-                except Rate.DoesNotExist:
-                    try:
-                        self.__downclassed_cache = ('definition',  Definition.objects.get(id=self.id))
-                    except Definition.DoesNotExist:
-                        try:
-                            self.__downclassed_cache = ('user',  RateableUser.objects.get(id=self.id))
-                        except RateableUser.DoesNotExist:
-                            try:
-                                self.__downclassed_cache = ('classification',  Classification.objects.get(id=self.id))
-                            except Classification.DoesNotExist:
-                                try:
-                                    self.__downclassed_cache = ('aspect_rate',  AspectRate.objects.get(id=self.id))
-                                except AspectRate.DoesNotExist:
-                                    try:
-                                        self.__downclassed_cache = ('aspect',  Aspect.objects.get(id=self.id))
-                                    except Aspect.DoesNotExist:
-                                        pass # use default value ('unknown', None)
+                    self.__downclassed_cache = (c.__class__.__name__,  c.objects.get(id=self.id))
+                    break
+                except c.DoesNotExist:
+                    continue
+            else:
+                self.__downclassed_cache = ('unknown',  self)
         return self.__downclassed_cache
     
     def get_downclassed(self):
@@ -173,7 +158,7 @@ class RateableStuff(models.Model):
     kind = property(get_kind)
 
     def get_description(self):
-        return self.downclassed.description
+        return "unknown id=%d" % self.id if self.downclassed == self else self.downclassed.description
     description = property(get_description)
 
 
@@ -249,8 +234,7 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
     @classmethod
     def get(cls, language_filter, name_slugged):
-        reslugged = i18n_slugify(name_slugged)
-        return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=reslugged)
+        return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=name_slugged)
 
     @classmethod
     def hotSubjects(cls, language_filter, days=1,  page=1,  max_subjects=20):
@@ -310,7 +294,8 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
     def addCategory(self, category_name, user):
         try:
-            adding_category = ClassifiableRateableStuff.get(self.language, category_name)
+            category_name_slugged = i18n_slugify(category_name)
+            adding_category = ClassifiableRateableStuff.get(self.language, category_name_slugged)
         except ClassifiableRateableStuff.DoesNotExist:
             adding_category = ClassifiableRateableStuff.addSubject(category_name, self.language, user)
         try:
@@ -416,10 +401,10 @@ class RateableUser(RateableStuff):
     def register_new_user(cls,  **kwargs):
         try:
             user = User.objects.get(username=kwargs['username'])
-            if user.email <> kwargs['email']:
+            if user.email != kwargs['email']:
                 raise RateableUser.ValidationException(property='username', messages=[ _('Username taken. Please, choose another one.')])
             rateable_user = user.get_profile()
-            if user.validatedAt <> None:
+            if user.validatedAt != None:
                 raise RateableUser.ValidationException(property='username', messages=[ _('Account already exists.'),  _('Have you forgotten your password?')])
             # account already created, but not yet validated. Allow resending validation email
         except User.DoesNotExist:
@@ -452,6 +437,15 @@ class RateableUser(RateableStuff):
 
 
 
+class UserBio(RateableStuff):
+    theBio = models.TextField()
+    user = models.OneToOneField('RateableUser', related_name='bio')
+
+    def get_description(self):
+        return _("Bio of user %(user)s") % {'user': user.user.username }
+    description = property(get_description)
+
+
 class UserValidation(models.Model):
     uuid = models.CharField(max_length=36, unique=True,  default=uuidMaker)
     requestedAt = models.DateTimeField(auto_now_add=True)
@@ -467,7 +461,7 @@ class UserValidation(models.Model):
         return self
     
     def end_account_validation_process(self):
-        if self.validatedAt <> None:
+        if self.validatedAt != None:
             raise UserValidation.ValidationException(message=_('Account already validated.'))
         if self.expiresAt < datetime.datetime.now():
             raise UserValidation.ValidationException(message=_('This validation link has been expired. Please try registering again.'))
@@ -522,7 +516,7 @@ class PasswordResetRequest(models.Model):
                 property='password1', 
                 messages=[ _('This password reset request was already consumed. '),  _('Request another one if you still want to reset your password.') ]
             )
-        if password1 <> password2:
+        if password1 != password2:
             raise PasswordResetRequest.ValidationException(
                 property='password2', 
                 messages=[ _('Passwords do not match') ]

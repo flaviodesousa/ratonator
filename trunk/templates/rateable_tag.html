@@ -1,7 +1,11 @@
 {% load i18n %}
 <span id="sub{{ subject.uuid }}" class="rateable">
     {% if subject.theRate %}
-        <span class="rateable_rate">{{ subject.theRate }}</span>
+        {% if subject.superseded %}
+            <span class="rateable_rate"><span class="rateable_rate_superseded">&nbsp;{{ subject.theRate }}&nbsp;</span></span>
+        {% else %}
+            <span class="rateable_rate">&nbsp;{{ subject.theRate }}&nbsp;</span>
+        {% endif %}
     {% endif %}
     {% if subject.name %}
         {% if follow %}
@@ -23,6 +27,6 @@
     {% else %}
         <span class="rateable_average">{{ subject.average_rate|default:"&mdash;" }}</span>
     {% endif %}
-    <span class="rateable_votes">{{ subject.rate_count }}</span>
+    <span class="rateable_votes"><a href="{% url front.views.rates subject.uuid %}">{{ subject.rate_count }}</a></span>
     <span class="rateable_creator">{{ subject.createdBy.user.username }}</span>
 </span>

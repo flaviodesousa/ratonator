@@ -2,44 +2,17 @@
 {% load i18n %}
 {% load ratonator %}
 
-{% block title %} &mdash; {{ subject.name }} ({{ subject.language }}) {% endblock %}
+{% block title %} &mdash;{% if subject.name %} {{ subject.name }} ({{ subject.language }}){% endif %} {% trans 'Votes' %}{% endblock %}
 
 {% block inside_head %}
-
     <style type="text/css">
-        #subject_subject {
-            background-color: silver;
-            float: left;
-        }
-
-        #subject_subject a:visited {
-            color: #707070;
-        }
-
-        #subject_categories, #subject_subjectDetails, #subject_subjects {
-            float: left;
-            margin: 5px;
-            padding: 5px;
-            border: 2px solid #AAAAAA;
-            background-color: white;
-        }
-
-        #subject_categories, #subject_subjects {
-            width: 20%;
-        }
-
-        #subject_subjectDetails {
-            width: 40% 
-        }
     </style>
     <script type="text/javascript">
     $(document).ready();
     </script>
-
 {% endblock %}
 
 {% block body %}
-
     <div id="subject_subject">
     
         <div id="subject_categories">

@@ -1,0 +1,13 @@
+{% load i18n %}
+{% load ratonator %}
+
+{% if rates %}
+    <ul class="rates_level">
+    {% for rate in rates %}
+        <li>
+            {% rateable rate %}
+            {% rates rate %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
