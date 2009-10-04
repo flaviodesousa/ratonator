@@ -1,0 +1,27 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block title %} &mdash; {% trans 'Password reset request' %}{% endblock %}
+
+{% block body %}
+    <div id="user_profile">
+        <div id="user_profile_profile">
+            <h2>{{ user.username }} {% trans 'Profile' %}</h2>
+            <form method="post" action="{% url front.views.user_profile 'Profile' %}">
+                <ul>
+                    {{ user_profile_form.as_ul }}
+                </ul>
+                <input type="submit" name="submit" value="{% trans 'Change' %}" />
+            </form>
+        </div>
+        <div id="user_profile_change_password">
+            <h2>{% trans 'Password Change' %}</h2>
+            <form method="post" action="{% url front.views.user_profile 'Password' %}">
+                <ul>
+                    {{ password_change_form.as_ul }}
+                </ul>
+                <input type="submit" name="submit" value="{% trans 'Change' %}" />
+            </form>
+        </div>
+    </div>
+{% endblock %}

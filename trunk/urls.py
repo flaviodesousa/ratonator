@@ -12,8 +12,10 @@ urlpatterns = patterns('',
     (r'^(?P<language_code>[a-z]{2})/(?P<subject_name_slugged>[^/]+)$', 'front.views.subject'),
     (r'^(?P<language_code>[a-z]{2})/subject/(?P<subject_name_slugged>[^/]+)$', 'front.views.subject_old'), # deprecated, permanent
     (r'^(?P<rateable_uuid>[a-f0-9-]+)/rates',  'front.views.rates'), 
+    (r'^User/(?P<username>[^/]+)$',  'front.views.user'), 
     (r'^SetLanguage/(?P<language_code>[a-z]{2})$', 'front.views.language'), # deprecated, permanent
     (r'^Action/AddSubject$', 'front.views.addSubject'),
+    (r'^Action/(?P<scope>[^/]+)/UserProfile',  'front.views.user_profile'), 
     (r'^Action/Logon', 'front.views.logon'),
     (r'^Action/Logoff', 'front.views.logoff'),
     (r'^Action/Search', 'front.views.search'),

@@ -367,6 +367,13 @@ class RateableUser(RateableStuff):
     def get_description(self):
         return _('user "%s"') % self.user.username
     description = property(get_description)
+    
+    def update_profile(self, new_preferred_language):
+        self.defaultLanguage = new_preferred_language
+        self.save()
+    
+    def get_contributions(self,  page=0,  page_size=20):
+        return self.additions.order_by('-createdAt')[page * page_size:(page + 1) * page_size - 1]
 
     def __unicode__(self):
         return 'RateableUser{defaultLanguage="%s",validatedAt="%s",lastLoggedOnAt="%s",user=[%s],super=[%s]}' % (self.defaultLanguage,self.validatedAt,self.lastLoggedOnAt,self.user,RateableStuff.__unicode__(self))

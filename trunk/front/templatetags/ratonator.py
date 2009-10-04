@@ -6,22 +6,24 @@ import re
 
 UNLOADED = 'unloaded'
 register = template.Library()
+
 # preloads
-follow_re = re.compile('follow=(True|False)')
 
-_rateable_template = UNLOADED
-def get_rateable_template():
-    global _rateable_template
-    if _rateable_template == UNLOADED:
-        _rateable_template = template.loader.get_template('rateable_tag.html')
-    return _rateable_template
+_FOLLOW_RE = re.compile('follow=(True|False)')
 
-_rates_template = UNLOADED
-def get_rates_template():
-    global _rates_template
-    if _rates_template == UNLOADED:
-        _rates_template = template.loader.get_template('rates_tag.html')
-    return _rates_template
+_RATEABLE_TEMPLATE = UNLOADED
+def get_RATEABLE_TEMPLATE():
+    global _RATEABLE_TEMPLATE
+    if _RATEABLE_TEMPLATE == UNLOADED:
+        _RATEABLE_TEMPLATE = template.loader.get_template('rateable_tag.html')
+    return _RATEABLE_TEMPLATE
+
+_RATES_TEMPLATE = UNLOADED
+def get_RATES_TEMPLATE():
+    global _RATES_TEMPLATE
+    if _RATES_TEMPLATE == UNLOADED:
+        _RATES_TEMPLATE = template.loader.get_template('rates_tag.html')
+    return _RATES_TEMPLATE
 
 
 
@@ -38,7 +40,7 @@ def rateable(parser, token):
     follow = False
     
     if len(tokens) > 2:
-        follow_match = follow_re.match(tokens[2])
+        follow_match = _FOLLOW_RE.match(tokens[2])
         if not follow_match:
             raise template.TemplateSyntaxError, "%r tag 2nd argument is follow=(True|False)" % token.contents.split()[0]
         follow = follow_match.group(1) == 'True'
@@ -76,7 +78,7 @@ class RateableNode(template.Node):
             'follow': self.follow
         })
         
-        return get_rateable_template().render(c)
+        return get_RATEABLE_TEMPLATE().render(c)
 
 
 
@@ -96,4 +98,4 @@ class RatesNode(template.Node):
             'user':self.user_ref.resolve(context)
         })
 
-        return get_rates_template().render(c)
+        return get_RATES_TEMPLATE().render(c)

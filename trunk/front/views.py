@@ -244,6 +244,51 @@ def logon(request):
 
 
 
+def user(request,  username):
+    (search_form, logon_form) = _general_forms(request)
+    rateable_user = request.session[RATEABLE_USER]
+    contributions = rateable_user.get_contributions()
+    return render_to_response('user.html',  locals(),  context_instance=RequestContext(request))
+
+
+
+def user_profile(request, scope):
+    if request.method != 'POST':
+        rateable_user = request.session[RATEABLE_USER]
+        user_profile_form = UserProfileForm(auto_id="user_profile_form_%s")
+        user_profile_form.fields['preferred_language'].initial = rateable_user.defaultLanguage
+        #user_profile_form.fields['email'].initial = rateable_user.user.email
+        #user_profile_form.fields['username'].initial = rateable_user.user.username
+        password_change_form = PasswordChangeForm(auto_id="password_change_form_%s")
+        (search_form, logon_form) = _general_forms(request)
+        return render_to_response('user_profile.html',  locals(),  context_instance=RequestContext(request))
+    if scope=='Profile':
+        return _update_profile(request)
+    elif scope=='Password':
+        return _update_password(request)
+    else:
+        raise ValueError,  "Unexpected scope '%s'" % scope
+
+
+
+def _update_profile(request):
+    user_profile_form = UserProfileForm(request.POST,  auto_id="user_profile_form_%s")
+    password_change_form = PasswordChangeForm(auto_id="password_change_form_%s")
+    if not user_profile_form.is_valid():
+        return render_to_response('user_profile.html',  locals(),  context_instance=RequestContext(request))
+    rateable_user = request.session[RATEABLE_USER]
+    rateable_user.update_profile(user_profile_form.cleaned_data['preferred_language'])
+    title = _('Profile updated')
+    messages = [_('Your profile was updated')]
+    return render_to_response('messages.html',  locals(),  context_instance=RequestContext(request))    
+
+
+
+def _update_password(request):
+    pass
+
+
+
 def register(request):
     (search_form, logon_form) = _general_forms(request)
     if not request.method == 'POST':
@@ -412,9 +457,9 @@ class PasswordResetForm(forms.Form):
 
 
 
-class UserProfile(forms.Form):
-    email = forms.EmailField(label=_("email"))
-    username = forms.CharField(label=_('Public username'), max_length=30)
+class UserProfileForm(forms.Form):
+    #email = forms.EmailField(label=_("email"))
+    #username = forms.CharField(label=_('Public username'), max_length=30)
     preferred_language = forms.ChoiceField(label=_('Preferred language'),  choices=Language.choices())
 
 

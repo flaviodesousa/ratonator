@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block title %} &mdash; {% trans 'Password reset request' %}{% endblock %}
+
+{% block body %}
+    <div id="user">
+        <h2>{{ rateable_user.user.username }}</h2>
+        <h3>{% trans 'Contributions' %}</h3>
+        {% if contributions %}
+            <ul>
+                {% for contribution in contributions %}
+                    <li>{{ contribution.description }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>{% trans 'No contributions yet!' %}</p>
+        {% endif %}
+    </div>
+{% endblock %}

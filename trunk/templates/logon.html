@@ -2,7 +2,8 @@
 
 <div id="logon">
     {% if user.is_authenticated %}
-        <div id="logon_user_logged">{{ user.username }} <a href="{% url front.views.logoff %}">{% trans 'Logout' %}</a></div>
+        <p id="logon_user_logged"><a href="{% url front.views.user user.username %}">{{ user.username }}</a> <a href="{% url front.views.user_profile 'Show' %}">{% trans 'Profile' %}</a> <a href="{% url front.views.logoff %}">{% trans 'Logout' %}</a>
+        </p>
     {% else %}
         <div id="logon_form">
             <form action="{% url front.views.logon %}" method="post">
