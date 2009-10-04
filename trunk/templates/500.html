@@ -1,12 +1,16 @@
-{% extends "master.html" %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 {% load i18n %}
-
-{% block title %} &mdash; {% trans '500 Server Error' %}{% endblock %}
-
-{% block body %}
-    <h1>500 Server Error</h1>
-    <h2>{% trans 'Yes, we are sloppy...' %}</h2>
-    <p>{% trans "Someone made something stupid, an email is now being sent to the Boss and all hell is about to break loose... Business as usual!" %}</p>
-    <p>{% trans "If this problem caused you to lose an unreplaceable piece of inspiration or something you have been painfully typing for the last hours or well... Someone is, at this very moment, sharing your pain!" %}</p>
-    <p>{% trans "The problem information has been collected and is now being analyzed " %}</p>
-{% endblock %}
+<!-- spaceless -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ratonator.com - 500 Server Error</title>
+    </head>
+    <body>
+        <h1>500 Server Error</h1>
+        <h2>{% trans 'Yes, we are sloppy...' %}</h2>
+        <p>{% trans "Someone made something stupid, an email is now being sent to the Boss and all hell is about to break loose... Business as usual!" %}</p>
+        <p>{% trans "If this problem caused you to lose an unreplaceable piece of inspiration or something you have been painfully typing for the last hours or well... anything. Someone is, at this very moment, sharing your pain!" %}</p>
+        <p>{% trans "The problem information has been collected and is now being analyzed " %}</p>
+    </body>
+</html>
+<!-- endspaceless -->

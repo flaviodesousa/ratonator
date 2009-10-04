@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render_to_response,  redirect
 from django.template import RequestContext
+from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
 CURRENT_LANGUAGE = 'django_language'
@@ -29,14 +30,6 @@ def _current_language(request):
 def _general_forms(request):
     (search_form, logon_form) = (SearchForm(auto_id="search_form_%s"), LogonForm(auto_id="logon_form_%s"))
     return (search_form, logon_form)
-
-
-
-def index(request,  language_code):
-    (search_form, logon_form) = _general_forms(request)
-    return _index(request, language_code, search_form, logon_form)
-    #Historic response:
-    #return HttpResponse("Rate-o-nator (aka Ratonator) up and running!")
     
     
     
@@ -45,13 +38,21 @@ def root(request):
 
 
 
+def index(request,  language_code):
+    (search_form, logon_form) = _general_forms(request)
+    return _index(request, language_code, search_form, logon_form)
+    #Historic response:
+    #return HttpResponse("Rate-o-nator (aka Ratonator) up and running!")
+
+
+
 def _index(request, language_code, search_form, logon_form):
-    if not language_code == _current_language(request):
-        return _set_language(request,  language_code, redirect('front.views.index',  language_code=language_code))
+    if language_code != _current_language(request):
+        _activate_language(request,  language_code)
     hot_subjects = ClassifiableRateableStuff.hotSubjects(language_code)
     top_subjects = ClassifiableRateableStuff.topSubjects(language_code)
     new_subjects = ClassifiableRateableStuff.newSubjects(language_code)
-    return _set_language(request, language_code, render_to_response("index.html", locals(), context_instance=RequestContext(request)))
+    return _set_language(request,  language_code,  render_to_response("index.html", locals(), context_instance=RequestContext(request)))
 
 
 
@@ -157,17 +158,17 @@ def rates(request,  rateable_uuid):
 
 def subject(request, language_code, subject_name_slugged):
     re_slugged = i18n_slugify(subject_name_slugged)
-    if not language_code == _current_language(request):
+    if subject_name_slugged != re_slugged: # provavel url informada pelo usuario
         return _set_language(request,  language_code, redirect('front.views.subject',  language_code=language_code,  subject_name_slugged=re_slugged,  permanent=True))
+    if language_code != _current_language(request):
+        _activate_language(request,  language_code)
     try:
-        subject = ClassifiableRateableStuff.get(language_code, subject_name_slugged)
-        if subject.nameSlugged != subject_name_slugged: # provavel url informada pelo usuario
-            return redirect('front.views.subject',  language_code=subject.language,  subject_name_slugged=subject.nameSlugged,  permanent=True)
+        subject = ClassifiableRateableStuff.get(language_code, re_slugged)
     except ClassifiableRateableStuff.DoesNotExist:
         return _subject_does_not_exist(request,  language_code, subject_name_slugged)
     (search_form, logon_form) = _general_forms(request)
     (definitions, rates, subjects_above, subjects_below) = subject.sample()
-    return render_to_response("subject.html", locals(), context_instance=RequestContext(request))
+    return _set_language(request,  language_code, render_to_response("subject.html", locals(), context_instance=RequestContext(request)))
 
 
 
@@ -186,13 +187,20 @@ def search(request):
 
 # Deprecated, permanent
 def language(request,  language_code):
-    return redirect('front.views.index',  language_code,  permanent=True)
+    return _set_language(request,  language_code,  redirect('front.views.index',  language_code,  permanent=True))
+
+
+
+def _activate_language(request,  language_code):
+    translation.activate(language_code)
+    request.LANGUAGE_CODE = translation.get_language()
 
 
 
 # sets language on exit for language based pages
-def _set_language(request,  language_code,  response=None):
-    if not CURRENT_LANGUAGE in request.session or not request.session[CURRENT_LANGUAGE] == language_code:
+def _set_language(request,  language_code,  response):
+    _activate_language(request,  language_code)
+    if not CURRENT_LANGUAGE in request.session or request.session[CURRENT_LANGUAGE] != language_code:
         request.session[CURRENT_LANGUAGE] = language_code
     if not response == None:
         if not settings.LANGUAGE_COOKIE_NAME in request.COOKIES or not request.COOKIES[settings.LANGUAGE_COOKIE_NAME] == language_code:
@@ -232,8 +240,7 @@ def logon(request):
 
     rateable_user = user.get_profile()
     request.session[RATEABLE_USER] = rateable_user
-    _set_language(request,  rateable_user.defaultLanguage)
-    return redirect('front.views.index',  rateable_user.defaultLanguage)
+    return _set_language(request,  rateable_user.defaultLanguage, redirect('front.views.index',  rateable_user.defaultLanguage))
 
 
 
