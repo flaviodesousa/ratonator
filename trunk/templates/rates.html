@@ -1,0 +1,25 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load ratonator %}
+
+{% block title %} &mdash;{% if subject.name %} {{ subject.name }} ({{ subject.language }}) &mdash;{% endif %} {% trans 'Votes' %}{% endblock %}
+
+{% block inside_head %}
+    <style type="text/css">
+        .rates_level { margin: 20px; }
+    </style>
+    <script type="text/javascript">
+    $(document).ready();
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div id="rates">
+        <h1>{% trans 'Votes for' %} {{ subject.description }}</h1>
+        {% if subject.rates %}
+            {% rates subject %}
+        {% else %}
+            <p>{% trans 'There are no votes for it yet' %}</p>
+        {% endif %}
+    </div>
+{% endblock %}

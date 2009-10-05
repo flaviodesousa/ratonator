@@ -246,7 +246,10 @@ def logon(request):
 
 def user(request,  username):
     (search_form, logon_form) = _general_forms(request)
-    rateable_user = request.session[RATEABLE_USER]
+    try:
+        rateable_user = User.objects.get(username=username).get_profile()
+    except User.DoesNotExist:
+        return HttpResponseNotFound(render_to_response("404.html"))        
     contributions = rateable_user.get_contributions()
     return render_to_response('user.html',  locals(),  context_instance=RequestContext(request))
 

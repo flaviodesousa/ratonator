@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load ratonator %}
 
-{% block title %} &mdash;{% if subject.name %} {{ subject.name }} ({{ subject.language }}){% endif %} {% trans 'Votes' %}{% endblock %}
+{% block title %} &mdash; {{ subject.name }} ({{ subject.language }}){% endblock %}
 
 {% block inside_head %}
     <style type="text/css">

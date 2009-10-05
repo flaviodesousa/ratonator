@@ -237,10 +237,10 @@ class ClassifiableRateableStuff(NameableRateableStuff):
         return ClassifiableRateableStuff.objects.filter(language=language_filter).get(nameSlugged=name_slugged)
 
     @classmethod
-    def hotSubjects(cls, language_filter, days=1,  page=1,  max_subjects=20):
-        one_day_ago = datetime.datetime.now() + datetime.timedelta(days=-days)
+    def hotSubjects(cls, language_filter, days=30,  page=1,  max_subjects=20):
+        sampling_start = datetime.datetime.now() + datetime.timedelta(days=-days)
         slice = (page - 1) * max_subjects
-        return ClassifiableRateableStuff.objects.filter(language=language_filter).filter(lastTouchedAt__gte = one_day_ago).filter(rates__superseder__isnull=True).annotate(hotness=Sum('rates__theRate')).filter(hotness__isnull=False).order_by('-hotness')
+        return ClassifiableRateableStuff.objects.filter(language=language_filter).filter(lastTouchedAt__gte = sampling_start).filter(rates__superseder__isnull=True).annotate(hotness=Sum('rates__theRate')).filter(hotness__isnull=False).order_by('-hotness')
 
     @classmethod
     def newSubjects(cls, language_filter, page=1,  max_subjects=100):

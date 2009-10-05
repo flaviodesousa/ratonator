@@ -1,7 +1,7 @@
 {% extends "master.html" %}
 {% load i18n %}
 
-{% block title %} &mdash; {% trans 'Password reset request' %}{% endblock %}
+{% block title %} &mdash; '{{ rateable_user.user.username }}'{% endblock %}
 
 {% block body %}
     <div id="user">
