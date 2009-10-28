@@ -14,8 +14,7 @@
             </form>
         </div>
         <div id="logon_services">
-            <a href="{% url front.views.register %}">{% trans 'Register' %}</a>
-            <a href="{% url front.views.forgot_password %}">{% trans 'Forgot password?' %}</a>
+            <a href="{% url front.views.register %}">{% trans 'Register' %}</a>&nbsp;<a href="{% url front.views.forgot_password %}">{% trans 'Forgot password?' %}</a>
         </div>
     {% endif %}
 </div>

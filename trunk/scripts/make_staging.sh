@@ -73,6 +73,15 @@ sed -e 's/DEBUG = True/DEBUG = False/' < ${staging_path}/${project_dir}/settings
     mv -f ${temp}/settings.py-new ${staging_path}/${project_dir}/settings.py
 sed -e 's/<!-- \(.*\)spaceless -->/{% \1spaceless %}/' < ${staging_path}/${project_dir}/templates/master.html > ${temp}/master.html-new &&
     mv -f ${temp}/master.html-new ${staging_path}/${project_dir}/templates/master.html
+cd 
+for h in ${staging_path}/${project_dir}/templates/*html ${staging_path}/${project_dir}/static/cacheable/__v_e_r_s_i_o_n__/css/*css ${staging_path}/${project_dir}/static/cacheable/__v_e_r_s_i_o_n__/js/thickbox/*js
+do
+    echo $h
+    [ -f $h ] &&
+        sed -e "s/__v_e_r_s_i_o_n__/${dateref}/g" < $h > ${h}-new &&
+        mv -f ${h}-new $h
+done
+mv ${staging_path}/${project_dir}/static/cacheable/__v_e_r_s_i_o_n__ ${staging_path}/${project_dir}/static/cacheable/${dateref}
 
 echo Packaging deployment
 cd ${staging_path} && \

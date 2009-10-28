@@ -3,12 +3,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-02 18:10-0300\n"
+"POT-Creation-Date: 2009-10-26 15:41-0200\n"
 "PO-Revision-Date: 2009-10-02 19:19\n"
 "Last-Translator: <flavio@moonlighting.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,246 +61,271 @@ msgstr "Pior de todos"
 msgid "Impossibly bad"
 msgstr "Impossivelmente ruim"
 
-#: front/models.py:188
+#: front/models.py:173
 #, python-format
 msgid "a rate of %(rate)d given by %(user)s to %(subject)s"
 msgstr "Nota %(rate)d dada por %(user)s ao tema \"%(subject)s\""
 
-#: front/models.py:207
+#: front/models.py:192
 #, python-format
 msgid "Unqualified named \"%s\""
 msgstr "** tema \"%s\""
 
-#: front/models.py:222
+#: front/models.py:207
 #, python-format
 msgid "Aspect named \"%s\""
 msgstr "Aspecto \"%s\""
 
-#: front/models.py:232
+#: front/models.py:217
 #, python-format
-msgid "a rate of %(rate)d given by %(user)s for the \"%(aspect_name)s\" aspect of \"%(subject_name)s\""
-msgstr "Nota %(rate)d data por %(user)s no aspecto \"%(aspect_name)s\" do tema \"%(subject_name)s\""
+msgid ""
+"a rate of %(rate)d given by %(user)s for the \"%(aspect_name)s\" aspect of "
+"\"%(subject_name)s\""
+msgstr ""
+"Nota %(rate)d data por %(user)s no aspecto \"%(aspect_name)s\" do tema \"%"
+"(subject_name)s\""
 
-#: front/models.py:334
+#: front/models.py:319
 #, python-format
 msgid "Classification of \"%(subject)s\" as a \"%(category)s\""
 msgstr "Classificação de \"%(subject)s\" dentro da categoria \"%(category)s\""
 
-#: front/models.py:351
+#: front/models.py:336
 #, python-format
 msgid "Definition of \"%(subject)s\" as \"%(definition)s\""
 msgstr "Definição do tema \"%(subject)s\" como \"%(definition)s\""
 
-#: front/models.py:383
+#: front/models.py:368
 #, python-format
 msgid "user \"%s\""
 msgstr "Usuário \"%s\""
 
-#: front/models.py:420
+#: front/models.py:412
 msgid "Username taken. Please, choose another one."
-msgstr "\"Esse nome de usuário já está em uso por alguém com outro email. Escolha outro, por favor\""
+msgstr ""
+"\"Esse nome de usuário já está em uso por alguém com outro email. Escolha "
+"outro, por favor\""
 
-#: front/models.py:423
+#: front/models.py:415
 msgid "Account already exists."
 msgstr "Essa conta já foi criada"
 
-#: front/models.py:423
+#: front/models.py:415
 msgid "Have you forgotten your password?"
 msgstr "Se você esqueceu sua senha, você pode criar uma nova."
 
-#: front/models.py:471
+#: front/models.py:452
+#, python-format
+msgid "Bio of user %(user)s"
+msgstr ""
+
+#: front/models.py:472
 msgid "Account already validated."
 msgstr "Essa conta já foi ativada. Pode começar a usá-la!"
 
-#: front/models.py:473
+#: front/models.py:474
 msgid "This validation link has been expired. Please try registering again."
 msgstr "Esse link de ativação expirou. Registre-se novamente, por favor."
 
-#: front/models.py:486
+#: front/models.py:487
 msgid "Invalid link. Perhaps long expired. Please try registering again."
-msgstr "Link de ativação desconhecido. Se estava em um email seu possivelmente já expirou a algum tempo (veja a validade). Tente registrar-se novamente, por favor."
+msgstr ""
+"Link de ativação desconhecido. Se estava em um email seu possivelmente já "
+"expirou a algum tempo (veja a validade). Tente registrar-se novamente, por "
+"favor."
 
-#: front/models.py:518
+#: front/models.py:519
 msgid "This password reset request expired. "
 msgstr "Esta solicitação de mudança de senha já expirou."
 
-#: front/models.py:518 front/models.py:523
+#: front/models.py:519 front/models.py:524
 msgid "Request another one if you still want to reset your password."
 msgstr "Solicite outra se você ainda quiser trocar de senha."
 
-#: front/models.py:523
+#: front/models.py:524
 msgid "This password reset request was already consumed. "
 msgstr "Esta solicitação de troca de senha já foi utilizada."
 
-#: front/models.py:528 front/views.py:245
+#: front/models.py:529 front/views.py:303
 msgid "Passwords do not match"
 msgstr "As senhas devem ser idênticas"
 
-#: front/views.py:73
+#: front/views.py:71
 #, python-format
 msgid "\"%s\" is not a valid subject name"
 msgstr "\"%s\" não é um nome aceitável. Deve conter ao menos uma letra."
 
-#: front/views.py:76
+#: front/views.py:74
 #, python-format
 msgid "\"%s\" already exists"
 msgstr "'%s' já existe"
 
-#: front/views.py:219
+#: front/views.py:230
 msgid "Logon failure"
 msgstr "Usuário ou senha inválidos"
 
-#: front/views.py:223
+#: front/views.py:234
 msgid "Inactive account. Please check your email for activation instructions."
-msgstr "Conta inativa. Por favor verifique seu email por instruções de ativação."
+msgstr ""
+"Conta inativa. Por favor verifique seu email por instruções de ativação."
 
-#: front/views.py:258
+#: front/views.py:282
+msgid "Profile updated"
+msgstr ""
+
+#: front/views.py:283
+msgid "Your profile was updated"
+msgstr ""
+
+#: front/views.py:316
 msgid "Account creation in progress"
 msgstr "Criação de conta em progresso."
 
-#: front/views.py:260
+#: front/views.py:318
 msgid "Your account has been succesfully created."
 msgstr "Sua conta foi criada."
 
-#: front/views.py:261
+#: front/views.py:319
 msgid "But, before you can start using it, you must validate your email."
 msgstr "Mas, antes que você possa começar a usá-la, você deve ativá-la."
 
-#: front/views.py:262
+#: front/views.py:320
 msgid "This step is needed to avoid creation of false accounts."
 msgstr "Esse passo "
 
-#: front/views.py:263
-msgid "Please, check your email inbox for a message from ratonator.com with further instructions."
+#: front/views.py:321
+msgid ""
+"Please, check your email inbox for a message from ratonator.com with further "
+"instructions."
 msgstr "Esse passo é necessário para evitar a criação de contas falsas."
 
-#: front/views.py:272
+#: front/views.py:330
 msgid "Be Welcome!"
 msgstr "Estamos felizes por receber-lhe!"
 
-#: front/views.py:274
+#: front/views.py:332
 msgid "Welcome to ratonator.com!"
 msgstr "ratonator.com está pronto para você!"
 
-#: front/views.py:275
+#: front/views.py:333
 msgid "Your account is now activated!"
 msgstr "Sua conta está agora ativada!"
 
-#: front/views.py:276
+#: front/views.py:334
 msgid "From now on you will be able to:"
 msgstr "A partir de agora você será capaz de:"
 
-#: front/views.py:277
+#: front/views.py:335
 msgid "Create new subjects"
 msgstr "Cre novos temas"
 
-#: front/views.py:278
+#: front/views.py:336
 msgid "Classify them"
 msgstr "Classificá-los em categorias"
 
-#: front/views.py:279
+#: front/views.py:337
 msgid "RATE EVERYTHING!"
 msgstr "DAR NOTA PARA TUDO!"
 
-#: front/views.py:280
+#: front/views.py:338
 msgid "Even rate the ratings!"
 msgstr "Até notas para outras notas!"
 
-#: front/views.py:281
+#: front/views.py:339
 msgid "Have fun!!!"
 msgstr "Divirta-se!!!"
 
-#: front/views.py:284
+#: front/views.py:342
 msgid "Account activation error"
 msgstr "Erro na ativação da conta"
 
-#: front/views.py:300
+#: front/views.py:358
 msgid "Please, provide your email or your ratonator username"
 msgstr "Por favor, forneça seu email ou o seu nome de usuário no ratonator.com"
 
-#: front/views.py:308
+#: front/views.py:366
 #, python-format
 msgid "Unknown %(what)s \"%(value)s\""
 msgstr "%(what)s \"%(value)s\" desconhecido"
 
-#: front/views.py:310
+#: front/views.py:368
 msgid "Password reset email sent"
 msgstr "Email de troca de senha enviado"
 
-#: front/views.py:311
+#: front/views.py:369
 msgid "An email was sent to you with instructions for reseting your password"
 msgstr "Um email foi enviado a você com instruções para trocar sua senha"
 
-#: front/views.py:333
+#: front/views.py:391
 msgid "Password set"
 msgstr "Senha aceita"
 
-#: front/views.py:334
+#: front/views.py:392
 msgid "Your new password is ready for use!"
 msgstr "Sua nova senha está pronta para ser usada!"
 
-#: front/views.py:334
-msgid "Please use the logon form in this page to use the full capabilites of ratonator.com"
-msgstr "Use o formulário de acesso nesta página para poder usar todos recursos de ratonator.com"
+#: front/views.py:392
+msgid ""
+"Please use the logon form in this page to use the full capabilites of "
+"ratonator.com"
+msgstr ""
+"Use o formulário de acesso nesta página para poder usar todos recursos de "
+"ratonator.com"
 
-#: front/views.py:340 front/views.py:360
+#: front/views.py:398 front/views.py:418
 msgid "Name"
 msgstr "Nome"
 
-#: front/views.py:341 front/views.py:349
+#: front/views.py:407
 msgid "Definition"
 msgstr "Definição"
 
-#: front/views.py:354 templates/addRate.html:8
+#: front/views.py:412 templates/addRate.html:8
 msgid "Rate"
 msgstr "Nota"
 
-#: front/views.py:355
+#: front/views.py:413
 msgid "Comments"
 msgstr "Comentários"
 
-#: front/views.py:365
+#: front/views.py:423
 msgid "Language"
 msgstr "Linguagem"
 
-#: front/views.py:370
-msgid "Remember me"
-msgstr "Manter-me ativo"
-
-#: front/views.py:371
+#: front/views.py:429
 msgid "User name"
 msgstr "Usuário"
 
-#: front/views.py:372 front/views.py:379
+#: front/views.py:430 front/views.py:437
 msgid "Password"
 msgstr "Senha"
 
-#: front/views.py:377 front/views.py:391
+#: front/views.py:435 front/views.py:449
 msgid "email"
 msgstr "email"
 
-#: front/views.py:378 front/views.py:392
+#: front/views.py:436 front/views.py:450
 msgid "Public username"
 msgstr "Nome público"
 
-#: front/views.py:380 front/views.py:399 front/views.py:406
+#: front/views.py:438 front/views.py:457 front/views.py:471
 #: templates/password_change.html:14
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: front/views.py:381
+#: front/views.py:439 front/views.py:464
 msgid "Preferred language"
 msgstr "Idioma"
 
-#: front/views.py:386 templates/search.html:7
+#: front/views.py:444 templates/search.html:7
 msgid "Search"
 msgstr "Pesquisar"
 
-#: front/views.py:398 front/views.py:405
+#: front/views.py:456 front/views.py:470
 msgid "New Password"
 msgstr "Nova senha"
 
-#: front/views.py:404
+#: front/views.py:469
 msgid "Current Password"
 msgstr "Senha atual"
 
@@ -313,36 +338,61 @@ msgid "Yes, you got the infamous 404..."
 msgstr "Sim, é verdade, você recebeu o infame erro 404..."
 
 #: templates/404.html:9
-msgid "This means the address above (URL for geeks) did not translate into anything meaningful to the current ratonator.com configuration."
-msgstr "Isso significa que o endereço acima (a URL do navegador), não pôde ser interpretada pelo ratonator.com."
+msgid ""
+"This means the address above (URL for geeks) did not translate into anything "
+"meaningful to the current ratonator.com configuration."
+msgstr ""
+"Isso significa que o endereço acima (a URL do navegador), não pôde ser "
+"interpretada pelo ratonator.com."
 
 #: templates/404.html:10
-msgid "If that happened without you typing anything on the address bar, it was OUR fault, we apologize dearly and, in this very moment, we are trying hard to fix the problem that caused it."
-msgstr "Se isso aconteceu sem que você tenha digitado algo na barra de endereços do navegador, é problema NOSSO e, neste exato momento, estamos trabalhando duro para descobrir o que está causando isso."
+msgid ""
+"If that happened without you typing anything on the address bar, it was OUR "
+"fault, we apologize dearly and, in this very moment, we are trying hard to "
+"fix the problem that caused it."
+msgstr ""
+"Se isso aconteceu sem que você tenha digitado algo na barra de endereços do "
+"navegador, é problema NOSSO e, neste exato momento, estamos trabalhando duro "
+"para descobrir o que está causando isso."
 
 #: templates/404.html:11
-msgid "However, if you typed something in the address bar, well, we know you are smart enough to figure out what was wrong..."
-msgstr "Se, porém, foi você quem digitou o endereço, bem, sabemos que você é esperto o suficiente para saber o que está errado..."
-
-#: templates/500.html:4
-msgid "500 Server Error"
-msgstr "500 Erro no Servidor"
-
-#: templates/500.html:8
-msgid "Yes, we are sloppy..."
-msgstr "É, somos ruins de serviço, já ouvimos isso um monte de vezes... Mas a gente aprende!"
-
-#: templates/500.html:9
-msgid "Someone made something stupid, an email is now being sent to the Boss and all hell is about to break loose... Business as usual!"
-msgstr "Alguém fez besteira, um email está sendo enviado para o Chefe e as coisas irão ficar complicadas aqui!"
+msgid ""
+"However, if you typed something in the address bar, well, we know you are "
+"smart enough to figure out what was wrong..."
+msgstr ""
+"Se, porém, foi você quem digitou o endereço, bem, sabemos que você é esperto "
+"o suficiente para saber o que está errado..."
 
 #: templates/500.html:10
-msgid "If this problem caused you to lose an unreplaceable piece of inspiration or something you have been painfully typing for the last hours or well... Someone is, at this very moment, sharing your pain!"
-msgstr "Se este problema fez com que você perdesse uma irrecuperável peça de inspiração ou um texto que você passou horas preparando ou... bem, seja o que for, alguém está compartilhando sua dor!"
+msgid "Yes, we are sloppy..."
+msgstr ""
+"É, somos ruins de serviço, já ouvimos isso um monte de vezes... Mas a gente "
+"aprende!"
 
 #: templates/500.html:11
+msgid ""
+"Someone made something stupid, an email is now being sent to the Boss and "
+"all hell is about to break loose... Business as usual!"
+msgstr ""
+"Alguém fez besteira, um email está sendo enviado para o Chefe e as coisas "
+"irão ficar complicadas aqui!"
+
+#: templates/500.html:12
+#, fuzzy
+msgid ""
+"If this problem caused you to lose an unreplaceable piece of inspiration or "
+"something you have been painfully typing for the last hours or well... "
+"anything. Someone is, at this very moment, sharing your pain!"
+msgstr ""
+"Se este problema fez com que você perdesse uma irrecuperável peça de "
+"inspiração ou um texto que você passou horas preparando ou... bem, seja o "
+"que for, alguém está compartilhando sua dor!"
+
+#: templates/500.html:13
 msgid "The problem information has been collected and is now being analyzed "
-msgstr "Informações sobre o problema foram coletadas e estão sendo analisadas neste exato momento"
+msgstr ""
+"Informações sobre o problema foram coletadas e estão sendo analisadas neste "
+"exato momento"
 
 #: templates/addCategory.html:4
 msgid "New Category"
@@ -352,15 +402,20 @@ msgstr "Nova categoria"
 msgid "Add a new category for"
 msgstr "Adicione uma nova categoria para"
 
-#: templates/addCategory.html:15 templates/addDefinition.html:12
+#: templates/addCategory.html:15 templates/addDefinition.html:15
 msgid "Add"
 msgstr "Adicionar"
 
-#: templates/addDefinition.html:6
+#: templates/addDefinition.html:4
+#, fuzzy
+msgid "New Definition"
+msgstr "Definição"
+
+#: templates/addDefinition.html:9
 msgid "Add a new definition for"
 msgstr "Adicione uma nova definição para"
 
-#: templates/addRate.html:14 templates/addSubject.html:10
+#: templates/addRate.html:14 templates/addSubject.html:13
 msgid "Create"
 msgstr "Criar"
 
@@ -368,14 +423,22 @@ msgstr "Criar"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/forgot_password.html:4 templates/password_change.html:4
-#: templates/password_reset.html:4
+#: templates/addSubject.html:4
+#, fuzzy
+msgid "New Subject"
+msgstr "Crie um novo tema"
+
+#: templates/forgot_password.html:4 templates/password_reset.html:4
 msgid "Password reset request"
 msgstr "Requisição de troca de senha"
 
 #: templates/forgot_password.html:8
-msgid "Please, provide us with your ratonator username or the email account you registered with."
-msgstr "Forneça seu nome de usuário ou o email com que você se registrou no ratonator.com."
+msgid ""
+"Please, provide us with your ratonator username or the email account you "
+"registered with."
+msgstr ""
+"Forneça seu nome de usuário ou o email com que você se registrou no "
+"ratonator.com."
 
 #: templates/forgot_password.html:9
 msgid "You will receive an email with instructions for reseting your password."
@@ -385,39 +448,47 @@ msgstr "Você receberá um email com instruções para trocar sua senha."
 msgid "Send"
 msgstr "Enviar"
 
-#: templates/index.html:27
+#: templates/index.html:5
+msgid "What is new"
+msgstr ""
+
+#: templates/index.html:29
 msgid "Top Subjects"
 msgstr "Temas Mais Bem Votados"
 
-#: templates/index.html:35
+#: templates/index.html:37
 msgid "No Top Subjects"
 msgstr "Não há temas mais bem votados!"
 
-#: templates/index.html:40
+#: templates/index.html:42
 msgid "Hot Subjects"
 msgstr "Temas Quentes"
 
-#: templates/index.html:48
+#: templates/index.html:50
 msgid "No Hot Subjects"
 msgstr "Não há Temas Quentes"
 
-#: templates/index.html:53
+#: templates/index.html:55
 msgid "New Subjects"
 msgstr "Crie um novo tema"
 
-#: templates/index.html:61
+#: templates/index.html:63
 msgid "No New Subjects"
 msgstr "Não há novos temas. Crie os seus!"
+
+#: templates/logon.html:5 templates/user_profile.html:9
+msgid "Profile"
+msgstr ""
 
 #: templates/logon.html:5
 msgid "Logout"
 msgstr "Sair"
 
-#: templates/logon.html:11
+#: templates/logon.html:12
 msgid "Logon"
 msgstr "Entrar"
 
-#: templates/logon.html:16 templates/register.html:51
+#: templates/logon.html:17 templates/register.html:51
 msgid "Register"
 msgstr "Cadastre-se"
 
@@ -430,12 +501,26 @@ msgid "ratonator - a rate for everything!"
 msgstr "ratonator - dê uma nota para tudo!"
 
 #: templates/master.html:128
-msgid "This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING PROPERLY"
-msgstr "Este serviço está em estágio preliminar... cheio de erros. Tenha paciência, por favor!"
+msgid ""
+"This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING "
+"PROPERLY"
+msgstr ""
+"Este serviço está em estágio preliminar... cheio de erros. Tenha paciência, "
+"por favor!"
 
 #: templates/master.html:148
 msgid "New subject"
 msgstr "Crie um novo tema"
+
+#: templates/master.html:151
+#, fuzzy
+msgid "Logon to vote and to create new subjects"
+msgstr "Cre novos temas"
+
+#: templates/password_change.html:4
+#, fuzzy
+msgid "Password reset"
+msgstr "Senha aceita"
 
 #: templates/password_change.html:8 templates/password_reset.html:8
 msgid "Your password reset request was accepted."
@@ -453,55 +538,99 @@ msgstr "Informe a nova senha que você deseja usar."
 msgid "Set"
 msgstr "Definir"
 
-#: templates/rateable_template.html:21
+#: templates/rateable_tag.html:24
 msgid "Add your vote too!"
 msgstr "Vote também!"
+
+#: templates/rates.html:5
+#, fuzzy
+msgid "Votes"
+msgstr "votos"
+
+#: templates/rates.html:18
+msgid "Votes for"
+msgstr ""
+
+#: templates/rates.html:22
+msgid "There are no votes for it yet"
+msgstr ""
 
 #: templates/register.html:4
 msgid "New user registration"
 msgstr "Registro de novos usuários"
 
-#: templates/subject.html:47
+#: templates/searchResults.html:3
+#, fuzzy
+msgid "Search results"
+msgstr "Pesquisar"
+
+#: templates/subject.html:20
 msgid "Categories:"
 msgstr "Categorias:"
 
-#: templates/subject.html:49 templates/subject.html.py:73
+#: templates/subject.html:22 templates/subject.html.py:46
 msgid "New"
 msgstr "Inclua também"
 
-#: templates/subject.html:62
+#: templates/subject.html:35
 msgid "Nothing above!"
 msgstr "Nenhuma categoria cadastrada. Inclua as suas!"
 
-#: templates/subject.html:71
+#: templates/subject.html:44
 msgid "Definitions:"
 msgstr "Definições:"
 
-#: templates/subject.html:84
+#: templates/subject.html:57
 msgid "No definitions!"
 msgstr "Nenhuma definição cadastrada. Inclua as suas!"
 
-#: templates/subject.html:88
+#: templates/subject.html:61
 msgid "Rates:"
 msgstr "Notas:"
 
-#: templates/subject.html:98
+#: templates/subject.html:71
 msgid "No rates!"
 msgstr "Ninguém votou ainda. Aproveite!"
 
-#: templates/subject.html:104
+#: templates/subject.html:77
 msgid "Subjects"
 msgstr "Temas"
 
-#: templates/subject.html:114
+#: templates/subject.html:87
 msgid "Nothing Below!"
 msgstr "Nenhum tema abaixo deste. Que tal acrescentar?"
 
+#: templates/user.html:9
+msgid "Contributions"
+msgstr ""
+
+#: templates/user.html:17
+#, fuzzy
+msgid "No contributions yet!"
+msgstr "Nenhuma definição cadastrada. Inclua as suas!"
+
+#: templates/user_profile.html:4
+msgid "User profile"
+msgstr ""
+
+#: templates/user_profile.html:14 templates/user_profile.html.py:23
+#, fuzzy
+msgid "Change"
+msgstr "Cancelar"
+
+#: templates/user_profile.html:18
+#, fuzzy
+msgid "Password Change"
+msgstr "Senha aceita"
+
+#~ msgid "Remember me"
+#~ msgstr "Manter-me ativo"
+
+#~ msgid "500 Server Error"
+#~ msgstr "500 Erro no Servidor"
+
 #~ msgid "Inactive account"
 #~ msgstr "Conta desativada"
-
-#~ msgid "votes"
-#~ msgstr "votos"
 
 #~ msgid "Language selection"
 #~ msgstr "Linguagem"

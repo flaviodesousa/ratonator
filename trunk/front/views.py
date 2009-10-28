@@ -64,11 +64,9 @@ def addSubject(request):
     add_subject_form = AddSubjectForm(request.POST,  auto_id="add_subject_form_%s")
     if not add_subject_form.is_valid():
         return render_to_response('addSubject.html', locals(), context_instance=RequestContext(request))
-
     new_name = add_subject_form.cleaned_data['name']
-
     try:
-        new_subject = ClassifiableRateableStuff.addSubject(new_name, _current_language(request), request.session[RATEABLE_USER], add_subject_form.cleaned_data['definition'])
+        new_subject = ClassifiableRateableStuff.addSubject(new_name, _current_language(request), request.session[RATEABLE_USER])
     except ClassifiableRateableStuff.NotSluggable:
         add_subject_form.errors['name'] = [ _('"%s" is not a valid subject name') % new_name ]
         return render_to_response('addSubject.html', locals(), context_instance=RequestContext(request))
@@ -398,7 +396,7 @@ def password_reset(request,  key):
 
 class AddSubjectForm(forms.Form):
     name = forms.CharField(max_length=255, label=_("Name"))
-    definition = forms.CharField(widget=forms.Textarea, label=_("Definition"))
+    #definition = forms.CharField(widget=forms.Textarea, label=_("Definition"))
     #categories = forms.CharField(widget=forms.Textarea)
     #rate = forms.ChoiceField(widget=forms.RadioSelect, choices=RATE_CHOICES)
     #rateComment = forms.CharField(widget=forms.Textarea)
@@ -427,7 +425,7 @@ class LanguageForm(forms.Form):
 
 
 class LogonForm(forms.Form):
-    remember_me = forms.BooleanField(label=_('Remember me'), initial=False, required=False)
+    #remember_me = forms.BooleanField(label=_('Remember me'), initial=False, required=False)
     username = forms.CharField(label=_("User name"), max_length=30)
     password = forms.CharField(label=_("Password"), max_length=32, widget=forms.PasswordInput)
 

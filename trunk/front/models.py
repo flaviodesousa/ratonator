@@ -270,7 +270,7 @@ class ClassifiableRateableStuff(NameableRateableStuff):
         new_subject.createdBy = user
         new_subject.save()
 
-        if not definition == None:
+        if definition != None:
             new_subject.addDefinition(definition, user)
 
         return new_subject
