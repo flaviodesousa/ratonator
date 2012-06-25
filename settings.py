@@ -19,13 +19,15 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'postgresql_psycopg2'
-DATABASE_NAME = 'ratonator'
-DATABASE_USER = 'ratonator_admin'
-DATABASE_PASSWORD = 'piconano2'
-#DATABASE_PASSWORD = 'pico2.0.7nanopgratadmin'
-DATABASE_HOST = 'localhost'
-DATABASE_PORT = ''
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'ratonator',
+    'USER': 'ratonator_admin',
+    'PASSWORD': 'piconano2',
+    'HOST': 'localhost'
+  }
+}
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_PASSWORD = 'rJ[3/0#Op3/-i?|wg'
@@ -117,7 +119,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'ratonator.front', 
-    'rosetta'
+    'rosetta',
+    'south'
 )
 
 AUTH_PROFILE_MODULE = 'front.RateableUser'
