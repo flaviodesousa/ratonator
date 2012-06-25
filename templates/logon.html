@@ -7,6 +7,7 @@
     {% else %}
         <div id="logon_form">
             <form action="{% url front.views.logon %}" method="post">
+                {% csrf_token %}
                 <ul>
                     {{ logon_form.as_ul }}
                     <li><input type="submit"  class="bnt" name="logonSubmit" value="{% trans 'Logon' %}" /></li>

@@ -45,6 +45,7 @@ input {
 
 <div id="register">
     <form method="post" action="{% url front.views.register %}">
+        {% csrf_token %}
         <ul>
             {{ register_form.as_ul }}
         </ul>

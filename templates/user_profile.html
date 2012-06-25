@@ -8,6 +8,7 @@
         <div id="user_profile_profile">
             <h2>{{ user.username }} {% trans 'Profile' %}</h2>
             <form method="post" action="{% url front.views.user_profile 'Profile' %}">
+                {% csrf_token %}
                 <ul>
                     {{ user_profile_form.as_ul }}
                 </ul>
@@ -17,6 +18,7 @@
         <div id="user_profile_change_password">
             <h2>{% trans 'Password Change' %}</h2>
             <form method="post" action="{% url front.views.user_profile 'Password' %}">
+                {% csrf_token %}
                 <ul>
                     {{ password_change_form.as_ul }}
                 </ul>

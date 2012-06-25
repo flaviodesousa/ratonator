@@ -8,6 +8,7 @@
     <p>{% trans 'Rate' %}
     <em>{{ subject.description }}</em>:</p>
     <form method="post" action="{% url front.views.add_rate rateable_uuid %}">
+        {% csrf_token %}
         <ul>
             {{ add_rate_form.as_ul }}
         </ul>

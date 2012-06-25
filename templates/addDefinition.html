@@ -9,6 +9,7 @@
     <p>{% trans 'Add a new definition for' %}
     <em>{{ subject.name }}</em>:</p>
     <form method="post" action="{% url front.views.addDefinition subject.uuid %}">
+    	{% csrf_token %}
         <ul>
             {{ add_definition_form.as_ul }}
         </ul>
