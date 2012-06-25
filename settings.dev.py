@@ -1,6 +1,6 @@
 # ratonator settings
 
-STATIC_PATH = '/var/www/rate228/app/ratonator/static'
+STATIC_PATH = '/home/flavio/dev/ratonator/static'
 ACCOUNT_VALIDATION_EXPIRATION_DAYS = 5
 PASSWORD_RESET_EXPIRATION_DAYS = 3
 
@@ -110,7 +110,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/var/www/rate228/app/ratonator/templates'
+    '/var/www/rate228/app/ratonator/templates',
+    '/home/flavio/dev/ratonator/templates',
 )
 
 INSTALLED_APPS = (
