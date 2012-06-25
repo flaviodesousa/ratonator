@@ -1,0 +1,119 @@
+[
+  {
+    "pk": 1, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "English", 
+      "code": "en", 
+      "name": "English"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "Portugu\u00eas", 
+      "code": "pt", 
+      "name": "Portuguese"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "\u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a", 
+      "code": "ru", 
+      "name": "Russian"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "\u4e2d\u6587 (Zh\u014dngw\u00e9n), \u6c49\u8bed, \u6f22\u8a9e", 
+      "code": "zh", 
+      "name": "Chinese"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "Italiano", 
+      "code": "it", 
+      "name": "Italian"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629", 
+      "code": "ar", 
+      "name": "Arabic"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "Deutsch", 
+      "code": "de", 
+      "name": "German"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "espa\u00f1ol", 
+      "code": "es", 
+      "name": "Spanish"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "fran\u00e7ais", 
+      "code": "fr", 
+      "name": "French"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "\u65e5\u672c\u8a9e", 
+      "code": "ja", 
+      "name": "Japanese"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "\ud55c\uad6d\uc5b4", 
+      "code": "ko", 
+      "name": "Korean"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "polski", 
+      "code": "pl", 
+      "name": "Polish"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "front.language", 
+    "fields": {
+      "nativeName": "\u05e2\u05d1\u05e8\u05d9\u05ea", 
+      "code": "he", 
+      "name": "Hebrew"
+    }
+  }
+]
