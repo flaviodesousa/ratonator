@@ -1,6 +1,6 @@
 # ratonator settings
 
-STATIC_PATH = '/home/flavio/dev/ratonator/static'
+STATIC_PATH = '{staticpath}'
 ACCOUNT_VALIDATION_EXPIRATION_DAYS = 5
 PASSWORD_RESET_EXPIRATION_DAYS = 3
 
@@ -24,13 +24,13 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'ratonator',
     'USER': 'ratonator_admin',
-    'PASSWORD': 'piconano2',
+    'PASSWORD': '{pwdb}',
     'HOST': 'localhost'
   }
 }
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'rJ[3/0#Op3/-i?|wg'
+EMAIL_HOST_PASSWORD = '{pwemail}'
 EMAIL_HOST_USER = 'mailer@ratonator.com'
 EMAIL_SUBJECT_PREFIX = '[ratonator.com] '
 EMAIL_USE_TLS = True
@@ -110,6 +110,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '{templatepath}'
     '/var/www/rate228/app/ratonator/templates',
     '/home/flavio/dev/ratonator/templates',
 )

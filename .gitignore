@@ -1,2 +1,4 @@
 *.pyc
 settings.py
+scripts/mk.settings.dev.sh
+scripts/mk.settings.pro.sh
