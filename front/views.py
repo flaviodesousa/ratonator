@@ -226,7 +226,7 @@ def logon(request):
 
     user = authenticate(username=logon_form.cleaned_data['username'], password=logon_form.cleaned_data['password'])
 
-    if user is None:
+    if user is None or user is not RateableUser:
         logon_form.errors['username'] = [ _('Logon failure') ]
         return _index(request, _current_language(request), search_form, logon_form)
 
