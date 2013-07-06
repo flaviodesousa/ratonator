@@ -32,10 +32,10 @@ RATE_CHOICES = (
 
 
 
-#I18N_SLUGIFY_TONULL = re.compile(u'[^\w\s-]', re.UNICODE)
-#I18N_SLUGIFY_TODASH = re.compile(u'[-\s_]+', re.UNICODE)
-__I18N_SLUGIFY_ASIS = re.compile('^[LN]') # letters and digits (numbers) - assumed previously lowercased
-__I18N_SLUGIFY_DASH = re.compile('^[PMSZ]') # punctuations, markers, symbols and separators
+# letters and digits (numbers) - assumed previously lowercased
+__I18N_SLUGIFY_ASIS = re.compile('^[LN]')
+# punctuations, markers, symbols and separators
+__I18N_SLUGIFY_DASH = re.compile('^[PMSZ]')
 # TODO: convert occidental accented characters to unaccented counterparts
 def i18n_slugify(value):
     slugged = u''
@@ -50,13 +50,20 @@ def i18n_slugify(value):
         elif not dash and __I18N_SLUGIFY_DASH.match(cat):
             dash = True
     return slugged
-    #v = unicodedata.normalize('NFKD', value).encode('utf-8', 'ignore')
+
+# removes what is not letters/spaces/dashes
+__I18N_SLUGIFY_TONULL = re.compile(u'[^\w\s-]', re.UNICODE)
+# converts contiguous spaces and dashes into a single dash
+__I18N_SLUGIFY_TODASH = re.compile(u'[-\s_]+', re.UNICODE)
+def unicode_slugify(value):
+    #Ongoing try to slugify unicode...
+    v = unicodedata.normalize('NFKD', value).encode('utf-8', 'ignore')
     #print u'1 - "%s"' % v
-    #v = I18N_SLUGIFY_TONULL.sub(v,  '').strip().lower()
+    v = __I18N_SLUGIFY_TONULL.sub(v, '').strip().lower()
     #print u'2 - "%s"' % v
-    #v = I18N_SLUGIFY_TODASH.sub(v,  '-')
+    v = __I18N_SLUGIFY_TODASH.sub(v, '-')
     #print u'3 - "%s"' % v
-    #return v
+    return v
 
 
 
