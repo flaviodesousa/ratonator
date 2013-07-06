@@ -1,4 +1,5 @@
 *.pyc
-settings.py
 scripts/mk.settings.dev.sh
 scripts/mk.settings.pro.sh
+local_settings.py
+*.sublime-*

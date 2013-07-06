@@ -1,6 +1,6 @@
 # ratonator settings
 
-STATIC_PATH = '{staticpath}'
+STATIC_PATH = '/home/flavio/dev/ratonator/static'
 ACCOUNT_VALIDATION_EXPIRATION_DAYS = 5
 PASSWORD_RESET_EXPIRATION_DAYS = 3
 
@@ -8,32 +8,6 @@ PASSWORD_RESET_EXPIRATION_DAYS = 3
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
-DEFAULT_FROM_EMAIL = 'mailer@ratonator.com'
-SERVER_EMAIL = DEFAULT_FROM_EMAIL
-
-ADMINS = (
-    ('Flavio de Sousa', 'flavio@ratonator.com'),
-    ('Flavio de Sousa',  'flavio@moonlighting.com.br')
-)
-
-MANAGERS = ADMINS
-
-DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'ratonator',
-    'USER': 'ratonator_admin',
-    'PASSWORD': '{pwdb}',
-    'HOST': 'localhost'
-  }
-}
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = '{pwemail}'
-EMAIL_HOST_USER = 'mailer@ratonator.com'
-EMAIL_SUBJECT_PREFIX = '[ratonator.com] '
-EMAIL_USE_TLS = True
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -84,7 +58,7 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'obzjpxgua$s5@bksmr&2+*0ze2w07d&s6&2o0*%)u^3bf8z(w@'
+# SECRET_KEY = # declared on local_settings.py
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -110,9 +84,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '{templatepath}'
-    '/var/www/rate228/app/ratonator/templates',
     '/home/flavio/dev/ratonator/templates',
+    '/var/www/rate228/app/ratonator/templates',
 )
 
 INSTALLED_APPS = (
@@ -127,3 +100,5 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = 'front.RateableUser'
+
+from local_settings import *
