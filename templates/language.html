@@ -1,18 +1,18 @@
 {% load i18n %}
 
 <div id="languageSelector">
-        <a href="{% url front.views.index 'en' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/en_US.png" alt="[English]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'de' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/de_DE.png" alt="[Deutsch]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'es' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/es_ES.png" alt="[Espanol]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'fr' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/fr_FR.png" alt="[Francaise]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'he' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/he_IL.png" alt="[Israeli]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'it' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/it_IT.png" alt="[Italian]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'ja' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/ja_JP.png" alt="[Japanese]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'ko' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/ko_KR.png" alt="[Korean]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'pl' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/pl_PL.png" alt="[Polish]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'pt' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/pt_BR.png" alt="[Portuguese]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'en' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/en_NZ.png" alt="[New Zelandish]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'ru' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/ru_RU.png" alt="[Russian]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'ar' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/ar_SA.png" alt="[Arabian]" width="16" height="16" border="0" /></a>
-        <a href="{% url front.views.index 'zh' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/zh_CN.png" alt="[Chinese]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'en' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/en_US.png" alt="[English]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'de' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/de_DE.png" alt="[Deutsch]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'es' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/es_ES.png" alt="[Espanol]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'fr' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/fr_FR.png" alt="[Francaise]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'he' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/he_IL.png" alt="[Israeli]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'it' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/it_IT.png" alt="[Italian]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'ja' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/ja_JP.png" alt="[Japanese]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'ko' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/ko_KR.png" alt="[Korean]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'pl' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/pl_PL.png" alt="[Polish]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'pt' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/pt_BR.png" alt="[Portuguese]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'en' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/en_NZ.png" alt="[New Zelandish]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'ru' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/ru_RU.png" alt="[Russian]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'ar' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/ar_SA.png" alt="[Arabian]" width="16" height="16" border="0" /></a>
+        <a href="{% url 'front.views.index' 'zh' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/flags/zh_CN.png" alt="[Chinese]" width="16" height="16" border="0" /></a>
 </div>

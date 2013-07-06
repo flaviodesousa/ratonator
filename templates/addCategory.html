@@ -8,7 +8,7 @@
 <div id="newCategory">
     <p>{% trans 'Add a new category for' %}
     <em>{{ subject.name }}</em>:</p>
-    <form method="post" action="{% url front.views.addCategory subject.uuid %}">
+    <form method="post" action="{% url 'front.views.addCategory' subject.uuid %}">
     	{% csrf_token %}
         <ul>
             {{ add_category_form.as_ul }}

@@ -1,8 +1,6 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html5>
 {% load i18n %}
 <!-- spaceless -->
-<html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <title>{% trans "ratonator - a rate for everything!" %}{% block title %}{% endblock %}</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -129,7 +127,7 @@
             {% endcomment %}
             <div id="topo01">
                 <div id="language">{% include "language.html" %}</div>
-                <div id="logo"><a href="{% url front.views.root %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/logo.png" alt="ratonator.com home" width="391" height="78" border="0" /></a></div>
+                <div id="logo"><a href="{% url 'front.views.root' %}"><img src="/static/cacheable/__v_e_r_s_i_o_n__/images/logo.png" alt="ratonator.com home" width="391" height="78" border="0" /></a></div>
             </div>
             <div id="topo02">
                 <div id="master_search">{% include "search.html" %}</div>
@@ -145,7 +143,7 @@
             <div id="master_middle_right">
                 {% if user.is_authenticated %}
                     <div id="createNewSubject">
-                        <p><a href="{% url front.views.addSubject %}">{% trans 'New subject' %}</a></p>
+                        <p><a href="{% url 'front.views.addSubject' %}">{% trans 'New subject' %}</a></p>
                     </div>
                 {% else %}
                     <p>{% trans 'Logon to vote and to create new subjects' %}</p>

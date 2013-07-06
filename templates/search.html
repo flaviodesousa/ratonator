@@ -1,6 +1,6 @@
 {% load i18n %}
 <div id="search">
-    <form type="get" action="{% url front.views.search %}">
+    <form type="get" action="{% url 'front.views.search' %}">
     	{% csrf_token %}
         <ul class="col">
             {{ search_form.as_ul }}

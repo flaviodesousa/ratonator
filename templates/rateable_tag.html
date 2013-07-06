@@ -9,7 +9,7 @@
     {% endif %}
     {% if subject.name %}
         {% if follow %}
-            <span class="rateable_name"><a href="{% url front.views.subject subject.language subject.nameSlugged %}">{{ subject.name }}</a></span>
+            <span class="rateable_name"><a href="{% url 'front.views.subject' subject.language subject.nameSlugged %}">{{ subject.name }}</a></span>
         {% else %}
             <span class="rateable_name">{{ subject.name }}</span>
         {% endif %}
@@ -23,12 +23,12 @@
     <span>&nbsp;</span>
     {% if user.is_authenticated %}
         <span class="rateable_average">
-            <a href="{% url front.views.add_rate_with_parameters subject.uuid %}" title="{% trans 'Add your vote too!' %}" class="thickbox">{{ subject.average_rate|default:"&mdash;" }}</a>
+            <a href="{% url 'front.views.add_rate_with_parameters' subject.uuid %}" title="{% trans 'Add your vote too!' %}" class="thickbox">{{ subject.average_rate|default:"&mdash;" }}</a>
         </span>
     {% else %}
         <span class="rateable_average">{{ subject.average_rate|default:"&mdash;" }}</span>
     {% endif %}
     <span>&nbsp;</span>
-    <span class="rateable_votes"><a href="{% url front.views.rates subject.uuid %}">{{ subject.rate_count }}</a></span>
-    <span class="rateable_creator">&nbsp;<a href="{% url front.views.user subject.createdBy.user.username %}">{{ subject.createdBy.user.username }}</a></span>
+    <span class="rateable_votes"><a href="{% url 'front.views.rates' subject.uuid %}">{{ subject.rate_count }}</a></span>
+    <span class="rateable_creator">&nbsp;<a href="{% url 'front.views.user' subject.createdBy.user.username %}">{{ subject.createdBy.user.username }}</a></span>
 </span>

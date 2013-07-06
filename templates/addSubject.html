@@ -6,7 +6,7 @@
 {% block body %}
 
 <div id="newSubject">
-<form method="post" action="{% url front.views.addSubject %}">
+<form method="post" action="{% url 'front.views.addSubject' %}">
 	{% csrf_token %}
     <ul>
         {{ add_subject_form.as_ul }}

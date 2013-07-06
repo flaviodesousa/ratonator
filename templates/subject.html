@@ -19,7 +19,7 @@
             <p>
                 <span id="subject_categories_title">{% trans 'Categories:' %}</span>
                 {% if user.is_authenticated %}
-                    <a href="{% url front.views.addCategory subject.uuid %}">{% trans 'New' %}</a>
+                    <a href="{% url 'front.views.addCategory' subject.uuid %}">{% trans 'New' %}</a>
                 {% endif %}
             </p>
             {% if subjects_above %}
@@ -43,7 +43,7 @@
             <div id="subject_definitions">
                 <p><span id="subject_definitions_title">{% trans 'Definitions:' %}</span></p>
                 {% if user.is_authenticated %}
-                    <a href="{% url front.views.addDefinition subject.uuid %}">{% trans 'New' %}</a></p>
+                    <a href="{% url 'front.views.addDefinition' subject.uuid %}">{% trans 'New' %}</a></p>
                 {% endif %}
                 {% if definitions %}
                     <ul>
