@@ -1,8 +1,9 @@
 #!/usr/bin/python
 # vim: set fileencoding=utf-8 :
 
-import settings
-from front.models import *
+import ratonator.settings
+
+from ratonator.front.models import *
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
@@ -22,11 +23,11 @@ RATEABLE_USER = 'rateable_user'
 
 
 def _current_language(request):
-    cl = settings.RATONATOR_DEFAULT_LANGUAGE
+    cl = ratonator.settings.RATONATOR_DEFAULT_LANGUAGE
     if CURRENT_LANGUAGE in request.session and request.session[CURRENT_LANGUAGE]:
         cl = request.session[CURRENT_LANGUAGE]
-    elif settings.LANGUAGE_COOKIE_NAME in request.COOKIES and request.COOKIES[settings.LANGUAGE_COOKIE_NAME]:
-        cl = request.session[CURRENT_LANGUAGE] = request.COOKIES[settings.LANGUAGE_COOKIE_NAME]
+    elif ratonator.settings.LANGUAGE_COOKIE_NAME in request.COOKIES and request.COOKIES[ratonator.settings.LANGUAGE_COOKIE_NAME]:
+        cl = request.session[CURRENT_LANGUAGE] = request.COOKIES[ratonator.settings.LANGUAGE_COOKIE_NAME]
     return cl
 
 
@@ -205,8 +206,8 @@ def _set_language(request,  language_code,  response):
     if not CURRENT_LANGUAGE in request.session or request.session[CURRENT_LANGUAGE] != language_code:
         request.session[CURRENT_LANGUAGE] = language_code
     if not response == None:
-        if not settings.LANGUAGE_COOKIE_NAME in request.COOKIES or not request.COOKIES[settings.LANGUAGE_COOKIE_NAME] == language_code:
-            response.cookies[settings.LANGUAGE_COOKIE_NAME] = language_code
+        if not ratonator.settings.LANGUAGE_COOKIE_NAME in request.COOKIES or not request.COOKIES[ratonator.settings.LANGUAGE_COOKIE_NAME] == language_code:
+            response.cookies[ratonator.settings.LANGUAGE_COOKIE_NAME] = language_code
     return response
 
 

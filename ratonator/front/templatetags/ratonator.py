@@ -1,5 +1,5 @@
 from django import template
-from front.models import *
+from ratonator.front.models import *
 import re
 
 

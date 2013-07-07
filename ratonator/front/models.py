@@ -10,13 +10,14 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 import datetime
 import re
-import settings
 import unicodedata
 import uuid
 
 import logging
 log = logging.getLogger(__name__)
 log.info("Logging started")
+
+import ratonator.settings
 
 
 

@@ -1,6 +1,5 @@
 # ratonator settings
 
-STATIC_PATH = '/home/flavio/dev/ratonator/static'
 ACCOUNT_VALIDATION_EXPIRATION_DAYS = 5
 PASSWORD_RESET_EXPIRATION_DAYS = 3
 RATONATOR_DEFAULT_LANGUAGE = 'en'
