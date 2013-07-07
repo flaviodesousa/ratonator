@@ -12,6 +12,10 @@ from django.template import RequestContext
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
+import logging
+log = logging.getLogger(__name__)
+log.info("Logging started")
+
 CURRENT_LANGUAGE = 'django_language'
 RATEABLE_USER = 'rateable_user'
 
@@ -226,7 +230,19 @@ def logon(request):
 
     user = authenticate(username=logon_form.cleaned_data['username'], password=logon_form.cleaned_data['password'])
 
+    if user is None:
+        log.info("User '{0}' unable to authenticate".format(logon_form.cleaned_data['username']))
+        logon_form.errors['username'] = [ _('Logon failure') ]
+        return _index(request, _current_language(request), search_form, logon_form)
+
+    log.info("User '{0}' authenticated".format(user.username))
+
+    user = user.get_profile()
+    log.debug("User='{0}'".format(user))
+    log.debug("User class={0}".format(user.__class__))
     if user is None or user is not RateableUser:
+        if not user is None:
+            log.warn("Logon: User not a RateableUser. Logon failure.")
         logon_form.errors['username'] = [ _('Logon failure') ]
         return _index(request, _current_language(request), search_form, logon_form)
 
