@@ -14,6 +14,10 @@ import settings
 import unicodedata
 import uuid
 
+import logging
+log = logging.getLogger(__name__)
+log.info("Logging started")
+
 
 
 RATE_CHOICES = (
@@ -101,6 +105,7 @@ class RateableStuff(models.Model):
     # TODO: Add fields with precalculations of rates and votes (partialAt, partialVotes, partialAverage)
 
     def addRate(self, rate_value, comments_text, user):
+        log.info("Adding new rate to {0}".format(uuid))
         try:
             existing = self.rates.filter(createdBy=user).get(superseder__isnull=True)
         except Rate.DoesNotExist:
@@ -262,11 +267,13 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
     @classmethod
     def addSubject(cls, name, language, user, definition=None):
+        log.info("User '{2}' is creating new ({1}) subject: '{0}'".format(name, language, user.username))
         slugged = i18n_slugify(name)
         if not slugged:
+            log.warn("Subject '{0}' not sluggable".format(name))
             raise ClassifiableRateableStuff.NotSluggable()
         try:
-            ClassifiableRateableStuff.get(language,  slugged)
+            ClassifiableRateableStuff.get(language, slugged)
             raise ClassifiableRateableStuff.AlreadyExists()
         except ClassifiableRateableStuff.DoesNotExist:
             pass
@@ -294,12 +301,14 @@ class ClassifiableRateableStuff(NameableRateableStuff):
         return (definitions, rates, subjects_above, subjects_below)
 
     def addDefinition(self, definition_text, user):
+        log.info("User '{0}' is adding ('{2}') definition to subject '{1}'".format(user.username, self.name, self.language))
         definition = Definition(theDefinition=definition_text, subject=self, createdBy=user)
         definition.save()
         self.touch()
         return self
 
     def addCategory(self, category_name, user):
+        log.info("User '{0}' is adding new category '{1}'".format(user.username, category_name))
         try:
             category_name_slugged = i18n_slugify(category_name)
             adding_category = ClassifiableRateableStuff.get(self.language, category_name_slugged)
@@ -413,12 +422,15 @@ class RateableUser(RateableStuff):
     
     @classmethod
     def register_new_user(cls,  **kwargs):
+        log.info("Beginning new user registration: '{0}'".format(kwargs['username']))
         try:
             user = User.objects.get(username=kwargs['username'])
             if user.email != kwargs['email']:
+                log.info("Username '{0}' already taken by '{1}'".format(kwargs['username'], user.email))
                 raise RateableUser.ValidationException(property='username', messages=[ _('Username taken. Please, choose another one.')])
             rateable_user = user.get_profile()
-            if user.validatedAt != None:
+            if rateable_user.validatedAt != None:
+                log.info("Account previously created but still not validated")
                 raise RateableUser.ValidationException(property='username', messages=[ _('Account already exists.'),  _('Have you forgotten your password?')])
             # account already created, but not yet validated. Allow resending validation email
         except User.DoesNotExist:
@@ -468,21 +480,27 @@ class UserValidation(models.Model):
     user = models.ForeignKey('RateableUser')
 
     def begin_account_validation_process(self):
+        log.info("Sending user validation email for '{0}' to '{1}'".format(self.user.user.username, self.user.user.email))
         self.user.user.email_user(
             '[ratonator] (ACTION NEEDED) New account validation', 
             render_to_string('registration_validation_email.html', { 'key': self.uuid,  'days_to_expire': settings.ACCOUNT_VALIDATION_EXPIRATION_DAYS })
         )
+        log.info("Sent user validation email for '{0}' to '{1}'".format(self.user.user.username, self.user.user.email))
         return self
     
     def end_account_validation_process(self):
+        log.info("Received user validation request for '{0}'".format(self.user.user.username))
         if self.validatedAt != None:
+            log.info("User validation request ignored for '{0}'. Already validated".format(self.user.user.username))
             raise UserValidation.ValidationException(message=_('Account already validated.'))
         if self.expiresAt < datetime.datetime.now():
+            log.info("User validation request ignored for '{0}'. Request expired".format(self.user.user.username))
             raise UserValidation.ValidationException(message=_('This validation link has been expired. Please try registering again.'))
         self.validatedAt = datetime.datetime.now()
         self.save()
         self.user.validatedAt = datetime.datetime.now()
         self.user.save()
+        log.info("User '{0}' validated.".format(self.user.user.username))
         return self
     
     @classmethod
@@ -511,6 +529,7 @@ class PasswordResetRequest(models.Model):
     user = models.ForeignKey('RateableUser')
 
     def begin_password_reset_process(self):
+        log.info("Password reset requested by '{0}'".format(self.user.user.username))
         email = EmailMessage()
         email.subject = '[ratonator] (ACTION NEEDED) Password reset requested'
         email.body = render_to_string('password_reset_email.html', { 'key': self.uuid,  'days_to_expire': settings.PASSWORD_RESET_EXPIRATION_DAYS })
@@ -520,17 +539,21 @@ class PasswordResetRequest(models.Model):
         return self
 
     def end_password_reset_process(self,  password1,  password2):
+        log.info("Password reset requested confirmed from email by '{0}'".format(self.user.user.username))
         if self.expiresAt < datetime.datetime.now():
+            log.info("Password reset requested confirmed from email by '{0}' has been expired. Ignored.".format(self.user.user.username))
             raise PasswordResetRequest.ValidationException(
                 property='password1', 
                 messages=[ _('This password reset request expired. '),  _('Request another one if you still want to reset your password.') ]
             )
         if not self.validatedAt == None:
+            log.info("Password reset requested confirmed from email by '{0}' has been already consumed. Ignored.".format(self.user.user.username))
             raise PasswordResetRequest.ValidationException(
                 property='password1', 
                 messages=[ _('This password reset request was already consumed. '),  _('Request another one if you still want to reset your password.') ]
             )
         if password1 != password2:
+            log.info("Password reset requested confirmed from email by '{0}' but passwords doesn't match. Ignored.".format(self.user.user.username))
             raise PasswordResetRequest.ValidationException(
                 property='password2', 
                 messages=[ _('Passwords do not match') ]
@@ -539,6 +562,7 @@ class PasswordResetRequest(models.Model):
         self.save()
         self.user.user.set_password(password1)
         self.user.user.save()
+        log.info("New password set for user '{0}'".format(self.user.user.username))
         return self
 
     @classmethod
