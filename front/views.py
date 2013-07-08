@@ -3,7 +3,8 @@
 
 import ratonator.settings
 
-from ratonator.front.models import *
+from front.models import *
+
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
@@ -238,16 +239,14 @@ def logon(request):
 
     log.info("User '{0}' authenticated".format(user.username))
 
-    user = user.get_profile()
-    log.debug("User='{0}'".format(user))
-    log.debug("User class={0}".format(user.__class__))
-    if user is None or user is not RateableUser:
-        if not user is None:
-            log.warn("Logon: User not a RateableUser. Logon failure.")
+    try:
+        profile = user.get_profile()
+    except RateableUser.DoesNotExist:
+        log.warn("Logon: User '{0}' not a RateableUser. Logon failure.".format(user.username))
         logon_form.errors['username'] = [ _('Logon failure') ]
         return _index(request, _current_language(request), search_form, logon_form)
 
-    if not user.is_active or user.get_profile().validatedAt == None:
+    if not user.is_active or profile.validatedAt == None:
         logon_form.errors['username'] = [ _('Inactive account. Please check your email for activation instructions.') ]
         return _index(request, _current_language(request), search_form, logon_form)
 
