@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-26 15:40-0200\n"
-"PO-Revision-Date: 2009-09-17 16:13\n"
-"Last-Translator: <flavio@moonlighting.com.br>\n"
+"PO-Revision-Date: 2013-07-07 16:57-0300\n"
+"Last-Translator:   <fl@viodesousa.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Translated-Using: django-rosetta 0.4.5.svn\n"
+"X-Translated-Using: django-rosetta 0.7.2\n"
 
 #: front/models.py:20
 msgid "Impossibly good"
@@ -99,7 +99,7 @@ msgstr ""
 
 #: front/models.py:412
 msgid "Username taken. Please, choose another one."
-msgstr ""
+msgstr "اسم المستخدم اتخاذها. من فضلك، اختيار واحد آخر."
 
 #: front/models.py:415
 #, fuzzy
@@ -108,7 +108,7 @@ msgstr " موجود بالفعل '%s'"
 
 #: front/models.py:415
 msgid "Have you forgotten your password?"
-msgstr ""
+msgstr "هل نسيت كلمة المرور؟"
 
 #: front/models.py:452
 #, python-format
@@ -141,7 +141,7 @@ msgstr ""
 
 #: front/models.py:529 front/views.py:303
 msgid "Passwords do not match"
-msgstr ""
+msgstr "لا تتطابق كلمات المرور"
 
 #: front/views.py:71
 #, python-format
@@ -187,8 +187,8 @@ msgstr ""
 
 #: front/views.py:321
 msgid ""
-"Please, check your email inbox for a message from ratonator.com with further "
-"instructions."
+"Please, check your email inbox for a message from ratonator.com with further"
+" instructions."
 msgstr ""
 
 #: front/views.py:330
@@ -333,8 +333,8 @@ msgstr ""
 
 #: templates/404.html:9
 msgid ""
-"This means the address above (URL for geeks) did not translate into anything "
-"meaningful to the current ratonator.com configuration."
+"This means the address above (URL for geeks) did not translate into anything"
+" meaningful to the current ratonator.com configuration."
 msgstr ""
 
 #: templates/404.html:10
@@ -418,7 +418,8 @@ msgid ""
 msgstr ""
 
 #: templates/forgot_password.html:9
-msgid "You will receive an email with instructions for reseting your password."
+msgid ""
+"You will receive an email with instructions for reseting your password."
 msgstr ""
 
 #: templates/forgot_password.html:14
@@ -630,16 +631,15 @@ msgstr "كلمة السر"
 #~ "You haven't specified any languages in your settings file, or haven't yet "
 #~ "generated a batch of translation catalogs."
 #~ msgstr ""
-#~ "أنت لم تحدد أي اللغات في ملف الإعدادات الخاصة بك ، أو لم تكن قد ولدت "
-#~ "مجموعة من كتالوجات الترجمة."
+#~ "أنت لم تحدد أي اللغات في ملف الإعدادات الخاصة بك ، أو لم تكن قد ولدت مجموعة "
+#~ "من كتالوجات الترجمة."
 
 #~ msgid ""
 #~ "Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N "
-#~ "documentation</a> for a guide on how to set up internationalization for "
-#~ "your project."
+#~ "documentation</a> for a guide on how to set up internationalization for your"
+#~ " project."
 #~ msgstr ""
-#~ "يرجى الرجوع إلى <a href=\"%(i18n_doc_link)s\">Django's I18N "
-#~ "documentation</a> لدليل على كيفية إعداد تدويل للمشروع الخاص بك.\n"
+#~ "يرجى الرجوع إلى <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</a> لدليل على كيفية إعداد تدويل للمشروع الخاص بك.\n"
 #~ "<a href=\"%(i18n_doc_link)s\">Django's I18N documentation</a>"
 
 #~ msgid "Pick another file"
