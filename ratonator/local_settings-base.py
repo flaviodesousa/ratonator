@@ -1,4 +1,4 @@
-SECRET_KEY = 'obzjpxgua$s5@bksmr&2+*0ze2w07d&s6&2o0*%)u^3bf8z(w@'
+SECRET_KEY = '{secretkey}'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
