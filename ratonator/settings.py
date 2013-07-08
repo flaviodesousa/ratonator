@@ -139,7 +139,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'rosetta',
     'south',
-    'ratonator.front',
+    'ratonator',
+    'front',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -201,11 +202,11 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': False,
         },
-        'front': {
+        'ratonator': {
             'handlers': ['console', 'logfile'],
             'level': 'DEBUG',
         },
-        'ratonator': {
+        'front': {
             'handlers': ['console', 'logfile'],
             'level': 'DEBUG',
         },

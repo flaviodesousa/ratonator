@@ -1,8 +1,10 @@
 from django import template
-from ratonator.front.models import *
+from front.models import *
 import re
 
-
+import logging
+log = logging.getLogger(__name__)
+log.info("Logging started")
 
 UNLOADED = 'unloaded'
 register = template.Library()
@@ -35,16 +37,13 @@ def rateable(parser, token):
         raise template.TemplateSyntaxError, "%r tag requires a single argument" % token.contents.split()[0]
     if len(tokens) < 2:
         raise template.TemplateSyntaxError, "%r tag requires a single argument" % token.contents.split()[0]
-    
     subject_varname = tokens[1]
     follow = False
-    
     if len(tokens) > 2:
         follow_match = _FOLLOW_RE.match(tokens[2])
         if not follow_match:
             raise template.TemplateSyntaxError, "%r tag 2nd argument is follow=(True|False)" % token.contents.split()[0]
         follow = follow_match.group(1) == 'True'
-
     return RateableNode(subject_varname, follow)
 
 
@@ -57,9 +56,7 @@ def rates(parser, token):
             raise ValueError
     except ValueError:
         raise template.TemplateSyntaxError,  "%r tag requires a single argument" % token.contents.split()[0]
-
     subject_varname = tokens[1]
-
     return RatesNode(subject_varname)
 
 
@@ -76,8 +73,7 @@ class RateableNode(template.Node):
             'subject': self.subject_ref.resolve(context),
             'user': self.user_ref.resolve(context), 
             'follow': self.follow
-        })
-        
+        })        
         return get_RATEABLE_TEMPLATE().render(c)
 
 
@@ -97,5 +93,4 @@ class RatesNode(template.Node):
             'rates': rates, 
             'user':self.user_ref.resolve(context)
         })
-
         return get_RATES_TEMPLATE().render(c)
