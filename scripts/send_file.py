@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 
 import sys
 import os
@@ -7,7 +7,7 @@ def setup_environment():
     pathname = os.path.dirname(sys.argv[0])
     sys.path.append(os.path.abspath(pathname))
     sys.path.append(os.path.normpath(os.path.join(os.path.abspath(pathname), '../')))
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'ratonator.settings'
 
 # Must set up environment before imports.
 setup_environment()
@@ -20,7 +20,7 @@ def main(argv=None):
         argv = sys.argv
     
     if len(argv) < 4:
-        print r'Usage: %s <recipient email> "subject" "message" [files to send...]'
+        print r'Usage: {0} <recipient email> "subject" "message" [files to send...]'.format(argv[0])
         exit(1)
 
     recipient = argv[1]

@@ -49,13 +49,13 @@ cd ${staging_path} &&
     rm --recursive --force ${project_dir}/scripts
 
 echo Deleting git bindings...
-find ${staging_path} -name '.git' -exec rm -rf \{\} +
+rm --recursive --force ${staging_path}/${project_dir}/.git
 
 echo Deleting unwanted files...
-find ${staging_path} \( -name '*~' -o -name '*po' -o -name '*.json' -o -name '*.sublime-*' \) -delete -print
+find ${staging_path} \( -name '*~' -o name '*pyc' -o -name '*po' -o -name '*.sublime-*' \) -delete -print
 
 echo Generating static/deploy.html
-echo "<html><head><title>ratonator.com - deployment info</title></head><body><h1>Deploy ${dateref}</h1></body></html>" > ${staging_path}/${project_dir}/static/deploy.html
+echo "<html><head><title>ratonator.com - deployment info</title></head><body><h1>Deploy ${dateref}</h1></body></html>" > ${staging_path}/${project_dir}/front/static/deploy.html
 
 echo Copying templates and sending them to renato
 cd ${staging_path}/${project_dir} &&
@@ -70,8 +70,8 @@ cd ${staging_path}/${project_dir} &&
 echo "Patching for production"
 cd ${staging_path}/${project_dir}/ratonator
 $source_path/scripts/mk.settings.pro.sh
-sed -e 's/<!-- \(.*\)spaceless -->/{% \1spaceless %}/' < ${staging_path}/${project_dir}/templates/master.html > ${temp}/master.html-new &&
-    mv -f ${temp}/master.html-new ${staging_path}/${project_dir}/templates/master.html
+sed -e 's/<!-- \(.*\)spaceless -->/{% \1spaceless %}/' < ${staging_path}/${project_dir}/ratonator/templates/master.html > ${temp}/master.html-new &&
+    mv -f ${temp}/master.html-new ${staging_path}/${project_dir}/ratonator/templates/master.html
 cd 
 for h in ${staging_path}/${project_dir}/ratonator/templates/*html \
          ${staging_path}/${project_dir}/static/cacheable/__v_e_r_s_i_o_n__/css/*css ${staging_path}/${project_dir}/static/cacheable/__v_e_r_s_i_o_n__/js/thickbox/*js
