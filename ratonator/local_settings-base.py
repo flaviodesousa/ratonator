@@ -26,4 +26,4 @@ DATABASES = {
   }
 }
 
-DEBUG = True
+DEBUG = {debug}
