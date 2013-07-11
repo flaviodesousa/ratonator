@@ -1,0 +1,29 @@
+Installation
+------------
+
+install postgresql (server and client), postgresql-dev, gcc, make, python-dev (needed by psicopg)
+
+pip install -r requirements.txt
+
+for creating the database
+
+su
+su psql
+create user ratonator_admin password 'p4ssw0rd';
+create database ratonator owner ratonator_admin;
+
+set DATABASE, SECRET_KEY, ALLOWED_HOSTS on local_settings.py
+
+create/update <app dir>/ratonator/local_settings.py with the correct db password
+
+./manage syncdb
+./manage migrate
+./manage collectstatic
+
+Setup nginx with uWSGI
+----------------------
+
+* apt-get install nginx uwsgi uwsgi-plugin-python
+* sudo pip install uwsgi
+* place (symlink?) ratonator.nginx.conf on /etc/nginx/sites-available and symlink it to sites-enabled
+* place ratonator.ini on /etc/uwsgi/apps-available and symlink it to apps-enabled
