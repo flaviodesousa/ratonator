@@ -4,3 +4,4 @@ scripts/mk.settings.pro.sh
 local_settings.py
 *.sublime-*
 django.mo
+ratonator/static
