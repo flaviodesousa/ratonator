@@ -5,8 +5,8 @@ project_dir=ratonator
 source_path=~flavio/dev/${project_dir}
 staging_path=/tmp/staging
 dateref=`date +'%Y%m%d%H%M'`
-source_backup=/tmp/backup-ratonator-${dateref}.tar.bz2
-deployment_archive=deploy-ratonator-${dateref}.tar.bz2
+source_backup=/tmp/backup-ratonator-${dateref}.tar.xz
+deployment_archive=deploy-ratonator-${dateref}.tar.xz
 deployment_path=${temp}
 shared_folder=/mnt/shared
 
@@ -22,14 +22,16 @@ mountpoint -q ${shared_folder} ||
     exit 1;
 }
 
-cd ${source_path}
+cd ${source_path}/..
 
 echo Creating source tree backups...
-tar jcvf ${source_backup} ../${project_dir} ||
+tar Jcf ${source_backup} ${project_dir} ||
 {
     echo error creating backup;
     exit 1;
 }
+
+cd ${source_path}
 
 echo Sending backup to flavio@moonlighting.com.br
 ${source_path}/scripts/send_file.py \
@@ -52,43 +54,37 @@ echo Deleting git bindings...
 rm --recursive --force ${staging_path}/${project_dir}/.git
 
 echo Deleting unwanted files...
-find ${staging_path} \( -name '*~' -o name '*pyc' -o -name '*po' -o -name '*.sublime-*' \) -delete -print
+find ${staging_path} \( -name '*~' -o -name '*pyc' -o -name '*po' -o -name '*.sublime-*' \) -delete
 
 echo Generating static/deploy.html
 echo "<html><head><title>ratonator.com - deployment info</title></head><body><h1>Deploy ${dateref}</h1></body></html>" > ${staging_path}/${project_dir}/front/static/deploy.html
 
-echo Copying templates and sending them to renato
-cd ${staging_path}/${project_dir} &&
-    zip -r -q ${shared_folder}/templates-${dateref} ratonator/templates/* front/static/* &&
-    zip -r -q ${shared_folder}/static-${dateref} ratonator/static/* front/static/* &&
-    ${source_path}/scripts/send_file.py \
-        webrenat@gmail.com \
-        "templates no deploy ${dateref}" \
-        "Eis os templates constantes no deploy realizado em ${dateref}" \
-        ${shared_folder}/templates-${dateref}* ${shared_folder}/static-${dateref}*
-
 echo "Patching for production"
 cd ${staging_path}/${project_dir}/ratonator
 $source_path/scripts/mk.settings.pro.sh
-sed -e 's/<!-- \(.*\)spaceless -->/{% \1spaceless %}/' < ${staging_path}/${project_dir}/ratonator/templates/master.html > ${temp}/master.html-new &&
-    mv -f ${temp}/master.html-new ${staging_path}/${project_dir}/ratonator/templates/master.html
-cd 
+sed -e 's/<!-- \(.*\)spaceless -->/{% \1spaceless %}/' \
+        < ${staging_path}/${project_dir}/ratonator/templates/master.html \
+        > ${temp}/master.html-new &&
+    mv -f \
+        ${temp}/master.html-new \
+        ${staging_path}/${project_dir}/ratonator/templates/master.html
+
+echo "Setting cacheable directory"
 for h in ${staging_path}/${project_dir}/ratonator/templates/*html \
-         ${staging_path}/${project_dir}/static/cacheable/__v_e_r_s_i_o_n__/css/*css ${staging_path}/${project_dir}/static/cacheable/__v_e_r_s_i_o_n__/js/thickbox/*js
+         ${staging_path}/${project_dir}/front/static/cacheable/__v_e_r_s_i_o_n__/css/*css \
+         ${staging_path}/${project_dir}/front/static/cacheable/__v_e_r_s_i_o_n__/js/thickbox/*js
 do
-    echo $h
-    [ -f $h ] &&
-        sed -e "s/__v_e_r_s_i_o_n__/${dateref}/g" < $h > ${h}-new &&
+    sed -e "s/__v_e_r_s_i_o_n__/${dateref}/g" < $h > ${h}-new &&
         mv -f ${h}-new $h
 done
 mv ${staging_path}/${project_dir}/front/static/cacheable/__v_e_r_s_i_o_n__ ${staging_path}/${project_dir}/front/static/cacheable/${dateref}
 
 echo Packaging deployment
-cd ${staging_path} && \
-    tar jcf ${deployment_path}/${deployment_archive} ${project_dir}
+cd ${staging_path} &&
+    tar Jcf ${deployment_path}/${deployment_archive} ${project_dir}
 
-echo Sending to madelyn
-scp ${deployment_path}/${deployment_archive} flavio@madelyn.moonlighting.com.br:~/staging
+echo Sending to production server
+scp ${deployment_path}/${deployment_archive} flavio@david.flaviodesousa.com:~/staging
 
 echo Aliasing to latest
-ssh flavio@madelyn.moonlighting.com.br ln --force --symbolic ~/staging/${deployment_archive} ~/staging/deploy-ratonator-latest.tar.bz2
+ssh flavio@david.flaviodesousa.com ln --force --symbolic ~/staging/${deployment_archive} ~/staging/deploy-ratonator-latest.tar.xz
