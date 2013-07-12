@@ -27,3 +27,5 @@ DATABASES = {
 }
 
 DEBUG = {debug}
+
+ALLOWED_HOSTS = [ {allowed_host}, ]
