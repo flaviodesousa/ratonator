@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+{% load i18n %}
+{% load ratonator %}
+
+{% block title %} &mdash; {% trans 'Language choices' %}{% endblock %}
+
+{% block body %}
+
+    <div id="language_choices">
+        <ul>
+            {% for lang in language_choices %}
+                <li><a href="{% url 'front.views.index' lang.code %}">{{ lang.nativeName }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

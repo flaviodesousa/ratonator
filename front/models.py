@@ -82,7 +82,11 @@ class Language(models.Model):
     @classmethod
     def choices(cls):
         return [(l.code, l.nativeName)
-            for l in Language.objects.all().order_by('nativeName')]
+            for l in cls.list()]
+
+    @classmethod
+    def list(cls):
+        return Language.objects.all().order_by('nativeName')
 
 
 class RateableStuff(models.Model):
