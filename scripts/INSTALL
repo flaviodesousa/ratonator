@@ -3,6 +3,9 @@ Installation
 
 install postgresql (server and client), postgresql-dev, gcc, make, python-dev (needed by psicopg)
 
+# for running ./manage.py makemessages -a
+apt-get install gettext 
+
 pip install -r requirements.txt
 
 for creating the database

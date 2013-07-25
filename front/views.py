@@ -43,8 +43,10 @@ def _general_forms(request):
 
 
 def root(request):
-    return redirect('front.views.index',
-        language_code=_current_language(request))
+    (search_form, logon_form) = _general_forms(request)
+    language_choices = Language.list()
+    return render_to_response("language_choices.html", locals(),
+        context_instance=RequestContext(request))
 
 
 def index(request,  language_code):
