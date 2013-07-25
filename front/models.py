@@ -14,7 +14,8 @@ import re
 import unicodedata
 import uuid
 import logging
-import ratonator.settings
+
+from ratonator.settings import *
 
 log = logging.getLogger(__name__)
 log.info("Logging started")
@@ -298,7 +299,7 @@ class ClassifiableRateableStuff(NameableRateableStuff):
     @classmethod
     def addSubject(cls, name, language, user, definition=None):
         log.info("User '{2}' is creating new ({1}) subject: '{0}'"
-            .format(name, language, user.username))
+            .format(name, language, user.user.username))
         slugged = i18n_slugify(name)
         if not slugged:
             log.warn("Subject '{0}' not sluggable".format(name))
