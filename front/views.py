@@ -1,14 +1,15 @@
 #!/usr/bin/python
 # vim: set fileencoding=utf-8 :
 
-import ratonator.settings
+from ratonator.settings import *
 
 from front.models import *
 
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.http import (
+    HttpResponse, HttpResponseRedirect, HttpResponseNotFound)
 from django.shortcuts import render_to_response,  redirect
 from django.template import RequestContext
 from django.utils import translation
@@ -22,26 +23,30 @@ CURRENT_LANGUAGE = 'django_language'
 RATEABLE_USER = 'rateable_user'
 
 
-
 def _current_language(request):
-    cl = ratonator.settings.RATONATOR_DEFAULT_LANGUAGE
-    if CURRENT_LANGUAGE in request.session and request.session[CURRENT_LANGUAGE]:
+    cl = RATONATOR_DEFAULT_LANGUAGE
+    if (CURRENT_LANGUAGE in request.session and
+        request.session[CURRENT_LANGUAGE]):
         cl = request.session[CURRENT_LANGUAGE]
-    elif ratonator.settings.LANGUAGE_COOKIE_NAME in request.COOKIES and request.COOKIES[ratonator.settings.LANGUAGE_COOKIE_NAME]:
-        cl = request.session[CURRENT_LANGUAGE] = request.COOKIES[ratonator.settings.LANGUAGE_COOKIE_NAME]
+    elif (LANGUAGE_COOKIE_NAME in request.COOKIES and
+        request.COOKIES[LANGUAGE_COOKIE_NAME]):
+        cl = request.session[CURRENT_LANGUAGE] = (
+            request.COOKIES[LANGUAGE_COOKIE_NAME])
     return cl
 
 
-
 def _general_forms(request):
-    (search_form, logon_form) = (SearchForm(auto_id="search_form_%s"), LogonForm(auto_id="logon_form_%s"))
+    (search_form, logon_form) = (
+        SearchForm(auto_id="search_form_%s"),
+        LogonForm(auto_id="logon_form_%s"))
     return (search_form, logon_form)
-    
-    
-    
-def root(request):
-    return redirect('front.views.index',  language_code=_current_language(request))
 
+
+def root(request):
+    (search_form, logon_form) = _general_forms(request)
+    language_choices = Language.list()
+    return render_to_response("language_choices.html", locals(),
+        context_instance=RequestContext(request))
 
 
 def index(request,  language_code):
@@ -51,15 +56,15 @@ def index(request,  language_code):
     #return HttpResponse("Rate-o-nator (aka Ratonator) up and running!")
 
 
-
 def _index(request, language_code, search_form, logon_form):
     if language_code != _current_language(request):
         _activate_language(request,  language_code)
     hot_subjects = ClassifiableRateableStuff.hotSubjects(language_code)
     top_subjects = ClassifiableRateableStuff.topSubjects(language_code)
     new_subjects = ClassifiableRateableStuff.newSubjects(language_code)
-    return _set_language(request,  language_code,  render_to_response("index.html", locals(), context_instance=RequestContext(request)))
-
+    return _set_language(request,  language_code,
+        render_to_response("index.html", locals(),
+            context_instance=RequestContext(request)))
 
 
 def addSubject(request):
@@ -157,7 +162,7 @@ def rates(request,  rateable_uuid):
     subject = RateableStuff.objects.get(uuid=rateable_uuid)
     (search_form, logon_form) = _general_forms(request)
     return render_to_response('rates.html',  locals(),  context_instance=RequestContext(request))
-    
+
 
 
 def subject(request, language_code, subject_name_slugged):
@@ -207,8 +212,8 @@ def _set_language(request,  language_code,  response):
     if not CURRENT_LANGUAGE in request.session or request.session[CURRENT_LANGUAGE] != language_code:
         request.session[CURRENT_LANGUAGE] = language_code
     if not response == None:
-        if not ratonator.settings.LANGUAGE_COOKIE_NAME in request.COOKIES or not request.COOKIES[ratonator.settings.LANGUAGE_COOKIE_NAME] == language_code:
-            response.cookies[ratonator.settings.LANGUAGE_COOKIE_NAME] = language_code
+        if not LANGUAGE_COOKIE_NAME in request.COOKIES or not request.COOKIES[LANGUAGE_COOKIE_NAME] == language_code:
+            response.cookies[LANGUAGE_COOKIE_NAME] = language_code
     return response
 
 
@@ -263,7 +268,7 @@ def user(request,  username):
     try:
         rateable_user = User.objects.get(username=username).get_profile()
     except User.DoesNotExist:
-        return HttpResponseNotFound(render_to_response("404.html"))        
+        return HttpResponseNotFound(render_to_response("404.html"))
     contributions = rateable_user.get_contributions()
     return render_to_response('user.html',  locals(),  context_instance=RequestContext(request))
 
@@ -297,7 +302,7 @@ def _update_profile(request):
     rateable_user.update_profile(user_profile_form.cleaned_data['preferred_language'])
     title = _('Profile updated')
     messages = [_('Your profile was updated')]
-    return render_to_response('messages.html',  locals(),  context_instance=RequestContext(request))    
+    return render_to_response('messages.html',  locals(),  context_instance=RequestContext(request))
 
 
 
@@ -320,10 +325,10 @@ def register(request):
         return render_to_response('register.html', locals(), context_instance=RequestContext(request))
     try:
         RateableUser.register_new_user(
-            username=register_form.cleaned_data['username'], 
-            email=register_form.cleaned_data['email'], 
-            password1=register_form.cleaned_data['password1'], 
-            password2=register_form.cleaned_data['password2'], 
+            username=register_form.cleaned_data['username'],
+            email=register_form.cleaned_data['email'],
+            password1=register_form.cleaned_data['password1'],
+            password2=register_form.cleaned_data['password2'],
             preferred_language=register_form.cleaned_data['preferred_language']
         )
     except RateableUser.ValidationException,  ex:
@@ -331,9 +336,9 @@ def register(request):
         return render_to_response('register.html', locals(), context_instance=RequestContext(request))
     title = _('Account creation in progress')
     messages = [
-        _('Your account has been succesfully created.'), 
-        _('But, before you can start using it, you must validate your email.'), 
-        _('This step is needed to avoid creation of false accounts.'), 
+        _('Your account has been succesfully created.'),
+        _('But, before you can start using it, you must validate your email.'),
+        _('This step is needed to avoid creation of false accounts.'),
         _('Please, check your email inbox for a message from ratonator.com with further instructions.')
     ]
     return render_to_response('messages.html',  locals(),  context_instance=RequestContext(request))
@@ -344,14 +349,14 @@ def registration_validation(request,  key):
     try:
         UserValidation.get(key=key).end_account_validation_process()
         title = _('Be Welcome!')
-        messages = [ 
-            _('Welcome to ratonator.com!'), 
-            _('Your account is now activated!'), 
+        messages = [
+            _('Welcome to ratonator.com!'),
+            _('Your account is now activated!'),
             _('From now on you will be able to:'),
-            _('Create new subjects'), 
-            _('Classify them'), 
-            _('RATE EVERYTHING!'), 
-            _('Even rate the ratings!'), 
+            _('Create new subjects'),
+            _('Classify them'),
+            _('RATE EVERYTHING!'),
+            _('Even rate the ratings!'),
             _('Have fun!!!')
         ]
     except UserValidation.ValidationException,  ex:
@@ -371,42 +376,59 @@ def forgot_password(request):
     if not forgot_password_form.is_valid():
         return render_to_response('forgot_password.html',  locals(),  context_instance=RequestContext(request))
     if not forgot_password_form.cleaned_data['email'] and not forgot_password_form.cleaned_data['username']:
-        forgot_password_form.errors['email'] = [ _('Please, provide your email or your ratonator username') ]
-        return render_to_response('forgot_password.html',  locals(),  context_instance=RequestContext(request))
+        forgot_password_form.errors['email'] = [
+            _('Please, provide your email or your ratonator username') ]
+        return render_to_response('forgot_password.html',  locals(),
+            context_instance=RequestContext(request))
     try:
         RateableUser.get(
             email = forgot_password_form.cleaned_data['email'],
             username = forgot_password_form.cleaned_data['username']
         ).begin_password_reset_process()
     except RateableUser.Unknown,  e:
-        forgot_password_form.errors[e.property_name] = [ _('Unknown %(what)s "%(value)s"') % { 'what': e.property_name, 'value': e.property_value } ]
-        return render_to_response('forgot_password.html',  locals(),  context_instance=RequestContext(request))
+        forgot_password_form.errors[e.property_name] = [
+            _('Unknown %(what)s "%(value)s"') % {
+                'what': e.property_name,
+                'value': e.property_value } ]
+        return render_to_response('forgot_password.html',  locals(),
+            context_instance=RequestContext(request))
     title = _('Password reset email sent')
-    messages = [ _('An email was sent to you with instructions for reseting your password') ]
-    return render_to_response('messages.html',  locals(),  context_instance=RequestContext(request))
+    messages = [ _('An email was sent to you with instructions for'
+        ' reseting your password') ]
+    return render_to_response('messages.html',  locals(),
+        context_instance=RequestContext(request))
 
 
 
 def password_reset(request,  key):
     (search_form, logon_form) = _general_forms(request)
     if not request.method == 'POST':
-        password_reset_form = PasswordResetForm(auto_id='password_reset_form_%s')
+        password_reset_form = PasswordResetForm(
+            auto_id='password_reset_form_%s')
         password_reset_form.fields['key'].initial = key
-        return render_to_response('password_reset.html',  locals(),  context_instance=RequestContext(request))
-    password_reset_form = PasswordResetForm(request.POST, auto_id='password_reset_form_%s')
+        return render_to_response('password_reset.html',  locals(),
+            context_instance=RequestContext(request))
+    password_reset_form = PasswordResetForm(request.POST,
+        auto_id='password_reset_form_%s')
     if not password_reset_form.is_valid():
-        return render_to_response('password_reset.html',  locals(),  context_instance=RequestContext(request))
+        return render_to_response('password_reset.html',  locals(),
+            context_instance=RequestContext(request))
     try:
-        PasswordResetRequest.get(key = password_reset_form.cleaned_data['key']).end_password_reset_process(
-            password_reset_form.cleaned_data['password1'], 
-            password_reset_form.cleaned_data['password2']
-        )
+        PasswordResetRequest.get(key = password_reset_form.cleaned_data['key']
+            ).end_password_reset_process(
+                password_reset_form.cleaned_data['password1'],
+                password_reset_form.cleaned_data['password2'])
     except PasswordResetRequest.ValidationException,  ex:
         password_reset_form.errors[ex.property] = ex.messages
-        return render_to_response('password_reset.html',  locals(),  context_instance=RequestContext(request))
+        return render_to_response('password_reset.html',  locals(),
+            context_instance=RequestContext(request))
     title = _('Password set')
-    messages = [ _('Your new password is ready for use!'),  _('Please use the logon form in this page to use the full capabilites of ratonator.com') ]
-    return render_to_response('messages.html',  locals(),  context_instance=RequestContext(request))
+    messages = [ _('Your new password is ready for use!'),
+        _(
+            'Please use the logon form in this page to use'
+            ' the full capabilites of ratonator.com') ]
+    return render_to_response('messages.html',  locals(),
+        context_instance=RequestContext(request))
 
 
 
@@ -425,63 +447,78 @@ class AddDefinitionForm(forms.Form):
 
 
 class AddRateForm(forms.Form):
-    rate = forms.ChoiceField(widget=forms.RadioSelect, choices=RATE_CHOICES, label=_("Rate"),  initial=5)
+    rate = forms.ChoiceField(widget=forms.RadioSelect, choices=RATE_CHOICES,
+        label=_("Rate"),  initial=5)
     comments = forms.CharField(widget=forms.Textarea, label=_("Comments"))
-
 
 
 class AddCategoryForm(forms.Form):
     name = forms.CharField(max_length=255, label=_("Name"))
 
 
-
 class LanguageForm(forms.Form):
-    language = forms.ChoiceField(label=_("Language"), choices=Language.choices())
-
+    language = forms.ChoiceField(label=_("Language"),
+        choices=Language.choices())
 
 
 class LogonForm(forms.Form):
-    #remember_me = forms.BooleanField(label=_('Remember me'), initial=False, required=False)
     username = forms.CharField(label=_("User name"), max_length=30)
-    password = forms.CharField(label=_("Password"), max_length=32, widget=forms.PasswordInput)
-
+    password = forms.CharField(label=_("Password"), max_length=32,
+        widget=forms.PasswordInput)
 
 
 class RegisterForm(forms.Form):
     email = forms.EmailField(label=_("email"))
     username = forms.CharField(label=_('Public username'), max_length=30)
-    password1 = forms.CharField(label=_('Password'), max_length=32, widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_('Confirm'), max_length=32, widget=forms.PasswordInput)
-    preferred_language = forms.ChoiceField(label=_('Preferred language'),  choices=Language.choices())
-
+    password1 = forms.CharField(label=_('Password'), max_length=32,
+        widget=forms.PasswordInput)
+    password2 = forms.CharField(label=_('Confirm'), max_length=32,
+        widget=forms.PasswordInput)
+    preferred_language = forms.ChoiceField(label=_('Preferred language'),
+        choices=Language.choices())
 
 
 class SearchForm(forms.Form):
     pattern = forms.CharField(label=_("Search"), max_length=255)
 
 
-
 class ForgotPasswordForm(forms.Form):
     email = forms.EmailField(label=_("email"),  required=False)
-    username = forms.CharField(label=_('Public username'),  max_length=30,  required=False)
-
+    username = forms.CharField(
+        label=_('Public username'),
+        max_length=30,
+        required=False)
 
 
 class PasswordResetForm(forms.Form):
     key = forms.CharField(widget=forms.HiddenInput)
-    password1 = forms.CharField(label=_('New Password'), max_length=32, widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_('Confirm'), max_length=32, widget=forms.PasswordInput)
-
+    password1 = forms.CharField(
+        label=_('New Password'),
+        max_length=32,
+        widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label=_('Confirm'),
+        max_length=32,
+        widget=forms.PasswordInput)
 
 
 class UserProfileForm(forms.Form):
     #email = forms.EmailField(label=_("email"))
     #username = forms.CharField(label=_('Public username'), max_length=30)
-    preferred_language = forms.ChoiceField(label=_('Preferred language'),  choices=Language.choices())
-
+    preferred_language = forms.ChoiceField(
+        label=_('Preferred language'), choices=Language.choices())
 
 
 class PasswordChangeForm(forms.Form):
-    current_password = forms.CharField(label=_('Current Password'), max_length=32, widget=forms.PasswordInput)
-    password1 = forms.CharField(label=_('New Password'), max_length=32, widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_('Confirm'), max_length=32, widget=forms.PasswordInput)
+    current_password = forms.CharField(
+        label=_('Current Password'),
+        max_length=32,
+        widget=forms.PasswordInput)
+    password1 = forms.CharField(
+        label=_('New Password'),
+        max_length=32,
+        widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label=_('Confirm'),
+        max_length=32,
+        widget=forms.PasswordInput)

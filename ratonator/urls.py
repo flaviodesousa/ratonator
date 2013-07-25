@@ -3,7 +3,7 @@ from django.conf.urls import *
 from django.conf import settings
 from django.contrib import admin
 
-import ratonator
+from ratonator.settings import *
 
 admin.autodiscover()
 
@@ -31,8 +31,8 @@ urlpatterns = patterns('',
     (r'^Action/(?P<rateable_uuid>[a-f0-9-]+)/NewRate',  'front.views.add_rate'), 
 )
 
-if ratonator.settings.DEBUG:
+if DEBUG:
     urlpatterns += patterns('',
         (r'^rosetta/',  include('rosetta.urls')), 
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': ratonator.settings.STATIC_ROOT})
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': STATIC_ROOT})
     )
