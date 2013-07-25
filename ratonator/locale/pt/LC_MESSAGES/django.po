@@ -8,326 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-26 15:41-0200\n"
+"POT-Creation-Date: 2013-07-25 15:53-0300\n"
 "PO-Revision-Date: 2009-10-02 19:19\n"
 "Last-Translator: <flavio@moonlighting.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.4.7\n"
-
-#: front/models.py:20
-msgid "Impossibly good"
-msgstr "Impossivelmente bom"
-
-#: front/models.py:21
-msgid "Best ever"
-msgstr "Melhor de todos"
-
-#: front/models.py:22
-msgid "Excellent"
-msgstr "Excelente"
-
-#: front/models.py:23
-msgid "Very good"
-msgstr "Muito bom"
-
-#: front/models.py:24
-msgid "Good"
-msgstr "Bom"
-
-#: front/models.py:25
-msgid "Regular"
-msgstr "Regular"
-
-#: front/models.py:26
-msgid "Weak"
-msgstr "Fraco"
-
-#: front/models.py:27
-msgid "Bad"
-msgstr "Ruim"
-
-#: front/models.py:28
-msgid "Very Bad"
-msgstr "Muito ruim"
-
-#: front/models.py:29
-msgid "Worse ever"
-msgstr "Pior de todos"
-
-#: front/models.py:30
-msgid "Impossibly bad"
-msgstr "Impossivelmente ruim"
-
-#: front/models.py:173
-#, python-format
-msgid "a rate of %(rate)d given by %(user)s to %(subject)s"
-msgstr "Nota %(rate)d dada por %(user)s ao tema \"%(subject)s\""
-
-#: front/models.py:192
-#, python-format
-msgid "Unqualified named \"%s\""
-msgstr "** tema \"%s\""
-
-#: front/models.py:207
-#, python-format
-msgid "Aspect named \"%s\""
-msgstr "Aspecto \"%s\""
-
-#: front/models.py:217
-#, python-format
-msgid ""
-"a rate of %(rate)d given by %(user)s for the \"%(aspect_name)s\" aspect of "
-"\"%(subject_name)s\""
-msgstr ""
-"Nota %(rate)d data por %(user)s no aspecto \"%(aspect_name)s\" do tema \"%"
-"(subject_name)s\""
-
-#: front/models.py:319
-#, python-format
-msgid "Classification of \"%(subject)s\" as a \"%(category)s\""
-msgstr "Classificação de \"%(subject)s\" dentro da categoria \"%(category)s\""
-
-#: front/models.py:336
-#, python-format
-msgid "Definition of \"%(subject)s\" as \"%(definition)s\""
-msgstr "Definição do tema \"%(subject)s\" como \"%(definition)s\""
-
-#: front/models.py:368
-#, python-format
-msgid "user \"%s\""
-msgstr "Usuário \"%s\""
-
-#: front/models.py:412
-msgid "Username taken. Please, choose another one."
-msgstr ""
-"\"Esse nome de usuário já está em uso por alguém com outro email. Escolha "
-"outro, por favor\""
-
-#: front/models.py:415
-msgid "Account already exists."
-msgstr "Essa conta já foi criada"
-
-#: front/models.py:415
-msgid "Have you forgotten your password?"
-msgstr "Se você esqueceu sua senha, você pode criar uma nova."
-
-#: front/models.py:452
-#, python-format
-msgid "Bio of user %(user)s"
-msgstr ""
-
-#: front/models.py:472
-msgid "Account already validated."
-msgstr "Essa conta já foi ativada. Pode começar a usá-la!"
-
-#: front/models.py:474
-msgid "This validation link has been expired. Please try registering again."
-msgstr "Esse link de ativação expirou. Registre-se novamente, por favor."
-
-#: front/models.py:487
-msgid "Invalid link. Perhaps long expired. Please try registering again."
-msgstr ""
-"Link de ativação desconhecido. Se estava em um email seu possivelmente já "
-"expirou a algum tempo (veja a validade). Tente registrar-se novamente, por "
-"favor."
-
-#: front/models.py:519
-msgid "This password reset request expired. "
-msgstr "Esta solicitação de mudança de senha já expirou."
-
-#: front/models.py:519 front/models.py:524
-msgid "Request another one if you still want to reset your password."
-msgstr "Solicite outra se você ainda quiser trocar de senha."
-
-#: front/models.py:524
-msgid "This password reset request was already consumed. "
-msgstr "Esta solicitação de troca de senha já foi utilizada."
-
-#: front/models.py:529 front/views.py:303
-msgid "Passwords do not match"
-msgstr "As senhas devem ser idênticas"
-
-#: front/views.py:71
-#, python-format
-msgid "\"%s\" is not a valid subject name"
-msgstr "\"%s\" não é um nome aceitável. Deve conter ao menos uma letra."
-
-#: front/views.py:74
-#, python-format
-msgid "\"%s\" already exists"
-msgstr "'%s' já existe"
-
-#: front/views.py:230
-msgid "Logon failure"
-msgstr "Usuário ou senha inválidos"
-
-#: front/views.py:234
-msgid "Inactive account. Please check your email for activation instructions."
-msgstr ""
-"Conta inativa. Por favor verifique seu email por instruções de ativação."
-
-#: front/views.py:282
-msgid "Profile updated"
-msgstr ""
-
-#: front/views.py:283
-msgid "Your profile was updated"
-msgstr ""
-
-#: front/views.py:316
-msgid "Account creation in progress"
-msgstr "Criação de conta em progresso."
-
-#: front/views.py:318
-msgid "Your account has been succesfully created."
-msgstr "Sua conta foi criada."
-
-#: front/views.py:319
-msgid "But, before you can start using it, you must validate your email."
-msgstr "Mas, antes que você possa começar a usá-la, você deve ativá-la."
-
-#: front/views.py:320
-msgid "This step is needed to avoid creation of false accounts."
-msgstr "Esse passo "
-
-#: front/views.py:321
-msgid ""
-"Please, check your email inbox for a message from ratonator.com with further "
-"instructions."
-msgstr "Esse passo é necessário para evitar a criação de contas falsas."
-
-#: front/views.py:330
-msgid "Be Welcome!"
-msgstr "Estamos felizes por receber-lhe!"
-
-#: front/views.py:332
-msgid "Welcome to ratonator.com!"
-msgstr "ratonator.com está pronto para você!"
-
-#: front/views.py:333
-msgid "Your account is now activated!"
-msgstr "Sua conta está agora ativada!"
-
-#: front/views.py:334
-msgid "From now on you will be able to:"
-msgstr "A partir de agora você será capaz de:"
-
-#: front/views.py:335
-msgid "Create new subjects"
-msgstr "Cre novos temas"
-
-#: front/views.py:336
-msgid "Classify them"
-msgstr "Classificá-los em categorias"
-
-#: front/views.py:337
-msgid "RATE EVERYTHING!"
-msgstr "DAR NOTA PARA TUDO!"
-
-#: front/views.py:338
-msgid "Even rate the ratings!"
-msgstr "Até notas para outras notas!"
-
-#: front/views.py:339
-msgid "Have fun!!!"
-msgstr "Divirta-se!!!"
-
-#: front/views.py:342
-msgid "Account activation error"
-msgstr "Erro na ativação da conta"
-
-#: front/views.py:358
-msgid "Please, provide your email or your ratonator username"
-msgstr "Por favor, forneça seu email ou o seu nome de usuário no ratonator.com"
-
-#: front/views.py:366
-#, python-format
-msgid "Unknown %(what)s \"%(value)s\""
-msgstr "%(what)s \"%(value)s\" desconhecido"
-
-#: front/views.py:368
-msgid "Password reset email sent"
-msgstr "Email de troca de senha enviado"
-
-#: front/views.py:369
-msgid "An email was sent to you with instructions for reseting your password"
-msgstr "Um email foi enviado a você com instruções para trocar sua senha"
-
-#: front/views.py:391
-msgid "Password set"
-msgstr "Senha aceita"
-
-#: front/views.py:392
-msgid "Your new password is ready for use!"
-msgstr "Sua nova senha está pronta para ser usada!"
-
-#: front/views.py:392
-msgid ""
-"Please use the logon form in this page to use the full capabilites of "
-"ratonator.com"
-msgstr ""
-"Use o formulário de acesso nesta página para poder usar todos recursos de "
-"ratonator.com"
-
-#: front/views.py:398 front/views.py:418
-msgid "Name"
-msgstr "Nome"
-
-#: front/views.py:407
-msgid "Definition"
-msgstr "Definição"
-
-#: front/views.py:412 templates/addRate.html:8
-msgid "Rate"
-msgstr "Nota"
-
-#: front/views.py:413
-msgid "Comments"
-msgstr "Comentários"
-
-#: front/views.py:423
-msgid "Language"
-msgstr "Linguagem"
-
-#: front/views.py:429
-msgid "User name"
-msgstr "Usuário"
-
-#: front/views.py:430 front/views.py:437
-msgid "Password"
-msgstr "Senha"
-
-#: front/views.py:435 front/views.py:449
-msgid "email"
-msgstr "email"
-
-#: front/views.py:436 front/views.py:450
-msgid "Public username"
-msgstr "Nome público"
-
-#: front/views.py:438 front/views.py:457 front/views.py:471
-#: templates/password_change.html:14
-msgid "Confirm"
-msgstr "Confirmar"
-
-#: front/views.py:439 front/views.py:464
-msgid "Preferred language"
-msgstr "Idioma"
-
-#: front/views.py:444 templates/search.html:7
-msgid "Search"
-msgstr "Pesquisar"
-
-#: front/views.py:456 front/views.py:470
-msgid "New Password"
-msgstr "Nova senha"
-
-#: front/views.py:469
-msgid "Current Password"
-msgstr "Senha atual"
 
 #: templates/404.html:4
 msgid "404 - Not Found"
@@ -402,7 +91,7 @@ msgstr "Nova categoria"
 msgid "Add a new category for"
 msgstr "Adicione uma nova categoria para"
 
-#: templates/addCategory.html:15 templates/addDefinition.html:15
+#: templates/addCategory.html:16 templates/addDefinition.html:16
 msgid "Add"
 msgstr "Adicionar"
 
@@ -415,11 +104,15 @@ msgstr "Definição"
 msgid "Add a new definition for"
 msgstr "Adicione uma nova definição para"
 
-#: templates/addRate.html:14 templates/addSubject.html:13
+#: templates/addRate.html:8
+msgid "Rate"
+msgstr "Nota"
+
+#: templates/addRate.html:15 templates/addSubject.html:14
 msgid "Create"
 msgstr "Criar"
 
-#: templates/addRate.html:15
+#: templates/addRate.html:16
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -444,7 +137,7 @@ msgstr ""
 msgid "You will receive an email with instructions for reseting your password."
 msgstr "Você receberá um email com instruções para trocar sua senha."
 
-#: templates/forgot_password.html:14
+#: templates/forgot_password.html:15
 msgid "Send"
 msgstr "Enviar"
 
@@ -484,29 +177,21 @@ msgstr ""
 msgid "Logout"
 msgstr "Sair"
 
-#: templates/logon.html:12
+#: templates/logon.html:13
 msgid "Logon"
 msgstr "Entrar"
 
-#: templates/logon.html:17 templates/register.html:51
+#: templates/logon.html:18 templates/register.html:52
 msgid "Register"
 msgstr "Cadastre-se"
 
-#: templates/logon.html:17
+#: templates/logon.html:18
 msgid "Forgot password?"
 msgstr "Esqueci minha senha"
 
-#: templates/master.html:7
+#: templates/master.html:6
 msgid "ratonator - a rate for everything!"
 msgstr "ratonator - dê uma nota para tudo!"
-
-#: templates/master.html:128
-msgid ""
-"This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING "
-"PROPERLY"
-msgstr ""
-"Este serviço está em estágio preliminar... cheio de erros. Tenha paciência, "
-"por favor!"
 
 #: templates/master.html:148
 msgid "New subject"
@@ -530,15 +215,19 @@ msgstr "Sua requisição de troca de senha foi aceita."
 msgid "Please, inform your new password for accessing ratonator."
 msgstr "Informe sua nova senha para acessar ratonator.com."
 
+#: templates/password_change.html:15
+msgid "Confirm"
+msgstr "Confirmar"
+
 #: templates/password_reset.html:9
 msgid "Please, inform the new password you want to access ratonator."
 msgstr "Informe a nova senha que você deseja usar."
 
-#: templates/password_reset.html:14
+#: templates/password_reset.html:15
 msgid "Set"
 msgstr "Definir"
 
-#: templates/rateable_tag.html:24
+#: templates/rateable_tag.html:26
 msgid "Add your vote too!"
 msgstr "Vote também!"
 
@@ -558,6 +247,10 @@ msgstr ""
 #: templates/register.html:4
 msgid "New user registration"
 msgstr "Registro de novos usuários"
+
+#: templates/search.html:8
+msgid "Search"
+msgstr "Pesquisar"
 
 #: templates/searchResults.html:3
 #, fuzzy
@@ -613,15 +306,237 @@ msgstr "Nenhuma definição cadastrada. Inclua as suas!"
 msgid "User profile"
 msgstr ""
 
-#: templates/user_profile.html:14 templates/user_profile.html.py:23
+#: templates/user_profile.html:15 templates/user_profile.html.py:25
 #, fuzzy
 msgid "Change"
 msgstr "Cancelar"
 
-#: templates/user_profile.html:18
+#: templates/user_profile.html:19
 #, fuzzy
 msgid "Password Change"
 msgstr "Senha aceita"
+
+#~ msgid "Impossibly good"
+#~ msgstr "Impossivelmente bom"
+
+#~ msgid "Best ever"
+#~ msgstr "Melhor de todos"
+
+#~ msgid "Excellent"
+#~ msgstr "Excelente"
+
+#~ msgid "Very good"
+#~ msgstr "Muito bom"
+
+#~ msgid "Good"
+#~ msgstr "Bom"
+
+#~ msgid "Regular"
+#~ msgstr "Regular"
+
+#~ msgid "Weak"
+#~ msgstr "Fraco"
+
+#~ msgid "Bad"
+#~ msgstr "Ruim"
+
+#~ msgid "Very Bad"
+#~ msgstr "Muito ruim"
+
+#~ msgid "Worse ever"
+#~ msgstr "Pior de todos"
+
+#~ msgid "Impossibly bad"
+#~ msgstr "Impossivelmente ruim"
+
+#~ msgid "a rate of %(rate)d given by %(user)s to %(subject)s"
+#~ msgstr "Nota %(rate)d dada por %(user)s ao tema \"%(subject)s\""
+
+#~ msgid "Unqualified named \"%s\""
+#~ msgstr "** tema \"%s\""
+
+#~ msgid "Aspect named \"%s\""
+#~ msgstr "Aspecto \"%s\""
+
+#~ msgid ""
+#~ "a rate of %(rate)d given by %(user)s for the \"%(aspect_name)s\" aspect "
+#~ "of \"%(subject_name)s\""
+#~ msgstr ""
+#~ "Nota %(rate)d data por %(user)s no aspecto \"%(aspect_name)s\" do tema "
+#~ "\"%(subject_name)s\""
+
+#~ msgid "Classification of \"%(subject)s\" as a \"%(category)s\""
+#~ msgstr ""
+#~ "Classificação de \"%(subject)s\" dentro da categoria \"%(category)s\""
+
+#~ msgid "Definition of \"%(subject)s\" as \"%(definition)s\""
+#~ msgstr "Definição do tema \"%(subject)s\" como \"%(definition)s\""
+
+#~ msgid "user \"%s\""
+#~ msgstr "Usuário \"%s\""
+
+#~ msgid "Username taken. Please, choose another one."
+#~ msgstr ""
+#~ "\"Esse nome de usuário já está em uso por alguém com outro email. Escolha "
+#~ "outro, por favor\""
+
+#~ msgid "Account already exists."
+#~ msgstr "Essa conta já foi criada"
+
+#~ msgid "Have you forgotten your password?"
+#~ msgstr "Se você esqueceu sua senha, você pode criar uma nova."
+
+#~ msgid "Account already validated."
+#~ msgstr "Essa conta já foi ativada. Pode começar a usá-la!"
+
+#~ msgid "This validation link has been expired. Please try registering again."
+#~ msgstr "Esse link de ativação expirou. Registre-se novamente, por favor."
+
+#~ msgid "Invalid link. Perhaps long expired. Please try registering again."
+#~ msgstr ""
+#~ "Link de ativação desconhecido. Se estava em um email seu possivelmente já "
+#~ "expirou a algum tempo (veja a validade). Tente registrar-se novamente, "
+#~ "por favor."
+
+#~ msgid "This password reset request expired. "
+#~ msgstr "Esta solicitação de mudança de senha já expirou."
+
+#~ msgid "Request another one if you still want to reset your password."
+#~ msgstr "Solicite outra se você ainda quiser trocar de senha."
+
+#~ msgid "This password reset request was already consumed. "
+#~ msgstr "Esta solicitação de troca de senha já foi utilizada."
+
+#~ msgid "Passwords do not match"
+#~ msgstr "As senhas devem ser idênticas"
+
+#~ msgid "\"%s\" is not a valid subject name"
+#~ msgstr "\"%s\" não é um nome aceitável. Deve conter ao menos uma letra."
+
+#~ msgid "\"%s\" already exists"
+#~ msgstr "'%s' já existe"
+
+#~ msgid "Logon failure"
+#~ msgstr "Usuário ou senha inválidos"
+
+#~ msgid ""
+#~ "Inactive account. Please check your email for activation instructions."
+#~ msgstr ""
+#~ "Conta inativa. Por favor verifique seu email por instruções de ativação."
+
+#~ msgid "Account creation in progress"
+#~ msgstr "Criação de conta em progresso."
+
+#~ msgid "Your account has been succesfully created."
+#~ msgstr "Sua conta foi criada."
+
+#~ msgid "But, before you can start using it, you must validate your email."
+#~ msgstr "Mas, antes que você possa começar a usá-la, você deve ativá-la."
+
+#~ msgid "This step is needed to avoid creation of false accounts."
+#~ msgstr "Esse passo "
+
+#~ msgid ""
+#~ "Please, check your email inbox for a message from ratonator.com with "
+#~ "further instructions."
+#~ msgstr "Esse passo é necessário para evitar a criação de contas falsas."
+
+#~ msgid "Be Welcome!"
+#~ msgstr "Estamos felizes por receber-lhe!"
+
+#~ msgid "Welcome to ratonator.com!"
+#~ msgstr "ratonator.com está pronto para você!"
+
+#~ msgid "Your account is now activated!"
+#~ msgstr "Sua conta está agora ativada!"
+
+#~ msgid "From now on you will be able to:"
+#~ msgstr "A partir de agora você será capaz de:"
+
+#~ msgid "Create new subjects"
+#~ msgstr "Cre novos temas"
+
+#~ msgid "Classify them"
+#~ msgstr "Classificá-los em categorias"
+
+#~ msgid "RATE EVERYTHING!"
+#~ msgstr "DAR NOTA PARA TUDO!"
+
+#~ msgid "Even rate the ratings!"
+#~ msgstr "Até notas para outras notas!"
+
+#~ msgid "Have fun!!!"
+#~ msgstr "Divirta-se!!!"
+
+#~ msgid "Account activation error"
+#~ msgstr "Erro na ativação da conta"
+
+#~ msgid "Please, provide your email or your ratonator username"
+#~ msgstr ""
+#~ "Por favor, forneça seu email ou o seu nome de usuário no ratonator.com"
+
+#~ msgid "Unknown %(what)s \"%(value)s\""
+#~ msgstr "%(what)s \"%(value)s\" desconhecido"
+
+#~ msgid "Password reset email sent"
+#~ msgstr "Email de troca de senha enviado"
+
+#~ msgid ""
+#~ "An email was sent to you with instructions for reseting your password"
+#~ msgstr "Um email foi enviado a você com instruções para trocar sua senha"
+
+#~ msgid "Password set"
+#~ msgstr "Senha aceita"
+
+#~ msgid "Your new password is ready for use!"
+#~ msgstr "Sua nova senha está pronta para ser usada!"
+
+#~ msgid ""
+#~ "Please use the logon form in this page to use the full capabilites of "
+#~ "ratonator.com"
+#~ msgstr ""
+#~ "Use o formulário de acesso nesta página para poder usar todos recursos de "
+#~ "ratonator.com"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "Definition"
+#~ msgstr "Definição"
+
+#~ msgid "Comments"
+#~ msgstr "Comentários"
+
+#~ msgid "Language"
+#~ msgstr "Linguagem"
+
+#~ msgid "User name"
+#~ msgstr "Usuário"
+
+#~ msgid "Password"
+#~ msgstr "Senha"
+
+#~ msgid "email"
+#~ msgstr "email"
+
+#~ msgid "Public username"
+#~ msgstr "Nome público"
+
+#~ msgid "Preferred language"
+#~ msgstr "Idioma"
+
+#~ msgid "New Password"
+#~ msgstr "Nova senha"
+
+#~ msgid "Current Password"
+#~ msgstr "Senha atual"
+
+#~ msgid ""
+#~ "This service is in early alpha stage, still NOT COMPLETE, AND NOT WORKING "
+#~ "PROPERLY"
+#~ msgstr ""
+#~ "Este serviço está em estágio preliminar... cheio de erros. Tenha "
+#~ "paciência, por favor!"
 
 #~ msgid "Remember me"
 #~ msgstr "Manter-me ativo"
