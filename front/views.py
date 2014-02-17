@@ -159,7 +159,7 @@ def subject_old(request,  language_code,  subject_name_slugged):
 
 
 def rates(request,  rateable_uuid):
-    subject = RateableStuff.objects.get(uuid=rateable_uuid)
+    subject = get_object_or_404(RateableStuff, uuid=rateable_uuid)
     (search_form, logon_form) = _general_forms(request)
     return render_to_response('rates.html',  locals(),  context_instance=RequestContext(request))
 
