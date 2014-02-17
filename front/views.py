@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.http import (
     HttpResponse, HttpResponseRedirect, HttpResponseNotFound)
-from django.shortcuts import render_to_response,  redirect
+from django.shortcuts import render_to_response,  redirect, get_object_or_404
 from django.template import RequestContext
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
