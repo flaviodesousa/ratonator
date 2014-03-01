@@ -337,7 +337,7 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
     def addDefinition(self, definition_text, user):
         log.info("User '{0}' is adding ('{2}') definition to subject '{1}'"
-            .format(user.username, self.name, self.language))
+            .format(user.user.username, self.name, self.language))
         definition = Definition(
             theDefinition=definition_text,
             subject=self,
@@ -348,7 +348,7 @@ class ClassifiableRateableStuff(NameableRateableStuff):
 
     def addCategory(self, category_name, user):
         log.info("User '{0}' is adding new category '{1}'"
-            .format(user.username, category_name))
+            .format(user.user.username, category_name))
         try:
             category_name_slugged = i18n_slugify(category_name)
             adding_category = ClassifiableRateableStuff.get(
