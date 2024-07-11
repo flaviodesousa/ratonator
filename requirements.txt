@@ -1,4 +1,4 @@
-Django>=1.5.1
+Django>=4.2.14
 South>=0.8.1
 django-rosetta>=0.7.2
 psycopg2>=2.5.1
